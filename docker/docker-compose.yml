@@ -1,0 +1,26 @@
+# Brings up the whole stack locally: `docker compose -f docker/docker-compose.yml up --build`
+# then open http://localhost:8080 (the frontend is pre-wired to call the
+# backend at http://localhost:8000 -- edit the "API base URL" field in the
+# page if you change the port mapping below).
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - EBIRD_API_KEY=${EBIRD_API_KEY:-}
+      - IUCN_API_KEY=${IUCN_API_KEY:-}
+      - PROTECTED_PLANET_API_KEY=${PROTECTED_PLANET_API_KEY:-}
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

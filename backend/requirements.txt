@@ -1,0 +1,14 @@
+# Core web API
+Flask==3.1.3
+gunicorn==23.0.0
+
+# Data + ML (versions match what this prototype was built and tested against)
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+joblib==1.5.3
+
+# HTTP clients for GBIF / Open-Meteo / eBird
+requests==2.33.1
+
+python-dotenv==1.2.2

@@ -1,0 +1,20 @@
+# WildCast backend: the Flask API + the ML pipeline it serves from.
+# Build from the repo root:  docker build -f docker/Dockerfile.backend -t wildcast-backend .
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY backend/ .
+
+# Bake the offline demo model into the image so the container is useful the
+# moment it starts. Swap this for the real ingestion + training pipeline
+# (scripts/ingest_gbif.py -> scripts/ingest_weather.py -> app.ml.train) once
+# you're ready to serve real predictions -- see the README.
+RUN python -m scripts.generate_sample_fixtures && python -m app.ml.train
+
+EXPOSE 8000
+ENV PORT=8000
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8000", "app.main:app"]

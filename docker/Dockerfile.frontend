@@ -1,0 +1,5 @@
+# Serves the static frontend. Build from the repo root:
+#   docker build -f docker/Dockerfile.frontend -t wildcast-frontend .
+FROM nginx:alpine
+COPY frontend/ /usr/share/nginx/html/
+EXPOSE 80

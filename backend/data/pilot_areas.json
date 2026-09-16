@@ -1,0 +1,52 @@
+[
+  {
+    "id": "yellowstone",
+    "name": "Yellowstone National Park, USA",
+    "type": "national_park",
+    "lat": 44.60,
+    "lon": -110.50,
+    "radius_km": 60,
+    "gbif_country": "US",
+    "timezone": "America/Denver"
+  },
+  {
+    "id": "kruger",
+    "name": "Kruger National Park, South Africa",
+    "type": "national_park",
+    "lat": -24.00,
+    "lon": 31.50,
+    "radius_km": 80,
+    "gbif_country": "ZA",
+    "timezone": "Africa/Johannesburg"
+  },
+  {
+    "id": "brisbane_urban",
+    "name": "Brisbane Urban Green Space, Australia",
+    "type": "urban",
+    "lat": -27.47,
+    "lon": 153.03,
+    "radius_km": 25,
+    "gbif_country": "AU",
+    "timezone": "Australia/Brisbane"
+  },
+  {
+    "id": "svalbard_arctic",
+    "name": "Svalbard Arctic Tundra, Norway",
+    "type": "arctic_tundra",
+    "lat": 78.22,
+    "lon": 15.65,
+    "radius_km": 100,
+    "gbif_country": "SJ",
+    "timezone": "Arctic/Longyearbyen"
+  },
+  {
+    "id": "amazon_rainforest",
+    "name": "Central Amazon Rainforest, Brazil",
+    "type": "rainforest",
+    "lat": -3.10,
+    "lon": -60.02,
+    "radius_km": 150,
+    "gbif_country": "BR",
+    "timezone": "America/Manaus"
+  }
+]

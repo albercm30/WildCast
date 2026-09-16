@@ -1,0 +1,7 @@
+# Dev/test/lint tools -- not needed to run the app itself.
+-r requirements.txt
+ruff
+flake8
+pytest   # optional: the test suite is plain unittest.TestCase and runs fine
+         # with `python -m unittest discover -s tests`, but pytest also
+         # picks it up unmodified if you prefer its runner/output.
