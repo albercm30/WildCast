@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+backend/data/cache/
+backend/app/ml/artifacts/
+.DS_Store
