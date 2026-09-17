@@ -21,9 +21,7 @@ jobs:
           cache-dependency-path: backend/requirements.txt
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install ruff flake8
+        run: pip install -r requirements-dev.txt
 
       - name: Lint
         run: |
