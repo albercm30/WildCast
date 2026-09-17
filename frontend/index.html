@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WildCast &mdash; Daily Wildlife Encounter Forecasts</title>
+<meta name="description" content="Daily probability of a wildlife encounter -- a weather forecast for the wild, built on real GBIF/iNaturalist/eBird sightings and real weather." />
+
+<!-- PWA: installable as a real app on desktop and mobile -- see frontend/manifest.json and sw.js. -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#6d33e0" />
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="WildCast" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #ffffff;
+    --surface-2: #f3f2ee;
+    --page: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --gridline: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --shadow: 0 1px 2px rgba(11,11,11,0.04), 0 8px 24px rgba(11,11,11,0.06);
+    --seq-100: #cde2fb;
+    --seq-400: #3987e5;
+    --seq-500: #256abf;
+    --seq-650: #104281;
+    --accent-100: #e5defb;
+    --accent-400: #8b5cf6;
+    --accent-500: #6d33e0;
+    --accent-650: #431a94;
+    --status-good: #0ca30c;
+    --status-warning: #b5790a;
+    --status-serious: #c04a29;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-1: #171716;
+      --surface-2: #201f1d;
+      --page: #0d0d0d;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #918f89;
+      --gridline: #2c2c2a;
+      --baseline: #3a3a37;
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+      --seq-100: #16324f;
+      --seq-400: #3987e5;
+      --seq-500: #5598e7;
+      --seq-650: #9dc3f4;
+      --accent-100: #2c2050;
+      --accent-400: #a688f5;
+      --accent-500: #b49af7;
+      --accent-650: #ddd0fb;
+      --status-good: #4fce54;
+      --status-warning: #e8ab3c;
+      --status-serious: #ef8562;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    background: var(--page);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--seq-500); }
+
+  /* ---------- Header ---------- */
+  header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-1);
+  }
+  .header-inner { max-width: 1200px; margin: 0 auto; }
+  .header-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  .brand h1 { font-size: 21px; margin: 0; letter-spacing: -0.01em; font-weight: 800; }
+  .brand .tag { margin: 0; color: var(--text-secondary); font-size: 13.5px; }
+  .mode-switch {
+    display: inline-flex;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .mode-switch button {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 650;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+  .mode-switch button.active { background: var(--surface-1); color: var(--text-primary); box-shadow: var(--shadow); }
+  .mode-switch button:not(.active):hover { color: var(--text-primary); }
+
+  details.about {
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  details.about summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 600;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: "\24D8"; font-size: 13px; color: var(--seq-500); }
+  details.about .about-body {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    max-width: 760px;
+    display: grid;
+    gap: 8px;
+  }
+  details.about .about-body strong { color: var(--text-primary); }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 1.1fr) minmax(340px, 460px);
+    gap: 18px;
+    padding: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+  .map-col { position: sticky; top: 18px; display: grid; gap: 12px; }
+  @media (max-width: 820px) { .map-col { position: static; } }
+  #map {
+    height: 440px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .map-hint {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    padding: 0 2px;
+  }
+  .anywhere-pin-note {
+    font-size: 12.5px;
+    background: var(--accent-100);
+    color: var(--accent-650);
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: none;
+  }
+  .anywhere-pin-note.visible { display: block; }
+
+  .panel {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 14px; }
+
+  /* ---------- Controls ---------- */
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 12px; font-weight: 650; color: var(--text-secondary); }
+  .controls input[type="date"], .controls select, .controls input[type="number"] {
+    font: inherit;
+    font-size: 13.5px;
+    padding: 7px 9px;
+    border-radius: 8px;
+    border: 1px solid var(--baseline);
+    background: var(--surface-1);
+    color: var(--text-primary);
+  }
+  .link-btn {
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 650;
+    color: var(--seq-500);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 0;
+  }
+  .link-btn:hover { text-decoration: underline; }
+  .link-btn.danger { color: var(--status-serious); }
+
+  /* ---------- Result header ---------- */
+  .result-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .area-name { font-size: 16.5px; font-weight: 750; margin: 0 0 2px; letter-spacing: -0.01em; }
+  .area-meta { font-size: 12.5px; color: var(--text-muted); margin: 0; }
+  .anywhere-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--accent-650);
+    background: var(--accent-100);
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .star-btn {
+    border: 1px solid var(--baseline);
+    background: var(--surface-1);
+    color: var(--text-muted);
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1;
+    padding: 7px 9px;
+    cursor: pointer;
+    flex: none;
+    transition: transform 0.1s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .star-btn:hover { transform: scale(1.08); }
+  .star-btn.saved { color: #d69412; border-color: #d69412; }
+
+  /* ---------- Species cards ---------- */
+  .species-row {
+    padding: 12px 2px;
+    border-top: 1px solid var(--gridline);
+    cursor: pointer;
+    transition: background 0.12s ease;
+    border-radius: 8px;
+  }
+  .species-row:first-of-type { border-top: none; }
+  .species-row:hover { background: var(--surface-2); }
+  .species-row .top-line { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .species-row .name-block { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
+  .taxon-chip {
+    flex: none;
+    font-size: 9.5px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .species-row .name { font-size: 14.5px; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .species-row .sci { font-size: 12px; color: var(--text-muted); font-style: italic; }
+  .species-row .pct { font-size: 16px; font-weight: 750; font-variant-numeric: tabular-nums; flex: none; }
+  .bar-track { height: 6px; border-radius: 4px; background: var(--gridline); margin-top: 7px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--seq-400); border-radius: 4px; transition: width 0.4s ease; }
+  .badge {
+    font-size: 11px; font-weight: 650; padding: 2px 7px; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 4px; margin-top: 7px;
+  }
+  .badge.high { color: var(--status-good); }
+  .badge.medium { color: var(--status-warning); }
+  .badge.low { color: var(--status-serious); }
+  .badge::before { content: "\25CF"; font-size: 8px; }
+  .factors { list-style: none; margin: 7px 0 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+  .factors li { font-size: 12px; color: var(--text-secondary); line-height: 1.45; padding-left: 13px; position: relative; }
+  .factors li::before { content: "\2013"; position: absolute; left: 0; color: var(--text-muted); }
+  .window-chart { margin-top: 12px; display: none; }
+  .window-chart.open { display: block; animation: fadein 0.18s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: translateY(0); } }
+  .window-chart svg { width: 100%; height: 140px; display: block; }
+  .window-chart .axis-label { font-size: 10px; fill: var(--text-muted); }
+  .window-chart .line { fill: none; stroke: var(--seq-500); stroke-width: 2; }
+  .window-chart .grid { stroke: var(--gridline); stroke-width: 1; }
+
+  .hint { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; }
+  .empty-state { color: var(--text-muted); font-size: 13.5px; padding: 34px 8px; text-align: center; line-height: 1.5; }
+  .skeleton-row { height: 58px; border-radius: 8px; background: linear-gradient(90deg, var(--surface-2) 25%, var(--gridline) 37%, var(--surface-2) 63%); background-size: 400% 100%; animation: shimmer 1.3s ease infinite; margin-bottom: 8px; }
+  @keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+  /* ---------- Favorites ---------- */
+  .fav-list { display: flex; flex-direction: column; gap: 6px; }
+  .fav-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 8px 10px; border-radius: 8px; background: var(--surface-2);
+    cursor: pointer; font-size: 13px;
+  }
+  .fav-item:hover { background: var(--gridline); }
+  .fav-item .fav-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fav-item .fav-remove { border: none; background: none; color: var(--text-muted); cursor: pointer; font-size: 15px; flex: none; padding: 2px 4px; }
+  .fav-item .fav-remove:hover { color: var(--status-serious); }
+
+  /* ---------- Compare ---------- */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-col { min-width: 0; }
+  .compare-col .species-row .factors, .compare-col .window-chart { display: none !important; }
+
+  .api-config { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .api-config input { font: inherit; font-size: 11px; width: 100%; padding: 5px 7px; border-radius: 6px; border: 1px solid var(--baseline); background: var(--surface-1); color: var(--text-secondary); margin-top: 3px; }
+
+  footer.site-footer { max-width: 1200px; margin: 8px auto 28px; padding: 0 18px; }
+  footer.site-footer .hint a { color: var(--text-secondary); }
+
+  /* ---------- Data-source banner ---------- */
+  .data-source-banner {
+    display: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: center;
+    padding: 7px 14px;
+    letter-spacing: 0.01em;
+  }
+  .data-source-banner.visible { display: block; }
+  .data-source-banner.source-real { background: #e3f6e3; color: #0b5d0b; }
+  .data-source-banner.source-synthetic_demo { background: #fff2cc; color: #7a5c00; }
+  .data-source-banner.source-unknown { background: var(--surface-2); color: var(--text-secondary); }
+  @media (prefers-color-scheme: dark) {
+    .data-source-banner.source-real { background: #0d3a17; color: #7fe08a; }
+    .data-source-banner.source-synthetic_demo { background: #4a3a00; color: #ffd966; }
+  }
+</style>
+</head>
+<body>
+
+<div id="data-source-banner" class="data-source-banner" role="status"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand">
+        <h1>WildCast</h1>
+        <p class="tag">Daily probability of a wildlife encounter &mdash; a weather forecast for the wild.</p>
+      </div>
+      <div class="mode-switch" role="tablist" aria-label="Browsing mode">
+        <button type="button" id="mode-curated" class="active">Curated areas</button>
+        <button type="button" id="mode-anywhere">Explore anywhere</button>
+      </div>
+    </div>
+
+    <details class="about">
+      <summary>How WildCast works</summary>
+      <div class="about-body">
+        <p><strong>Curated areas</strong> are 10 hand-vetted places (Yellowstone, Kruger, Brisbane, Svalbard, the Amazon, the Serengeti, Borneo, Patagonia, the Scottish Highlands, and Costa Rica's cloud forest) with real sighting records and real Open-Meteo weather trained into a calibrated model ahead of time &mdash; predictions load instantly.</p>
+        <p><strong>Explore anywhere</strong> lets you click any point on Earth. WildCast checks, live, whether each of its known species has ever actually been recorded &mdash; by GBIF, iNaturalist, or (for birds) eBird &mdash; near that exact spot, then scores the ones that pass using real live weather for that location and the trained model of whichever curated area is geographically closest. Checking multiple independent sources, instead of just one, means a species confirmed by more than one database gets a modest confidence boost. It's slower (a few seconds, since it's checking real data on the fly) and only covers WildCast's existing 50 species &mdash; but the location itself can be anywhere.</p>
+        <p><strong>Confidence</strong> reflects how many real historical sighting records back a prediction: <span class="badge high" style="margin:0;">high</span> 150+, <span class="badge medium" style="margin:0;">medium</span> 40&ndash;149, <span class="badge low" style="margin:0;">low</span> under 40. Low-confidence predictions are still real, just backed by less data.</p>
+        <p><strong>Population &amp; ability to evade:</strong> when available, predictions also note a species' real IUCN Red List conservation status (rarer/declining species are naturally harder to encounter) and its natural activity pattern (a nocturnal or crepuscular species is genuinely harder to see than a day-active one) &mdash; both shown as plain-language context, never as invented statistics.</p>
+        <p>The banner at the top of the page always says whether the predictions you're looking at come from real ingested data or the offline demo dataset &mdash; see the <a href="#data-source-detail">data source note</a> below.</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="layout">
+  <div class="map-col">
+    <div id="map"></div>
+    <p class="map-hint" id="map-hint">Click a marker, or use the dropdown, to see its forecast.</p>
+    <div class="anywhere-pin-note" id="anywhere-note"></div>
+  </div>
+
+  <div>
+    <div class="panel" id="main-panel">
+      <div class="controls" id="curated-controls">
+        <div class="field">
+          <label for="area-select">Area</label>
+          <select id="area-select"><option value="">Loading areas&hellip;</option></select>
+        </div>
+        <div class="field">
+          <label for="date-input">Date</label>
+          <input type="date" id="date-input" />
+        </div>
+      </div>
+
+      <div class="controls" id="anywhere-controls" style="display:none;">
+        <div class="field">
+          <label for="date-input-anywhere">Date</label>
+          <input type="date" id="date-input-anywhere" />
+        </div>
+        <div class="field">
+          <label for="radius-input">Search radius (km)</label>
+          <input type="number" id="radius-input" min="10" max="300" step="10" value="150" style="width:90px;" />
+        </div>
+      </div>
+      <div class="controls" id="anywhere-coords" style="display:none;">
+        <div class="field">
+          <label for="lat-input">Latitude</label>
+          <input type="number" id="lat-input" min="-90" max="90" step="0.01" placeholder="e.g. 46.81" style="width:100px;" />
+        </div>
+        <div class="field">
+          <label for="lon-input">Longitude</label>
+          <input type="number" id="lon-input" min="-180" max="180" step="0.01" placeholder="e.g. 8.23" style="width:100px;" />
+        </div>
+        <button type="button" class="link-btn" id="coords-go" style="align-self:center;">Go &rarr;</button>
+      </div>
+
+      <div id="results">
+        <div class="empty-state">Pick a curated area (on the map or the dropdown above) to see its forecast.</div>
+      </div>
+
+      <div id="compare-toggle-row" style="margin-top:10px;">
+        <button type="button" class="link-btn" id="compare-toggle">+ Compare with another area</button>
+      </div>
+      <div class="controls" id="compare-controls" style="display:none; margin-top:6px;">
+        <div class="field">
+          <label for="compare-select">Compare with</label>
+          <select id="compare-select"><option value="">Choose an area&hellip;</option></select>
+        </div>
+        <button type="button" class="link-btn danger" id="compare-close">Close compare</button>
+      </div>
+      <div id="compare-results" class="compare-grid" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="panel" id="favorites-panel" style="display:none;">
+      <p class="area-name" style="margin-bottom:8px;">&#9733; Saved places</p>
+      <div class="fav-list" id="fav-list"></div>
+    </div>
+
+    <div class="panel">
+      <div class="api-config">
+        API base URL (edit if your backend runs elsewhere)
+        <input id="api-base" value="https://wildcast.onrender.com" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p class="hint" id="data-source-detail">
+    <strong>Is this real data?</strong> The banner at the top of the page always states it plainly. WildCast's
+    backend trains on real observation records from
+    <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a>,
+    <a href="https://www.inaturalist.org" target="_blank" rel="noopener">iNaturalist</a>, and (for birds)
+    <a href="https://ebird.org" target="_blank" rel="noopener">eBird</a>, plus real
+    <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> weather and (when configured)
+    real <a href="https://www.iucnredlist.org" target="_blank" rel="noopener">IUCN Red List</a> conservation
+    status &mdash; but it can also run on an offline synthetic demo dataset (clearly labeled as such) when no real
+    ingestion has been run yet, so the app is still explorable without live API access.
+  </p>
+  <p class="hint">
+    map: &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &middot;
+    <a href="https://github.com/albercm30/WildCast" target="_blank" rel="noopener">WildCast on GitHub</a> (MIT licensed &mdash; contributions welcome)
+  </p>
+</footer>
+
+<script>
+  const AREA_TYPE_LABELS = {
+    urban: "Urban green space",
+    national_park: "National park",
+    arctic_tundra: "Arctic tundra",
+    rainforest: "Rainforest",
+    steppe: "Steppe",
+    moorland: "Moorland / mountain",
+    cloud_forest: "Cloud forest",
+  };
+  const FAVORITES_KEY = "wildcast_favorites_v1";
+
+  const state = {
+    mode: "curated",           // 'curated' | 'anywhere'
+    areaId: null,
+    compareAreaId: null,
+    compareOpen: false,
+    areas: [],
+    anywhere: { lat: null, lon: null },
+    favorites: loadFavorites(),
+  };
+
+  // ---------------- favorites (localStorage; this is a real deployed
+  // site the visitor owns in their own browser, not an in-conversation
+  // preview, so persisting a few saved-place preferences here is fine --
+  // gracefully no-ops if storage is unavailable, e.g. private browsing). --
+  function loadFavorites() {
+    try {
+      const raw = localStorage.getItem(FAVORITES_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (err) {
+      return [];
+    }
+  }
+  function saveFavorites() {
+    try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(state.favorites)); } catch (err) { /* ignore */ }
+  }
+  function favoriteKey(fav) {
+    return fav.type === "area" ? `area:${fav.areaId}` : `loc:${fav.lat.toFixed(2)},${fav.lon.toFixed(2)}`;
+  }
+  function isFavorited(fav) {
+    const key = favoriteKey(fav);
+    return state.favorites.some((f) => favoriteKey(f) === key);
+  }
+  function toggleFavorite(fav) {
+    const key = favoriteKey(fav);
+    if (isFavorited(fav)) {
+      state.favorites = state.favorites.filter((f) => favoriteKey(f) !== key);
+    } else {
+      state.favorites.unshift(fav);
+    }
+    saveFavorites();
+    renderFavorites();
+  }
+  function renderFavorites() {
+    const panel = document.getElementById("favorites-panel");
+    const list = document.getElementById("fav-list");
+    if (!state.favorites.length) { panel.style.display = "none"; return; }
+    panel.style.display = "block";
+    list.innerHTML = state.favorites
+      .map(
+        (f, i) => `
+      <div class="fav-item" data-idx="${i}">
+        <span class="fav-name">${f.label}</span>
+        <button type="button" class="fav-remove" data-remove="${i}" title="Remove">&times;</button>
+      </div>`
+      )
+      .join("");
+    list.querySelectorAll(".fav-item").forEach((el) => {
+      el.addEventListener("click", (evt) => {
+        if (evt.target.closest(".fav-remove")) return;
+        const fav = state.favorites[Number(el.dataset.idx)];
+        jumpToFavorite(fav);
+      });
+    });
+    list.querySelectorAll(".fav-remove").forEach((btn) => {
+      btn.addEventListener("click", (evt) => {
+        evt.stopPropagation();
+        state.favorites.splice(Number(btn.dataset.remove), 1);
+        saveFavorites();
+        renderFavorites();
+      });
+    });
+  }
+  function jumpToFavorite(fav) {
+    if (fav.type === "area") {
+      setMode("curated");
+      selectArea(fav.areaId);
+    } else {
+      setMode("anywhere");
+      state.anywhere.lat = fav.lat;
+      state.anywhere.lon = fav.lon;
+      placeAnywhereMarker(fav.lat, fav.lon);
+      if (map) map.setView([fav.lat, fav.lon], 7);
+      renderAnywhereResults();
+    }
+  }
+
+  // ---------------- setup ----------------
+  const dateInput = document.getElementById("date-input");
+  const dateInputAnywhere = document.getElementById("date-input-anywhere");
+  const radiusInput = document.getElementById("radius-input");
+  const today = new Date().toISOString().slice(0, 10);
+  dateInput.value = today;
+  dateInputAnywhere.value = today;
+
+  function apiBase() {
+    return document.getElementById("api-base").value.replace(/\/$/, "");
+  }
+
+  // ---------------- data-source banner ----------------
+  // Unmissable real-vs-synthetic-demo labeling, per an explicit product
+  // requirement: never let a user mistake offline demo predictions for
+  // real ones. Reads app.services.data_source_marker's value as surfaced
+  // by GET /api/health -- see backend/app/main.py.
+  const DATA_SOURCE_BANNER_TEXT = {
+    real: "✓ Live data: predictions are trained on real GBIF / iNaturalist / eBird sightings and real weather.",
+    synthetic_demo: "⚠ Demo mode: predictions are built from offline SYNTHETIC sample data, not real sightings.",
+    unknown: "Data source unknown for this backend — see the data source note below.",
+  };
+  let _dataSourceRequestId = 0;
+  async function loadDataSourceBanner() {
+    const banner = document.getElementById("data-source-banner");
+    // Guards against a slow, stale request (e.g. the initial page-load
+    // check against a default API base that turns out to be unreachable)
+    // resolving AFTER a newer one and clobbering its result -- a real race
+    // found by testing: switching the API base URL quickly after load
+    // could flash the correct banner and then silently hide it again when
+    // the earlier, slower request finally failed.
+    const requestId = ++_dataSourceRequestId;
+    try {
+      const res = await fetch(`${apiBase()}/api/health`);
+      const health = await res.json();
+      if (requestId !== _dataSourceRequestId) return; // a newer call has since started; discard this result
+      const source = (health.data_source && health.data_source.source) || "unknown";
+      banner.textContent = DATA_SOURCE_BANNER_TEXT[source] || DATA_SOURCE_BANNER_TEXT.unknown;
+      banner.className = `data-source-banner visible source-${source}`;
+    } catch (err) {
+      if (requestId !== _dataSourceRequestId) return;
+      // Can't reach the API at all -- loadAreas() already surfaces that
+      // error in the main panel, so the banner just stays hidden rather
+      // than showing a second, redundant error.
+      banner.className = "data-source-banner";
+    }
+  }
+  document.getElementById("api-base").addEventListener("change", loadDataSourceBanner);
+
+  let map = null;
+  let anywhereMarker = null;
+  let mapAvailable = true;
+  try {
+    if (typeof L === "undefined") throw new Error("Leaflet failed to load from the CDN");
+    map = L.map("map").setView([15, 20], 2);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+      maxZoom: 12,
+    }).addTo(map);
+    map.on("click", (e) => {
+      if (state.mode !== "anywhere") return;
+      const { lat, lng } = e.latlng;
+      state.anywhere.lat = lat;
+      state.anywhere.lon = lng;
+      placeAnywhereMarker(lat, lng);
+      renderAnywhereResults();
+    });
+  } catch (err) {
+    mapAvailable = false;
+    console.warn("Map unavailable, falling back to the area dropdown / coordinate entry:", err);
+    const mapEl = document.getElementById("map");
+    if (mapEl) {
+      mapEl.style.display = "flex";
+      mapEl.style.alignItems = "center";
+      mapEl.style.justifyContent = "center";
+      mapEl.style.color = "var(--text-muted)";
+      mapEl.style.fontSize = "13px";
+      mapEl.style.textAlign = "center";
+      mapEl.style.padding = "16px";
+      mapEl.textContent = "Map tiles unavailable right now -- use the Area dropdown, or enter coordinates directly in Explore Anywhere.";
+    }
+  }
+
+  function placeAnywhereMarker(lat, lon) {
+    if (!map) return;
+    if (anywhereMarker) map.removeLayer(anywhereMarker);
+    anywhereMarker = L.circleMarker([lat, lon], {
+      radius: 8,
+      color: "#6d33e0",
+      fillColor: "#8b5cf6",
+      fillOpacity: 0.9,
+      weight: 2,
+    }).addTo(map);
+  }
+
+  const markers = {};
+  const areaSelect = document.getElementById("area-select");
+  const compareSelect = document.getElementById("compare-select");
+
+  async function loadAreas() {
+    try {
+      const res = await fetch(`${apiBase()}/api/areas`);
+      const areas = await res.json();
+      state.areas = areas;
+
+      const optionsHtml = areas.map((a) => `<option value="${a.id}">${a.name}</option>`).join("");
+      areaSelect.innerHTML = `<option value="">Choose an area&hellip;</option>` + optionsHtml;
+      compareSelect.innerHTML = `<option value="">Choose an area&hellip;</option>` + optionsHtml;
+
+      if (map) {
+        areas.forEach((area) => {
+          const marker = L.circleMarker([area.lat, area.lon], {
+            radius: 9,
+            color: "#256abf",
+            fillColor: "#3987e5",
+            fillOpacity: 0.85,
+            weight: 2,
+          }).addTo(map);
+          marker.bindTooltip(area.name);
+          marker.on("click", () => { if (state.mode === "curated") selectArea(area.id); });
+          markers[area.id] = marker;
+        });
+      }
+    } catch (err) {
+      document.getElementById("results").innerHTML =
+        `<div class="empty-state">Can't reach the WildCast API at ${apiBase()}.<br/>The free-tier backend may be waking up (can take up to a minute) &mdash; try again shortly, or check the API base URL below.</div>`;
+    }
+  }
+
+  // ---------------- mode switching ----------------
+  function setMode(mode) {
+    state.mode = mode;
+    document.getElementById("mode-curated").classList.toggle("active", mode === "curated");
+    document.getElementById("mode-anywhere").classList.toggle("active", mode === "anywhere");
+    document.getElementById("curated-controls").style.display = mode === "curated" ? "flex" : "none";
+    document.getElementById("anywhere-controls").style.display = mode === "anywhere" ? "flex" : "none";
+    document.getElementById("anywhere-coords").style.display = mode === "anywhere" ? "flex" : "none";
+    document.getElementById("compare-toggle-row").style.display = mode === "curated" ? "block" : "none";
+    document.getElementById("compare-controls").style.display = mode === "curated" && state.compareOpen ? "flex" : "none";
+    document.getElementById("compare-results").innerHTML = "";
+    const mapHint = document.getElementById("map-hint");
+    const note = document.getElementById("anywhere-note");
+    if (mode === "anywhere") {
+      mapHint.textContent = mapAvailable
+        ? "Click anywhere on the map, or type coordinates below, to check that exact spot."
+        : "Type coordinates below to check a spot (map tiles are unavailable right now).";
+      note.classList.add("visible");
+      note.textContent = "Explore anywhere checks real GBIF records live for your click, so results take a few seconds.";
+      if (anywhereMarker && state.anywhere.lat != null) {
+        renderAnywhereResults();
+      } else {
+        document.getElementById("results").innerHTML =
+          `<div class="empty-state">Click anywhere on the map to check what WildCast's 25 known species have really been recorded there.</div>`;
+      }
+    } else {
+      mapHint.textContent = "Click a marker, or use the dropdown, to see its forecast.";
+      note.classList.remove("visible");
+      if (state.areaId) { renderPredictions(); } else {
+        document.getElementById("results").innerHTML =
+          `<div class="empty-state">Pick a curated area (on the map or the dropdown above) to see its forecast.</div>`;
+      }
+    }
+  }
+  document.getElementById("mode-curated").addEventListener("click", () => setMode("curated"));
+  document.getElementById("mode-anywhere").addEventListener("click", () => setMode("anywhere"));
+
+  async function selectArea(areaId) {
+    state.areaId = areaId;
+    areaSelect.value = areaId;
+    await renderPredictions();
+  }
+  areaSelect.addEventListener("change", () => { if (areaSelect.value) selectArea(areaSelect.value); });
+  dateInput.addEventListener("change", renderPredictions);
+  dateInputAnywhere.addEventListener("change", renderAnywhereResults);
+  radiusInput.addEventListener("change", renderAnywhereResults);
+
+  const latInput = document.getElementById("lat-input");
+  const lonInput = document.getElementById("lon-input");
+  function goToTypedCoords() {
+    const lat = Number(latInput.value);
+    const lon = Number(lonInput.value);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon) || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+      document.getElementById("results").innerHTML =
+        `<div class="empty-state">Enter a valid latitude (-90 to 90) and longitude (-180 to 180).</div>`;
+      return;
+    }
+    state.anywhere.lat = lat;
+    state.anywhere.lon = lon;
+    placeAnywhereMarker(lat, lon);
+    if (map) map.setView([lat, lon], 6);
+    renderAnywhereResults();
+  }
+  document.getElementById("coords-go").addEventListener("click", goToTypedCoords);
+  [latInput, lonInput].forEach((el) => el.addEventListener("keydown", (e) => { if (e.key === "Enter") goToTypedCoords(); }));
+
+  // ---------------- compare ----------------
+  document.getElementById("compare-toggle").addEventListener("click", () => {
+    state.compareOpen = true;
+    document.getElementById("compare-controls").style.display = "flex";
+    document.getElementById("compare-toggle-row").style.display = "none";
+  });
+  document.getElementById("compare-close").addEventListener("click", () => {
+    state.compareOpen = false;
+    state.compareAreaId = null;
+    document.getElementById("compare-controls").style.display = "none";
+    document.getElementById("compare-toggle-row").style.display = "block";
+    document.getElementById("compare-results").innerHTML = "";
+  });
+  compareSelect.addEventListener("change", async () => {
+    state.compareAreaId = compareSelect.value || null;
+    await renderCompare();
+  });
+
+  async function renderCompare() {
+    const el = document.getElementById("compare-results");
+    if (!state.compareAreaId) { el.innerHTML = ""; return; }
+    const area = state.areas.find((a) => a.id === state.compareAreaId);
+    el.innerHTML = `<div class="compare-col"><div class="skeleton-row"></div><div class="skeleton-row"></div></div>`;
+    try {
+      const res = await fetch(`${apiBase()}/api/predict?area_id=${state.compareAreaId}&date=${dateInput.value}`);
+      const data = await res.json();
+      const rows = (data.predictions || []).slice(0, 5).map((p) => speciesRowHtml(p, { compact: true })).join("");
+      el.innerHTML = `<div class="compare-col"><p class="area-name" style="font-size:14px;">${area.name}</p>${rows || '<div class="empty-state">No data.</div>'}</div>`;
+    } catch (err) {
+      el.innerHTML = `<div class="compare-col"><div class="empty-state">Couldn't load this area.</div></div>`;
+    }
+  }
+
+  // ---------------- rendering: curated mode ----------------
+  function speciesRowHtml(p, opts) {
+    opts = opts || {};
+    const factorsHtml = !opts.compact && p.factors && p.factors.length
+      ? `<ul class="factors">${p.factors.map((f) => `<li>${f}</li>`).join("")}</ul>` : "";
+    return `
+      <div class="species-row" data-sci="${p.scientific_name}">
+        <div class="top-line">
+          <div class="name-block">
+            <span class="taxon-chip">${(p.taxon_class || "").slice(0, 4)}</span>
+            <div style="min-width:0;">
+              <div class="name">${p.common_name}</div>
+              <div class="sci">${p.scientific_name}</div>
+            </div>
+          </div>
+          <div class="pct">${Math.round(p.probability * 100)}%</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(p.probability * 100).toFixed(0)}%"></div></div>
+        <span class="badge ${p.confidence}">${p.confidence} confidence &middot; ${p.training_records} records</span>
+        ${factorsHtml}
+        <div class="window-chart" data-species="${p.scientific_name}"></div>
+      </div>`;
+  }
+
+  function loadingSkeleton(label) {
+    return `<div class="empty-state" style="text-align:left; padding:4px 2px 12px;">${label}</div>
+      <div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div>`;
+  }
+
+  async function renderPredictions() {
+    if (!state.areaId) return;
+    const area = state.areas.find((a) => a.id === state.areaId);
+    const date = dateInput.value;
+    const resultsEl = document.getElementById("results");
+    resultsEl.innerHTML = loadingSkeleton(`Loading forecast for ${area.name}&hellip;`);
+
+    let data;
+    try {
+      const res = await fetch(`${apiBase()}/api/predict?area_id=${state.areaId}&date=${date}`);
+      if (!res.ok) throw new Error("bad response");
+      data = await res.json();
+    } catch (err) {
+      resultsEl.innerHTML = `<div class="empty-state">No forecast available for this area/date yet.</div>`;
+      return;
+    }
+
+    const favEntry = { type: "area", areaId: area.id, label: area.name };
+    const rows = data.predictions.map((p) => speciesRowHtml(p, {})).join("");
+
+    resultsEl.innerHTML = `
+      <div class="result-header">
+        <div>
+          <p class="area-name">${area.name}</p>
+          <p class="area-meta">${AREA_TYPE_LABELS[area.type] || "National park"} &middot; ${date}</p>
+        </div>
+        <button type="button" class="star-btn ${isFavorited(favEntry) ? "saved" : ""}" id="star-curated" title="Save this place">&#9733;</button>
+      </div>
+      ${rows}
+      <p class="hint">Click a species to see its best months to visit.</p>
+    `;
+
+    document.getElementById("star-curated").addEventListener("click", (e) => {
+      toggleFavorite(favEntry);
+      e.currentTarget.classList.toggle("saved", isFavorited(favEntry));
+    });
+
+    resultsEl.querySelectorAll(".species-row").forEach((row) => {
+      row.addEventListener("click", () => toggleWindow(row, { mode: "area", areaId: state.areaId }));
+    });
+
+    if (state.compareAreaId) await renderCompare();
+  }
+
+  // ---------------- rendering: anywhere mode ----------------
+  async function renderAnywhereResults() {
+    const { lat, lon } = state.anywhere;
+    if (lat == null) return;
+    const date = dateInputAnywhere.value;
+    const radius = Math.max(10, Math.min(300, Number(radiusInput.value) || 150));
+    const resultsEl = document.getElementById("results");
+    resultsEl.innerHTML = loadingSkeleton(
+      `Checking real GBIF sightings within ${radius}km of (${lat.toFixed(2)}, ${lon.toFixed(2)})&hellip; this takes a few seconds because it's a live check.`
+    );
+
+    let data;
+    try {
+      const url = `${apiBase()}/api/predict-location?lat=${lat}&lon=${lon}&date=${date}&radius_km=${radius}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("bad response");
+      data = await res.json();
+    } catch (err) {
+      resultsEl.innerHTML = `<div class="empty-state">Couldn't check this spot right now. Try again in a moment.</div>`;
+      return;
+    }
+
+    const favEntry = { type: "custom", lat, lon, label: `Custom spot (${lat.toFixed(2)}, ${lon.toFixed(2)})` };
+    const near = data.nearest_area;
+
+    if (!data.predictions.length) {
+      resultsEl.innerHTML = `
+        <div class="result-header">
+          <div>
+            <p class="area-name"><span class="anywhere-badge">Anywhere</span>(${lat.toFixed(2)}, ${lon.toFixed(2)})</p>
+            <p class="area-meta">${date} &middot; ${radius}km radius &middot; closest flagship area: ${near.name} (${near.distance_km}km away)</p>
+          </div>
+          <button type="button" class="star-btn ${isFavorited(favEntry) ? "saved" : ""}" id="star-anywhere" title="Save this spot">&#9733;</button>
+        </div>
+        <div class="empty-state">None of WildCast's 25 known species have a live GBIF record within ${radius}km of this exact spot.<br/>Try a larger radius, or a point closer to a wilder area.</div>
+      `;
+      document.getElementById("star-anywhere").addEventListener("click", (e) => {
+        toggleFavorite(favEntry);
+        e.currentTarget.classList.toggle("saved", isFavorited(favEntry));
+      });
+      return;
+    }
+
+    const rows = data.predictions.map((p) => speciesRowHtml(p, {})).join("");
+    resultsEl.innerHTML = `
+      <div class="result-header">
+        <div>
+          <p class="area-name"><span class="anywhere-badge">Anywhere</span>(${lat.toFixed(2)}, ${lon.toFixed(2)})</p>
+          <p class="area-meta">${date} &middot; ${radius}km radius &middot; closest flagship area: ${near.name} (${near.distance_km}km away)</p>
+        </div>
+        <button type="button" class="star-btn ${isFavorited(favEntry) ? "saved" : ""}" id="star-anywhere" title="Save this spot">&#9733;</button>
+      </div>
+      ${rows}
+      <p class="hint">Click a species to see its best months to visit. Probabilities reuse ${near.name}'s trained model as the closest available analog.</p>
+    `;
+    document.getElementById("star-anywhere").addEventListener("click", (e) => {
+      toggleFavorite(favEntry);
+      e.currentTarget.classList.toggle("saved", isFavorited(favEntry));
+    });
+    resultsEl.querySelectorAll(".species-row").forEach((row) => {
+      row.addEventListener("click", () => toggleWindow(row, { mode: "location", lat, lon, radius }));
+    });
+  }
+
+  // ---------------- best-window (shared) ----------------
+  async function toggleWindow(row, context) {
+    const chartEl = row.querySelector(".window-chart");
+    const isOpen = chartEl.classList.contains("open");
+    row.parentElement.querySelectorAll(".window-chart.open").forEach((el) => el.classList.remove("open"));
+    if (isOpen) return;
+
+    chartEl.classList.add("open");
+    if (chartEl.dataset.loaded) return;
+    chartEl.innerHTML = `<div class="hint">Loading year-round window&hellip;</div>`;
+
+    const species = row.dataset.sci;
+    let url;
+    if (context.mode === "area") {
+      url = `${apiBase()}/api/best-window?area_id=${context.areaId}&species=${encodeURIComponent(species)}`;
+    } else {
+      url = `${apiBase()}/api/best-window-location?lat=${context.lat}&lon=${context.lon}&species=${encodeURIComponent(species)}&radius_km=${context.radius}`;
+    }
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      chartEl.innerHTML = renderSparkline(data.points);
+      chartEl.dataset.loaded = "1";
+    } catch (err) {
+      chartEl.innerHTML = `<div class="hint">Couldn't load the year-round window right now.</div>`;
+    }
+  }
+
+  function renderSparkline(points) {
+    const w = 360, h = 120, padL = 28, padB = 18, padT = 8, padR = 8;
+    const plotW = w - padL - padR, plotH = h - padT - padB;
+    const maxP = Math.max(0.1, ...points.map((p) => p.probability));
+    const x = (i) => padL + (i / (points.length - 1)) * plotW;
+    const y = (p) => padT + plotH - (p / maxP) * plotH;
+
+    const path = points.map((p, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(p.probability).toFixed(1)}`).join(" ");
+    const gridLines = [0, 0.25, 0.5, 0.75, 1].map((f) => {
+      const gy = padT + plotH * (1 - f);
+      return `<line class="grid" x1="${padL}" x2="${w - padR}" y1="${gy}" y2="${gy}" />`;
+    }).join("");
+
+    const monthTicks = [0, 60, 121, 182, 243, 304].map((doy, i) => {
+      const labels = ["Jan", "Mar", "May", "Jul", "Sep", "Nov"];
+      const idx = points.findIndex((p) => p.day_of_year >= doy + 1);
+      if (idx === -1) return "";
+      return `<text class="axis-label" x="${x(idx).toFixed(1)}" y="${h - 4}" text-anchor="middle">${labels[i]}</text>`;
+    }).join("");
+
+    const peak = points.reduce((a, b) => (b.probability > a.probability ? b : a), points[0]);
+
+    return `
+      <svg viewBox="0 0 ${w} ${h}">
+        ${gridLines}
+        <path class="line" d="${path}" />
+        <circle cx="${x(points.indexOf(peak)).toFixed(1)}" cy="${y(peak.probability).toFixed(1)}" r="3.5" fill="#256abf" />
+        ${monthTicks}
+      </svg>
+      <p class="hint">Best odds around ${new Date(peak.date).toLocaleDateString(undefined, { month: "long", day: "numeric" })} (${Math.round(peak.probability * 100)}%).</p>
+    `;
+  }
+
+  renderFavorites();
+  loadAreas();
+  loadDataSourceBanner();
+
+  // ---------------- PWA: installable app shell ----------------
+  // Registered last, after the page's own real work is queued, so it never
+  // delays first paint or the first data fetch. Safe to call unconditionally
+  // -- browsers without SW support (or file:// / non-HTTPS origins) just
+  // skip it silently via the typeof check.
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch((err) => {
+        console.warn("WildCast service worker registration failed (app will still work, just not installable offline):", err);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
