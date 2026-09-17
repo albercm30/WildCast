@@ -10,6 +10,7 @@ import datetime as dt
 import json
 import logging
 import math
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import lru_cache
@@ -39,6 +40,22 @@ _ANYWHERE_MAX_WORKERS = 12
 _ANYWHERE_PRESENCE_TIMEOUT_S = 8.0
 _PRESENCE_CACHE_TTL_SECONDS = 24 * 60 * 60
 _presence_cache: dict[tuple[str, float, float, int], tuple[float, dict]] = {}
+
+# A location-only (not per-species) cache of "how much wildlife-observation
+# activity happens near this point at all" -- see
+# _local_effort_index_cached and gbif_client.total_wild_occurrence_count for
+# the full rationale. Shared across every species checked at one point
+# (species_for_location checks all 50 in parallel), so a single lock guards
+# the check-then-populate step to avoid firing off dozens of identical live
+# GBIF queries the moment a brand-new point is clicked. This does not fully
+# eliminate the race (the live fetch itself runs outside the lock, so a
+# handful of concurrent misses can still each fire a request before the
+# first one finishes) -- a stronger single-flight dedup would close that
+# gap, but a small burst of redundant fetches on a cold cache is an
+# acceptable tradeoff against blocking every other species' lookup behind
+# one slow request.
+_effort_cache: dict[tuple[float, float, int], tuple[float, int | None]] = {}
+_effort_cache_lock = threading.Lock()
 
 # Same breakpoints used everywhere a raw sighting count is turned into a
 # high/medium/low confidence label -- curated areas' home-area training
@@ -71,6 +88,42 @@ _EVIDENCE_DAMPENING_FLOOR = _CONFIDENCE_HIGH_THRESHOLD
 _CORROBORATION_BONUS_PER_SOURCE = 0.15
 _MAX_CORROBORATING_SOURCES_COUNTED = 2
 
+# Effort-adjusted evidence: a real data-reliability gap raised directly by
+# a user -- "5000 polar bear observations doesn't mean they're easy to
+# find, and 5 kangaroo observations doesn't mean it's hard." A raw local
+# count alone conflates true local abundance with how much anyone happens
+# to be looking/reporting there: a heavily-touristed spot inflates counts
+# for whatever's charismatic there, a rarely-visited spot deflates counts
+# for everything, common species included. See
+# gbif_client.total_wild_occurrence_count's docstring for the full
+# rationale (this is the live-mode analog of the "target-group background"
+# bias correction app.ml.pseudo_absence.py already applies when TRAINING
+# the curated-area models).
+#
+# _EFFORT_SHARE_DAMPENING_FLOOR: the species' share of ALL local wild
+# records (primary_count / effort_index) that reaches full share-based
+# confidence -- 0.05 means "this one species is >=5% of everything being
+# reported near this point" is already a strong local signal; most single
+# species stay a small fraction of a busy area's total activity even when
+# genuinely common there.
+# _EFFORT_BLEND_WEIGHT: how much the share-based signal counts vs. the
+# original absolute-count signal. Kept at an even split deliberately:
+# absolute count still matters (a species needs SOME real evidence, not
+# just being a large share of a near-empty sample), while the share
+# corrects the exact bias above.
+# _MIN_EFFORT_INDEX_FOR_SHARE: below this, the effort baseline itself is
+# too thin to divide by without producing a noisy, swingy ratio (one extra
+# record either way changes it a lot) -- the adjustment is skipped and the
+# factor falls back to the original absolute-count-only behavior.
+#
+# These are reasoned heuristic defaults, the same as _CONFIDENCE_HIGH_THRESHOLD
+# above -- not fit against labeled ground truth (WildCast has none: real
+# encounter/non-encounter outcomes per point, as opposed to presence-only
+# sighting records, aren't a dataset that exists to calibrate against).
+_EFFORT_SHARE_DAMPENING_FLOOR = 0.05
+_EFFORT_BLEND_WEIGHT = 0.5
+_MIN_EFFORT_INDEX_FOR_SHARE = 5
+
 # Plain-language notes for the "species ability to evade" factor the user
 # asked for. Deliberately NOT a fabricated numeric "evasion score" -- this
 # is real natural-history metadata (see data/seed_species.json's
@@ -95,23 +148,74 @@ def _confidence_label(count: int) -> str:
     return "high" if count >= _CONFIDENCE_HIGH_THRESHOLD else "medium" if count >= _CONFIDENCE_MEDIUM_THRESHOLD else "low"
 
 
-def _evidence_factor(primary_count: int, corroborating_count: int = 0) -> float:
+def _evidence_factor(primary_count: int, corroborating_count: int = 0, effort_index: int | None = None) -> float:
     """
     0..1 multiplier applied to "Explore Anywhere"'s raw model probability,
     based on how much real local evidence backs this species at this exact
-    point. `primary_count` drives the base factor: 1 record -> ~0.08x; 40
-    -> ~0.52x; >=150 (the same bar as "high confidence" elsewhere) -> 1.0x.
-    `corroborating_count` (independent sources beyond the primary one that
-    also confirm presence -- see `_local_evidence_cached`) adds a modest
-    bonus on top, capped so the result never exceeds 1.0. A species with
-    zero local evidence from every source never reaches this function at
-    all -- it's excluded by species_for_location's presence gate first.
+    point. `primary_count` drives an absolute-count-based component: 1
+    record -> ~0.08x; 40 -> ~0.52x; >=150 (the same bar as "high
+    confidence" elsewhere) -> 1.0x. `corroborating_count` (independent
+    sources beyond the primary one that also confirm presence -- see
+    `_local_evidence_cached`) adds a modest bonus on top, capped so the
+    result never exceeds 1.0. A species with zero local evidence from
+    every source never reaches this function at all -- it's excluded by
+    species_for_location's presence gate first.
+
+    `effort_index` (from `_local_effort_index_cached` -- total wild GBIF
+    records of ANY species near this point) blends in an effort-adjusted
+    component: `primary_count / effort_index`, this species' share of all
+    local wildlife activity, rather than trusting the raw count alone. See
+    the `_EFFORT_*` constants' comment for the full rationale and why this
+    matters (raw counts alone conflate abundance with reporting bias).
+    Falls back to the absolute-count-only behavior when `effort_index` is
+    None (the live effort query failed -- unknown effort should not distort
+    the factor), non-positive (would mean dividing by zero or a baseline
+    that itself found nothing, neither of which is a usable denominator),
+    or below `_MIN_EFFORT_INDEX_FOR_SHARE` (too thin to be a stable ratio).
     """
     if primary_count <= 0:
         return 0.0
-    base = min(1.0, math.sqrt(primary_count / _EVIDENCE_DAMPENING_FLOOR))
+    absolute_component = min(1.0, math.sqrt(primary_count / _EVIDENCE_DAMPENING_FLOOR))
+    if effort_index and effort_index >= _MIN_EFFORT_INDEX_FOR_SHARE:
+        share = primary_count / effort_index
+        share_component = min(1.0, math.sqrt(share / _EFFORT_SHARE_DAMPENING_FLOOR))
+        base = _EFFORT_BLEND_WEIGHT * share_component + (1 - _EFFORT_BLEND_WEIGHT) * absolute_component
+    else:
+        base = absolute_component
     bonus = 1.0 + _CORROBORATION_BONUS_PER_SOURCE * min(corroborating_count, _MAX_CORROBORATING_SOURCES_COUNTED)
     return min(1.0, base * bonus)
+
+
+def _local_effort_index_cached(lat: float, lon: float, radius_km: float) -> int | None:
+    """
+    Cached wrapper around `gbif_client.total_wild_occurrence_count` -- see
+    that function's docstring for what this measures and why. Returns None
+    (never 0 on failure) so callers can tell "we don't know the local
+    effort, don't adjust for it" apart from "we know effort here is
+    genuinely low." Cached per-location (not per-species) with the same
+    24h TTL as `_presence_cache`, since this is shared across every species
+    checked at one point.
+    """
+    key = (round(lat, 2), round(lon, 2), int(radius_km))
+    now = time.monotonic()
+    with _effort_cache_lock:
+        cached = _effort_cache.get(key)
+        if cached is not None and now - cached[0] < _PRESENCE_CACHE_TTL_SECONDS:
+            return cached[1]
+    try:
+        index = gbif_client.total_wild_occurrence_count(
+            lat, lon, radius_km,
+            timeout=_ANYWHERE_PRESENCE_TIMEOUT_S,
+            max_retries=gbif_client.INTERACTIVE_MAX_RETRIES,
+            base_backoff=gbif_client.INTERACTIVE_BASE_BACKOFF,
+            max_backoff=gbif_client.INTERACTIVE_MAX_BACKOFF,
+        )
+    except Exception as exc:
+        log.warning("Live effort-index (total local wild records) check failed near (%.2f, %.2f): %s", lat, lon, exc)
+        index = None
+    with _effort_cache_lock:
+        _effort_cache[key] = (now, index)
+    return index
 
 
 # Every live weather call made while a person is waiting on a response
@@ -606,10 +710,14 @@ def _local_evidence_cached(
     curated metadata per species, not a per-call variable.
 
     Returns {"sources": {"gbif": int, "inaturalist": int, "ebird": int (Aves,
-    keyed only when checked)}, "primary_count": int, "corroborating_count": int}.
-    A source that errors out is recorded as 0 for that source (fails closed,
-    same as the old boolean version did) rather than crashing the whole
-    lookup or making that species's evidence look artificially strong.
+    keyed only when checked)}, "primary_count": int, "corroborating_count": int,
+    "effort_index": int | None}. A source that errors out is recorded as 0
+    for that source (fails closed, same as the old boolean version did)
+    rather than crashing the whole lookup or making that species's
+    evidence look artificially strong. `effort_index` (see
+    `_local_effort_index_cached`) is None when that live check itself
+    failed, never 0 by default -- see `_evidence_factor` for how it's used
+    to correct raw counts for local observer-effort bias.
     """
     key = (scientific_name, round(lat, 2), round(lon, 2), int(radius_km))
     now = time.monotonic()
@@ -665,10 +773,16 @@ def _local_evidence_cached(
     # not the sum of all of them -- this also means a future 4th source
     # doesn't reintroduce the same failure mode by construction.
     sources: dict[str, int] = {}
-    with ThreadPoolExecutor(max_workers=len(fetchers)) as pool:
+    with ThreadPoolExecutor(max_workers=len(fetchers) + 1) as pool:
         future_to_name = {pool.submit(fn): name for name, fn in fetchers.items()}
+        # The effort-index lookup is location-only (see
+        # _local_effort_index_cached), not part of `sources`, but fetched
+        # in the same pool so it doesn't add sequential latency on top of
+        # the per-source checks.
+        effort_future = pool.submit(_local_effort_index_cached, lat, lon, radius_km)
         for future in as_completed(future_to_name):
             sources[future_to_name[future]] = future.result()
+        effort_index = effort_future.result()
 
     primary_count = sources["gbif"] if sources["gbif"] > 0 else max(sources.values(), default=0)
     corroborating_count = sum(1 for v in sources.values() if v > 0)
@@ -679,6 +793,7 @@ def _local_evidence_cached(
         "sources": sources,
         "primary_count": primary_count,
         "corroborating_count": max(corroborating_count, 0),
+        "effort_index": effort_index,
     }
     _presence_cache[key] = (now, evidence)
     return evidence
@@ -698,8 +813,11 @@ def species_for_location(lat: float, lon: float, radius_km: float = _ANYWHERE_DE
     offered, no matter how close the click is to a curated area. Each
     match also carries `local_evidence_count` (the primary source's real
     record count), `local_corroborating_count` (how many additional
-    independent sources also confirm presence), and `local_evidence_sources`
-    (the raw per-source breakdown) -- used downstream by
+    independent sources also confirm presence), `local_evidence_sources`
+    (the raw per-source breakdown), and `local_effort_index` (total wild
+    records of ANY species nearby -- see `_local_effort_index_cached` --
+    used downstream to correct the primary count for local observer-effort
+    bias rather than trusting raw volume alone) -- used downstream by
     predict_at_location to calibrate confidence and probability to actual
     local evidence rather than the species' curated home area's training
     count.
@@ -719,7 +837,7 @@ def species_for_location(lat: float, lon: float, radius_km: float = _ANYWHERE_DE
             try:
                 evidence = future.result()
             except Exception:
-                evidence = {"sources": {}, "primary_count": 0, "corroborating_count": 0}
+                evidence = {"sources": {}, "primary_count": 0, "corroborating_count": 0, "effort_index": None}
             if evidence["primary_count"] > 0:
                 matches.append(
                     {
@@ -728,6 +846,7 @@ def species_for_location(lat: float, lon: float, radius_km: float = _ANYWHERE_DE
                         "local_evidence_count": evidence["primary_count"],
                         "local_corroborating_count": evidence["corroborating_count"],
                         "local_evidence_sources": evidence["sources"],
+                        "local_effort_index": evidence.get("effort_index"),
                     }
                 )
     matches.sort(key=lambda s: s["scientific_name"])
@@ -799,8 +918,9 @@ def predict_at_location(
             local_count = sp["local_evidence_count"]
             corroborating_count = sp["local_corroborating_count"]
             local_sources = sp["local_evidence_sources"]
+            effort_index = sp.get("local_effort_index")
             confidence = _confidence_label(local_count)
-            evidence_factor = _evidence_factor(local_count, corroborating_count)
+            evidence_factor = _evidence_factor(local_count, corroborating_count, effort_index)
             dampened_probability = float(p) * evidence_factor
 
             if confidence == "high":
@@ -836,6 +956,28 @@ def predict_at_location(
                 sources_phrase = " and ".join(other_sources)
                 factors.append(f"Also independently confirmed by {sources_phrase} in this area -- not just one data source.")
 
+            # Transparency for the effort-adjustment itself (see
+            # _evidence_factor / _EFFORT_* constants): a raw record count
+            # alone can overstate confidence in a heavily-touristed spot
+            # (many species get reported there regardless of true rarity)
+            # or understate it in a rarely-visited one (even common species
+            # get few reports). Only surfaced when the adjustment actually
+            # moved the needle by a meaningful amount, not on every single
+            # prediction.
+            unadjusted_factor = _evidence_factor(local_count, corroborating_count, effort_index=None)
+            if effort_index and abs(evidence_factor - unadjusted_factor) >= 0.1:
+                if evidence_factor < unadjusted_factor:
+                    factors.append(
+                        "This area has a lot of overall wildlife-reporting activity, so the raw record count "
+                        "alone would overstate confidence here -- adjusted down to reflect this species' actual "
+                        "share of local activity."
+                    )
+                else:
+                    factors.append(
+                        "This area has relatively little overall wildlife-reporting activity, so even a modest "
+                        "record count here is more meaningful than it would be elsewhere -- adjusted up accordingly."
+                    )
+
             factors.append(
                 f"Verified live against real wildlife-sighting databases (wild records only, native-range "
                 f"countries only) within {radius_km:.0f}km of this exact point (closest flagship area for "
@@ -853,6 +995,7 @@ def predict_at_location(
                     "local_evidence_count": local_count,
                     "local_corroborating_count": corroborating_count,
                     "local_evidence_sources": local_sources,
+                    "local_effort_index": effort_index,
                     "factors": factors,
                 }
             )
@@ -883,7 +1026,9 @@ def best_window_at_location(
     if not candidates:
         raise KeyError(f"No live GBIF record of '{species_key}' within {radius_km:.0f}km of ({lat:.2f}, {lon:.2f}).")
     sp = candidates[0]
-    evidence_factor = _evidence_factor(sp["local_evidence_count"], sp["local_corroborating_count"])
+    evidence_factor = _evidence_factor(
+        sp["local_evidence_count"], sp["local_corroborating_count"], sp.get("local_effort_index"),
+    )
 
     today = dt.date.today()
     dates = [dt.date(today.year, 1, 1) + dt.timedelta(days=offset) for offset in range(0, 366, 5)]

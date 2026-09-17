@@ -115,6 +115,40 @@
   .mode-switch button.active { background: var(--surface-1); color: var(--text-primary); box-shadow: var(--shadow); }
   .mode-switch button:not(.active):hover { color: var(--text-primary); }
 
+  /* ---------- Account / auth ---------- */
+  .account-area { display: flex; align-items: center; gap: 4px; }
+  .account-area .link-btn { padding: 7px 10px; border-radius: 999px; background: var(--surface-2); }
+  .notif-dot {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 15px; height: 15px; padding: 0 3px; border-radius: 999px;
+    background: var(--status-serious); color: #fff; font-size: 10px; font-weight: 750;
+    vertical-align: 2px;
+  }
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(11,11,11,0.45);
+    display: none; align-items: center; justify-content: center; z-index: 1000; padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--surface-1); border-radius: 12px; padding: 20px 20px 18px;
+    max-width: 420px; width: 100%; max-height: 82vh; overflow-y: auto;
+    box-shadow: var(--shadow); position: relative;
+  }
+  .modal-box h2 { margin: 0 18px 12px 0; font-size: 17px; }
+  .modal-box .field { margin-bottom: 10px; display: flex; flex-direction: column; gap: 4px; }
+  .modal-box .field label { font-size: 12px; font-weight: 650; color: var(--text-secondary); }
+  .modal-box input {
+    width: 100%; font: inherit; font-size: 13.5px; padding: 8px 10px; border-radius: 8px;
+    border: 1px solid var(--baseline); background: var(--surface-1); color: var(--text-primary);
+  }
+  .modal-box .modal-actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .modal-box .modal-error { color: var(--status-serious); font-size: 12.5px; margin-top: 4px; min-height: 1em; }
+  .alert-btn {
+    border: none; background: none; color: var(--text-muted); cursor: pointer;
+    font-size: 13px; padding: 2px 4px; margin-left: 6px; vertical-align: middle;
+  }
+  .alert-btn:hover, .alert-btn.active { color: #d69412; }
+
   details.about {
     margin-top: 12px;
     font-size: 13px;
@@ -349,6 +383,10 @@
 
 <div id="data-source-banner" class="data-source-banner" role="status"></div>
 
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
 <header>
   <div class="header-inner">
     <div class="header-top">
@@ -360,6 +398,7 @@
         <button type="button" id="mode-curated" class="active">Curated areas</button>
         <button type="button" id="mode-anywhere">Explore anywhere</button>
       </div>
+      <div class="account-area" id="account-area"></div>
     </div>
 
     <details class="about">
@@ -477,6 +516,7 @@
     cloud_forest: "Cloud forest",
   };
   const FAVORITES_KEY = "wildcast_favorites_v1";
+  const AUTH_TOKEN_KEY = "wildcast_auth_token_v1";
 
   const state = {
     mode: "curated",           // 'curated' | 'anywhere'
@@ -486,6 +526,14 @@
     areas: [],
     anywhere: { lat: null, lon: null },
     favorites: loadFavorites(),
+    // Real per-account state (registered/logged-in users only -- see
+    // backend/app/routers/{auth,favorites,saved_searches,notifications}.py).
+    // Guests keep using the localStorage-only favorites above; auth.token
+    // gates every server-backed feature (synced favorites, saved-search
+    // alerts, notifications) so this file degrades gracefully with no
+    // account at all, same as it always has.
+    auth: { user: null, token: null },
+    notifications: [],
   };
 
   // ---------------- favorites (localStorage; this is a real deployed
@@ -510,14 +558,59 @@
     const key = favoriteKey(fav);
     return state.favorites.some((f) => favoriteKey(f) === key);
   }
-  function toggleFavorite(fav) {
-    const key = favoriteKey(fav);
-    if (isFavorited(fav)) {
-      state.favorites = state.favorites.filter((f) => favoriteKey(f) !== key);
+  async function toggleFavorite(fav) {
+    // Server-backed when signed in (so a favorite follows the user across
+    // devices -- see backend/app/services/favorites_service.py), otherwise
+    // the original localStorage-only behavior. serverFavoriteToLocalShape
+    // keeps both cases in the exact same {type, areaId|lat/lon, label}
+    // shape jumpToFavorite/favoriteKey already expect, so nothing else
+    // downstream needs to know which mode is active.
+    if (state.auth.user) {
+      const key = favoriteKey(fav);
+      const existing = state.favorites.find((f) => favoriteKey(f) === key);
+      try {
+        if (existing) {
+          await apiFetch(`/api/favorites/${existing.serverId}`, { method: "DELETE" });
+          state.favorites = state.favorites.filter((f) => f !== existing);
+        } else {
+          const payload = fav.type === "area"
+            ? { kind: "area", area_id: fav.areaId, label: fav.label }
+            : { kind: "location", lat: fav.lat, lon: fav.lon, label: fav.label };
+          const res = await apiFetch("/api/favorites", { method: "POST", body: JSON.stringify(payload) });
+          if (!res.ok) throw new Error("save failed");
+          const row = await res.json();
+          state.favorites.unshift(serverFavoriteToLocalShape(row));
+        }
+      } catch (err) {
+        alert("Couldn't update your saved places right now -- try again in a moment.");
+      }
     } else {
-      state.favorites.unshift(fav);
+      const key = favoriteKey(fav);
+      if (isFavorited(fav)) {
+        state.favorites = state.favorites.filter((f) => favoriteKey(f) !== key);
+      } else {
+        state.favorites.unshift(fav);
+      }
+      saveFavorites();
     }
-    saveFavorites();
+    renderFavorites();
+  }
+  function serverFavoriteToLocalShape(row) {
+    return row.kind === "area"
+      ? { type: "area", areaId: row.area_id, label: row.label, serverId: row.id }
+      : { type: "custom", lat: row.lat, lon: row.lon, label: row.label, serverId: row.id };
+  }
+  async function loadFavoritesFromServer() {
+    try {
+      const res = await apiFetch("/api/favorites");
+      if (!res.ok) throw new Error("failed");
+      const rows = await res.json();
+      state.favorites = rows.map(serverFavoriteToLocalShape);
+    } catch (err) {
+      // Leave whatever favorites were already in state (e.g. the guest
+      // localStorage list from before login) rather than wiping them out
+      // on a transient network failure.
+    }
     renderFavorites();
   }
   function renderFavorites() {
@@ -574,6 +667,298 @@
 
   function apiBase() {
     return document.getElementById("api-base").value.replace(/\/$/, "");
+  }
+
+  // ---------------- accounts / auth ----------------
+  // See backend/app/services/auth_service.py: a signed, expiring token
+  // (not a session cookie), sent as "Authorization: Bearer <token>" on
+  // every request that needs it. apiFetch is the one place that header
+  // gets attached, so every account-aware call below goes through it
+  // instead of the bare `fetch` the rest of this file uses.
+  function loadToken() {
+    try { return localStorage.getItem(AUTH_TOKEN_KEY) || null; } catch (err) { return null; }
+  }
+  function saveToken(token) {
+    try {
+      if (token) localStorage.setItem(AUTH_TOKEN_KEY, token);
+      else localStorage.removeItem(AUTH_TOKEN_KEY);
+    } catch (err) { /* ignore -- e.g. private browsing */ }
+  }
+  async function apiFetch(path, opts) {
+    opts = opts || {};
+    const headers = Object.assign({}, opts.headers || {});
+    if (state.auth.token) headers["Authorization"] = `Bearer ${state.auth.token}`;
+    if (opts.body && !headers["Content-Type"]) headers["Content-Type"] = "application/json";
+    return fetch(`${apiBase()}${path}`, Object.assign({}, opts, { headers }));
+  }
+
+  async function registerAccount(email, password, displayName) {
+    const res = await apiFetch("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify({ email, password, display_name: displayName }),
+    });
+    const body = await res.json();
+    if (!res.ok) throw new Error(body.error || "Registration failed.");
+    state.auth.token = body.token;
+    state.auth.user = body.user;
+    saveToken(body.token);
+    return body.user;
+  }
+  async function loginAccount(email, password) {
+    const res = await apiFetch("/api/auth/login", { method: "POST", body: JSON.stringify({ email, password }) });
+    const body = await res.json();
+    if (!res.ok) throw new Error(body.error || "Login failed.");
+    state.auth.token = body.token;
+    state.auth.user = body.user;
+    saveToken(body.token);
+    return body.user;
+  }
+  function logoutAccount() {
+    state.auth.token = null;
+    state.auth.user = null;
+    state.notifications = [];
+    saveToken(null);
+    state.favorites = loadFavorites(); // fall back to this device's local favorites
+    renderAccountUI();
+    renderFavorites();
+  }
+  async function tryRestoreSession() {
+    const token = loadToken();
+    if (!token) { renderAccountUI(); return; }
+    state.auth.token = token;
+    try {
+      const res = await apiFetch("/api/auth/me");
+      if (!res.ok) throw new Error("invalid session");
+      state.auth.user = (await res.json()).user;
+    } catch (err) {
+      state.auth.token = null;
+      saveToken(null);
+    }
+    renderAccountUI();
+    if (state.auth.user) {
+      await loadFavoritesFromServer();
+      await loadNotifications();
+    }
+  }
+  // After a fresh login/register: pull this account's real favorites, and
+  // offer to import anything saved locally on this device first (only if
+  // it isn't already on the account) -- a one-time, explicit action rather
+  // than a silent merge, so nothing is duplicated or overwritten quietly.
+  async function afterLogin() {
+    const localOnly = loadFavorites();
+    await loadFavoritesFromServer();
+    if (localOnly.length) {
+      const existingKeys = new Set(state.favorites.map(favoriteKey));
+      const toImport = localOnly.filter((f) => !existingKeys.has(favoriteKey(f)));
+      if (toImport.length && confirm(`Import ${toImport.length} place(s) saved on this device into your account?`)) {
+        for (const f of toImport) {
+          try {
+            const payload = f.type === "area"
+              ? { kind: "area", area_id: f.areaId, label: f.label }
+              : { kind: "location", lat: f.lat, lon: f.lon, label: f.label };
+            const res = await apiFetch("/api/favorites", { method: "POST", body: JSON.stringify(payload) });
+            if (res.ok) state.favorites.push(serverFavoriteToLocalShape(await res.json()));
+          } catch (err) { /* skip this one, keep importing the rest */ }
+        }
+        renderFavorites();
+      }
+    }
+    await loadNotifications();
+  }
+
+  // ---------------- modal (auth form / account panel / notifications) ----------------
+  const modalOverlay = document.getElementById("modal-overlay");
+  const modalBox = document.getElementById("modal-box");
+  function showModal() { modalOverlay.classList.add("open"); }
+  function closeModal() { modalOverlay.classList.remove("open"); }
+  modalOverlay.addEventListener("click", (e) => { if (e.target === modalOverlay) closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  function renderAccountUI() {
+    const el = document.getElementById("account-area");
+    if (state.auth.user) {
+      const unread = state.notifications.filter((n) => !n.read_at).length;
+      el.innerHTML = `
+        <button type="button" class="link-btn" id="notif-btn" title="Notifications">&#128276;${unread ? ` <span class="notif-dot">${unread}</span>` : ""}</button>
+        <button type="button" class="link-btn" id="account-btn">${state.auth.user.display_name || state.auth.user.email}</button>
+      `;
+      document.getElementById("notif-btn").addEventListener("click", () => { renderNotificationsPanel(); showModal(); });
+      document.getElementById("account-btn").addEventListener("click", () => { renderAccountPanel(); showModal(); });
+    } else {
+      el.innerHTML = `<button type="button" class="link-btn" id="signin-btn">Sign in</button>`;
+      document.getElementById("signin-btn").addEventListener("click", () => openAuthModal("login"));
+    }
+  }
+
+  function openAuthModal(mode) {
+    renderAuthModal(mode || "login");
+    showModal();
+  }
+  function renderAuthModal(mode) {
+    const isLogin = mode === "login";
+    modalBox.innerHTML = `
+      <button type="button" class="link-btn" id="modal-close" style="position:absolute; top:12px; right:14px;">&times;</button>
+      <h2>${isLogin ? "Sign in" : "Create an account"}</h2>
+      <form id="auth-form">
+        ${isLogin ? "" : `<div class="field"><label for="auth-name">Name</label><input type="text" id="auth-name" /></div>`}
+        <div class="field"><label for="auth-email">Email</label><input type="email" id="auth-email" required /></div>
+        <div class="field"><label for="auth-password">Password</label><input type="password" id="auth-password" required minlength="8" /></div>
+        <div class="modal-error" id="auth-error"></div>
+        <div class="modal-actions">
+          <button type="button" class="link-btn" id="auth-switch">${isLogin ? "Need an account? Register" : "Have an account? Sign in"}</button>
+          <button type="submit" class="link-btn" style="background:var(--accent-100); color:var(--accent-650);">${isLogin ? "Sign in" : "Create account"}</button>
+        </div>
+      </form>
+      <p class="hint" style="margin-top:12px;">Accounts sync your saved places across devices and let you set alerts for a species/place -- see the &#128276; next to any prediction once you're signed in.</p>
+    `;
+    document.getElementById("modal-close").addEventListener("click", closeModal);
+    document.getElementById("auth-switch").addEventListener("click", () => renderAuthModal(isLogin ? "register" : "login"));
+    document.getElementById("auth-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errorEl = document.getElementById("auth-error");
+      errorEl.textContent = "";
+      const email = document.getElementById("auth-email").value.trim();
+      const password = document.getElementById("auth-password").value;
+      try {
+        if (isLogin) {
+          await loginAccount(email, password);
+        } else {
+          const name = document.getElementById("auth-name").value.trim();
+          await registerAccount(email, password, name);
+        }
+        closeModal();
+        renderAccountUI();
+        await afterLogin();
+        renderAccountUI();
+        // Re-render whatever's currently on screen so its alert (&#128276;)
+        // buttons appear immediately -- they're gated on state.auth.user
+        // (see speciesRowHtml), which just changed after this view was
+        // first rendered.
+        if (state.mode === "curated" && state.areaId) await renderPredictions();
+        else if (state.mode === "anywhere" && state.anywhere.lat != null) await renderAnywhereResults();
+      } catch (err) {
+        errorEl.textContent = err.message || "Something went wrong -- try again.";
+      }
+    });
+  }
+
+  async function renderAccountPanel() {
+    const user = state.auth.user;
+    modalBox.innerHTML = `
+      <button type="button" class="link-btn" id="modal-close" style="position:absolute; top:12px; right:14px;">&times;</button>
+      <h2>${user.display_name || "Your account"}</h2>
+      <p class="hint" style="margin-top:-8px;">${user.email}</p>
+      <p class="area-name" style="font-size:14px; margin-top:16px;">Your alerts</p>
+      <div id="saved-search-list" class="fav-list"><div class="hint">Loading&hellip;</div></div>
+      <div class="modal-actions">
+        <button type="button" class="link-btn danger" id="signout-btn">Sign out</button>
+        <span></span>
+      </div>
+    `;
+    document.getElementById("modal-close").addEventListener("click", closeModal);
+    document.getElementById("signout-btn").addEventListener("click", () => { closeModal(); logoutAccount(); });
+    const listEl = document.getElementById("saved-search-list");
+    try {
+      const res = await apiFetch("/api/saved-searches");
+      const rows = await res.json();
+      if (!rows.length) {
+        listEl.innerHTML = `<div class="hint">No alerts yet -- click the &#128276; next to a species prediction to add one.</div>`;
+        return;
+      }
+      listEl.innerHTML = rows
+        .map(
+          (s) => `
+        <div class="fav-item" style="cursor:default;">
+          <span class="fav-name">${s.label || s.species_key || "Alert"} (&ge;${Math.round(s.min_probability * 100)}%)</span>
+          <button type="button" class="fav-remove" data-remove-search="${s.id}" title="Remove">&times;</button>
+        </div>`
+        )
+        .join("");
+      listEl.querySelectorAll("[data-remove-search]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          await apiFetch(`/api/saved-searches/${btn.dataset.removeSearch}`, { method: "DELETE" });
+          renderAccountPanel();
+        });
+      });
+    } catch (err) {
+      listEl.innerHTML = `<div class="hint">Couldn't load your alerts right now.</div>`;
+    }
+  }
+
+  async function loadNotifications() {
+    if (!state.auth.user) return;
+    try {
+      const res = await apiFetch("/api/notifications");
+      if (res.ok) state.notifications = await res.json();
+    } catch (err) { /* leave whatever was already loaded */ }
+    renderAccountUI();
+  }
+  function renderNotificationsPanel() {
+    modalBox.innerHTML = `
+      <button type="button" class="link-btn" id="modal-close" style="position:absolute; top:12px; right:14px;">&times;</button>
+      <h2>Notifications</h2>
+      <div id="notif-list" class="fav-list">
+        ${
+          state.notifications.length
+            ? state.notifications
+                .map(
+                  (n) => `
+          <div class="fav-item" style="cursor:default; align-items:flex-start;">
+            <span class="fav-name" style="white-space:normal; font-weight:${n.read_at ? "500" : "750"};">${n.message}</span>
+            ${n.read_at ? "" : `<button type="button" class="fav-remove" data-mark-read="${n.id}" title="Mark read">&check;</button>`}
+          </div>`
+                )
+                .join("")
+            : `<div class="hint">No notifications yet -- alerts you set (the &#128276; next to a species prediction) will show up here once they trigger.</div>`
+        }
+      </div>
+    `;
+    document.getElementById("modal-close").addEventListener("click", closeModal);
+    modalBox.querySelectorAll("[data-mark-read]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        await apiFetch(`/api/notifications/${btn.dataset.markRead}/read`, { method: "POST" });
+        await loadNotifications();
+        renderNotificationsPanel();
+      });
+    });
+  }
+
+  // A saved-search alert button (see the &#128276; in speciesRowHtml)
+  // reaches here via event delegation set up in attachAlertHandlers below.
+  async function createAlertFromRow(btn, context) {
+    if (!state.auth.user) { openAuthModal("login"); return; }
+    const row = btn.closest(".species-row");
+    const species = row.dataset.sci;
+    const commonName = row.dataset.common || species;
+    const thresholdStr = prompt(`Alert me when ${commonName}'s predicted encounter probability reaches at least what percent?`, "50");
+    if (thresholdStr === null) return;
+    const threshold = Number(thresholdStr);
+    if (!Number.isFinite(threshold) || threshold < 0 || threshold > 100) {
+      alert("Enter a number between 0 and 100.");
+      return;
+    }
+    const payload = Object.assign(
+      { species_key: species, label: `${commonName} @ ${context.label}`, min_probability: threshold / 100 },
+      context.mode === "area"
+        ? { kind: "area", area_id: context.areaId }
+        : { kind: "location", lat: context.lat, lon: context.lon, radius_km: context.radius }
+    );
+    try {
+      const res = await apiFetch("/api/saved-searches", { method: "POST", body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error("save failed");
+      btn.classList.add("active");
+      btn.title = "Alert saved -- see it in your account panel";
+    } catch (err) {
+      alert("Couldn't save that alert right now -- try again in a moment.");
+    }
+  }
+  function attachAlertHandlers(resultsEl, context) {
+    resultsEl.querySelectorAll(".alert-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        createAlertFromRow(btn, context);
+      });
+    });
   }
 
   // ---------------- data-source banner ----------------
@@ -797,13 +1182,19 @@
     opts = opts || {};
     const factorsHtml = !opts.compact && p.factors && p.factors.length
       ? `<ul class="factors">${p.factors.map((f) => `<li>${f}</li>`).join("")}</ul>` : "";
+    // Only offered outside compact/compare mode, and only rendered at all
+    // when signed in -- createAlertFromRow (see attachAlertHandlers) still
+    // prompts a signed-out click to sign in first, so this is a nicety
+    // (avoids an icon nobody signed-out can use), not the actual gate.
+    const alertBtn = !opts.compact && state.auth.user
+      ? `<button type="button" class="alert-btn" title="Alert me when this is likely">&#128276;</button>` : "";
     return `
-      <div class="species-row" data-sci="${p.scientific_name}">
+      <div class="species-row" data-sci="${p.scientific_name}" data-common="${p.common_name}">
         <div class="top-line">
           <div class="name-block">
             <span class="taxon-chip">${(p.taxon_class || "").slice(0, 4)}</span>
             <div style="min-width:0;">
-              <div class="name">${p.common_name}</div>
+              <div class="name">${p.common_name}${alertBtn}</div>
               <div class="sci">${p.scientific_name}</div>
             </div>
           </div>
@@ -853,14 +1244,16 @@
       <p class="hint">Click a species to see its best months to visit.</p>
     `;
 
-    document.getElementById("star-curated").addEventListener("click", (e) => {
-      toggleFavorite(favEntry);
-      e.currentTarget.classList.toggle("saved", isFavorited(favEntry));
+    document.getElementById("star-curated").addEventListener("click", async (e) => {
+      const btn = e.currentTarget; // captured before the await -- currentTarget is nulled once the native event finishes dispatching
+      await toggleFavorite(favEntry);
+      btn.classList.toggle("saved", isFavorited(favEntry));
     });
 
     resultsEl.querySelectorAll(".species-row").forEach((row) => {
       row.addEventListener("click", () => toggleWindow(row, { mode: "area", areaId: state.areaId }));
     });
+    attachAlertHandlers(resultsEl, { mode: "area", areaId: area.id, label: area.name });
 
     if (state.compareAreaId) await renderCompare();
   }
@@ -901,9 +1294,10 @@
         </div>
         <div class="empty-state">None of WildCast's 25 known species have a live GBIF record within ${radius}km of this exact spot.<br/>Try a larger radius, or a point closer to a wilder area.</div>
       `;
-      document.getElementById("star-anywhere").addEventListener("click", (e) => {
-        toggleFavorite(favEntry);
-        e.currentTarget.classList.toggle("saved", isFavorited(favEntry));
+      document.getElementById("star-anywhere").addEventListener("click", async (e) => {
+        const btn = e.currentTarget; // captured before the await -- see the star-curated handler's comment above
+        await toggleFavorite(favEntry);
+        btn.classList.toggle("saved", isFavorited(favEntry));
       });
       return;
     }
@@ -920,13 +1314,15 @@
       ${rows}
       <p class="hint">Click a species to see its best months to visit. Probabilities reuse ${near.name}'s trained model as the closest available analog.</p>
     `;
-    document.getElementById("star-anywhere").addEventListener("click", (e) => {
-      toggleFavorite(favEntry);
-      e.currentTarget.classList.toggle("saved", isFavorited(favEntry));
+    document.getElementById("star-anywhere").addEventListener("click", async (e) => {
+      const btn = e.currentTarget; // captured before the await -- see the star-curated handler's comment above
+      await toggleFavorite(favEntry);
+      btn.classList.toggle("saved", isFavorited(favEntry));
     });
     resultsEl.querySelectorAll(".species-row").forEach((row) => {
       row.addEventListener("click", () => toggleWindow(row, { mode: "location", lat, lon, radius }));
     });
+    attachAlertHandlers(resultsEl, { mode: "location", lat, lon, radius, label: favEntry.label });
   }
 
   // ---------------- best-window (shared) ----------------
@@ -993,6 +1389,7 @@
   renderFavorites();
   loadAreas();
   loadDataSourceBanner();
+  tryRestoreSession(); // may replace the localStorage favorites above with this account's synced ones
 
   // ---------------- PWA: installable app shell ----------------
   // Registered last, after the page's own real work is queued, so it never

@@ -299,6 +299,61 @@ def presence_count(
     return int(page.get("count", 0) or 0)
 
 
+def total_wild_occurrence_count(
+    lat: float,
+    lon: float,
+    radius_km: float,
+    timeout: float = 20.0,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
+) -> int:
+    """Total *wild* GBIF records of ANY species within radius_km of this point.
+
+    Not a species-specific count -- a rough "how much wildlife-observation
+    activity happens here at all" proxy (area-level observer effort), used
+    to correct a real data-reliability problem: a raw per-species record
+    count alone conflates true local abundance with how much anyone
+    happens to be looking or reporting there. A heavily-touristed spot
+    inflates counts for whatever's charismatic there even if it's
+    genuinely hard to find (a real concern raised about this app: "5000
+    polar bear observations doesn't mean they're easy to find"), while a
+    rarely-visited spot deflates counts for everything, common species
+    included ("5 kangaroo observations doesn't mean it's hard"). See
+    app.ml.prediction_service._local_effort_index_cached for where this
+    gets used.
+
+    This mirrors, at area level, the "target-group background" bias
+    correction app.ml.pseudo_absence.py already uses when TRAINING the
+    curated-area models (Phillips et al. 2009: other species' records
+    stand in for "someone was out looking here"). A version scoped to the
+    same taxonomic class (mirroring pseudo_absence.py's area+taxon_class
+    grouping exactly) would be more precise, but GBIF's occurrence search
+    takes a numeric `classKey`, not a plain class name like "Mammalia",
+    and this sandbox has no live GBIF access to verify each taxon_class's
+    correct key -- shipping a guessed mapping risks silently corrupting
+    the effort baseline, which would be worse than this coarser
+    area-level proxy. Left as a documented follow-up once classKey values
+    are verified against a real GBIF call (e.g. during a retrain.yml run).
+
+    Same "free" trick as `presence_count`: a `limit=1` request still gets
+    GBIF's real total `count` back, so this costs no extra request beyond
+    the search itself.
+    """
+    page = occurrence_search(
+        lat=lat,
+        lon=lon,
+        radius_km=radius_km,
+        limit=1,
+        timeout=timeout,
+        wild_only=True,
+        max_retries=max_retries,
+        base_backoff=base_backoff,
+        max_backoff=max_backoff,
+    )
+    return int(page.get("count", 0) or 0)
+
+
 def has_any_presence(
     scientific_name: str,
     lat: float,

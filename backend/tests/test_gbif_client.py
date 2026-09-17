@@ -223,6 +223,40 @@ class PresenceCountTests(unittest.TestCase):
         self.assertEqual(mock_search.call_args[1]["limit"], 1)
 
 
+class TotalWildOccurrenceCountTests(unittest.TestCase):
+    """
+    Unit tests for the observer-effort baseline query -- see this
+    function's docstring and app.ml.prediction_service._local_effort_index_cached
+    for the real data-reliability problem it exists to fix ("5000 polar
+    bear observations doesn't mean they're easy to find").
+    """
+
+    @patch("app.services.gbif_client.occurrence_search")
+    def test_returns_gbifs_real_total_count(self, mock_search):
+        mock_search.return_value = {"count": 12345, "results": []}
+        self.assertEqual(gbif_client.total_wild_occurrence_count(44.6, -110.5, 150), 12345)
+
+    @patch("app.services.gbif_client.occurrence_search")
+    def test_does_not_filter_by_scientific_name(self, mock_search):
+        # This is deliberately an "everything nearby" query, not a
+        # per-species one -- it must never narrow to one species.
+        mock_search.return_value = {"count": 0, "results": []}
+        gbif_client.total_wild_occurrence_count(44.6, -110.5, 150)
+        self.assertNotIn("scientific_name", mock_search.call_args[1])
+
+    @patch("app.services.gbif_client.occurrence_search")
+    def test_asks_for_wild_records_only(self, mock_search):
+        mock_search.return_value = {"count": 0, "results": []}
+        gbif_client.total_wild_occurrence_count(44.6, -110.5, 150)
+        self.assertTrue(mock_search.call_args[1]["wild_only"])
+
+    @patch("app.services.gbif_client.occurrence_search")
+    def test_only_asks_gbif_for_one_record_since_only_the_total_count_is_needed(self, mock_search):
+        mock_search.return_value = {"count": 99, "results": []}
+        gbif_client.total_wild_occurrence_count(44.6, -110.5, 150)
+        self.assertEqual(mock_search.call_args[1]["limit"], 1)
+
+
 class HasAnyPresenceTests(unittest.TestCase):
     @patch("app.services.gbif_client.occurrence_search")
     def test_true_when_gbif_reports_a_nonzero_count(self, mock_search):

@@ -191,6 +191,67 @@ class EvidenceFactorTests(unittest.TestCase):
         self.assertEqual(ps._evidence_factor(150, corroborating_count=2), 1.0)
 
 
+class EffortAdjustedEvidenceFactorTests(unittest.TestCase):
+    """
+    Regression coverage for a real data-reliability problem raised
+    directly by a user: "5000 polar bear observations doesn't mean they're
+    easy to find, and 5 kangaroo observations doesn't mean it's hard."
+    Raw local counts alone conflate true abundance with how much anyone
+    happens to be looking/reporting nearby. `effort_index` (total wild
+    records of ANY species nearby) corrects for that.
+    """
+
+    def test_missing_effort_index_falls_back_to_original_absolute_only_behavior(self):
+        # None (the live check failed or was never run) must reproduce the
+        # exact pre-existing behavior -- no silent change for every caller
+        # that doesn't pass this new argument at all.
+        with_none = ps._evidence_factor(40, corroborating_count=1, effort_index=None)
+        without_arg = ps._evidence_factor(40, corroborating_count=1)
+        self.assertEqual(with_none, without_arg)
+
+    def test_zero_or_negative_effort_index_also_falls_back(self):
+        # A genuinely-zero or invalid baseline is not a usable denominator
+        # -- must not raise (division by zero) or silently maximize
+        # confidence, just fall back like None does.
+        self.assertEqual(
+            ps._evidence_factor(40, effort_index=0), ps._evidence_factor(40, effort_index=None),
+        )
+
+    def test_a_large_count_in_a_high_effort_area_is_dampened_more_than_without_effort_data(self):
+        # The "5000 polar bear observations" case: a big raw count, but
+        # this species is a small share of everything being reported near
+        # this very busy (high-effort) point -- the effort-adjusted factor
+        # must come out LOWER than the same count would score with no
+        # effort data at all.
+        unadjusted = ps._evidence_factor(500, effort_index=None)
+        # 500 out of 100,000 total local wild records is a tiny (0.5%) share.
+        effort_adjusted = ps._evidence_factor(500, effort_index=100_000)
+        self.assertLess(effort_adjusted, unadjusted)
+
+    def test_a_small_count_in_a_low_effort_area_is_boosted_relative_to_no_effort_data(self):
+        # The "5 kangaroo observations" case: a small raw count, but it's
+        # a LARGE share of the (small) total local activity -- the
+        # effort-adjusted factor must come out HIGHER than the same small
+        # count would score with no effort data at all.
+        unadjusted = ps._evidence_factor(5, effort_index=None)
+        # 5 out of 8 total local wild records is the large majority of all
+        # local activity.
+        effort_adjusted = ps._evidence_factor(5, effort_index=8)
+        self.assertGreater(effort_adjusted, unadjusted)
+
+    def test_effort_index_below_the_noise_floor_is_ignored(self):
+        # A baseline of 1-2 total records is too thin to divide by without
+        # producing a wildly noisy ratio -- must fall back to
+        # absolute-count-only rather than swing on one extra record.
+        self.assertLess(ps._MIN_EFFORT_INDEX_FOR_SHARE, 5 + 1)  # sanity: test below actually exercises the guard
+        ignored = ps._evidence_factor(3, effort_index=2)
+        fallback = ps._evidence_factor(3, effort_index=None)
+        self.assertEqual(ignored, fallback)
+
+    def test_effort_adjusted_factor_never_exceeds_one(self):
+        self.assertLessEqual(ps._evidence_factor(1000, corroborating_count=2, effort_index=1001), 1.0)
+
+
 class ExplainFactorsTests(unittest.TestCase):
     """Direct tests of _explain's new activity-pattern and conservation-status
     factor lines -- the user's explicit "population" and "species ability to
@@ -280,10 +341,12 @@ class AnywhereModeTests(unittest.TestCase):
     """
 
     def setUp(self):
-        # The live-evidence cache is process-global (by design -- see its
-        # docstring) so it must not leak results between tests that reuse
-        # the same coordinates with different mocked source answers.
+        # The live-evidence and effort-index caches are both process-global
+        # (by design -- see their docstrings) so neither must leak results
+        # between tests that reuse the same coordinates with different
+        # mocked source answers.
         ps._presence_cache.clear()
+        ps._effort_cache.clear()
 
     def test_haversine_zero_for_same_point(self):
         self.assertAlmostEqual(ps._haversine_km(44.6, -110.5, 44.6, -110.5), 0.0, places=6)
@@ -380,6 +443,37 @@ class AnywhereModeTests(unittest.TestCase):
             self.assertEqual(s["local_evidence_count"], 200)  # GBIF is primary when it finds anything
             self.assertEqual(s["local_corroborating_count"], 1)  # iNaturalist independently confirmed too
 
+    def test_species_for_location_attaches_the_local_effort_index(self):
+        # Wiring test for the effort-correction feature (see
+        # _local_effort_index_cached / _evidence_factor): the area-level
+        # "how much wildlife-reporting activity happens near this point at
+        # all" number must actually reach each matched species, not just
+        # exist as a standalone helper.
+        with (
+            patch("app.services.gbif_client.presence_count", return_value=200),
+            patch("app.services.gbif_client.total_wild_occurrence_count", return_value=4000),
+            _no_inaturalist(),
+        ):
+            results = ps.species_for_location(44.6, -110.5)
+        self.assertGreater(len(results), 0)
+        for s in results:
+            self.assertEqual(s["local_effort_index"], 4000)
+
+    def test_species_for_location_effort_index_is_none_when_the_live_check_fails(self):
+        # Fail-closed, not fail-zero: a real 0 would make _evidence_factor
+        # treat the area as having no reporting activity at all (an
+        # incorrect share-based boost), whereas None correctly falls back
+        # to the original absolute-count-only behavior.
+        with (
+            patch("app.services.gbif_client.presence_count", return_value=200),
+            patch("app.services.gbif_client.total_wild_occurrence_count", side_effect=RuntimeError("network down")),
+            _no_inaturalist(),
+        ):
+            results = ps.species_for_location(44.6, -110.5)
+        self.assertGreater(len(results), 0)
+        for s in results:
+            self.assertIsNone(s["local_effort_index"])
+
     def test_predict_at_location_labels_the_nearest_area_and_distance(self):
         # A generous local count (well above the "high confidence" floor)
         # so this test's focus -- area/distance labeling and factor text --
@@ -452,6 +546,38 @@ class AnywhereModeTests(unittest.TestCase):
         self.assertLess(thin_pred["probability"], thin_pred["raw_model_probability"])
         self.assertLess(thin_pred["probability"], strong_pred["probability"])
         self.assertAlmostEqual(strong_pred["probability"], strong_pred["raw_model_probability"], places=6)
+
+    def test_predict_at_location_includes_effort_index_and_downward_adjustment_note(self):
+        # A busy area (high effort_index) relative to this species' own
+        # count should dampen the factor below the raw-count-only value and
+        # say so explicitly -- the user's "5000 polar bear observations
+        # doesn't mean they're easy to find" scenario.
+        with (
+            patch("app.services.gbif_client.presence_count", return_value=200),
+            patch("app.services.gbif_client.total_wild_occurrence_count", return_value=40000),
+            _no_inaturalist(),
+            patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
+        ):
+            result = ps.predict_at_location(44.65, -110.45, "2027-06-15", species_key="Ursus arctos")
+        p = result["predictions"][0]
+        self.assertEqual(p["local_effort_index"], 40000)
+        self.assertLess(p["probability"], p["raw_model_probability"])
+        self.assertTrue(any("a lot of overall wildlife-reporting activity" in f for f in p["factors"]))
+
+    def test_predict_at_location_includes_effort_index_and_upward_adjustment_note(self):
+        # A quiet area (thin effort_index) makes even a small count more
+        # meaningful than the raw-count-only value would suggest -- the
+        # user's "5 kangaroo observations doesn't mean it's hard" scenario.
+        with (
+            patch("app.services.gbif_client.presence_count", return_value=5),
+            patch("app.services.gbif_client.total_wild_occurrence_count", return_value=6),
+            _no_inaturalist(),
+            patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
+        ):
+            result = ps.predict_at_location(44.65, -110.45, "2027-06-15", species_key="Ursus arctos")
+        p = result["predictions"][0]
+        self.assertEqual(p["local_effort_index"], 6)
+        self.assertTrue(any("relatively little overall wildlife-reporting activity" in f for f in p["factors"]))
 
     def test_predict_at_location_with_no_gbif_matches_returns_empty_not_error(self):
         # A real point with genuinely no curated species nearby (e.g. open

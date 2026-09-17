@@ -596,6 +596,70 @@ Open-Meteo data on GitHub's runners and commits it back to the repo -- see
 | `GET /api/best-window?area_id=&species=<scientific name>` | Probability by day-of-year, for trip planning |
 | `GET /api/predict-location?lat=&lon=&date=YYYY-MM-DD[&species=&radius_km=]` | Explore Anywhere: same shape as `/predict`, gated by a live multi-source check (GBIF + iNaturalist + eBird, see "Multi-source data quality") instead of a fixed area; `radius_km` defaults to 150, clamped to [10, 300]. `probability`/`training_records`/`confidence` are calibrated to the real local evidence near the click (see "Confidence is calibrated to real local evidence" above); `raw_model_probability` is the unscaled figure; `local_evidence_sources` breaks the count down per source |
 | `GET /api/best-window-location?lat=&lon=&species=<scientific name>[&radius_km=]` | Explore Anywhere counterpart to `/best-window` |
+| `POST /api/auth/register` / `POST /api/auth/login` | Create an account / sign in -- returns `{user, token}`; every endpoint below needs `Authorization: Bearer <token>` |
+| `GET /api/auth/me` / `PATCH /api/auth/me` | Current user's profile / update display name |
+| `GET /api/favorites` / `POST /api/favorites` / `DELETE /api/favorites/<id>` | Server-synced saved places (area or Explore Anywhere point, optionally narrowed to one species) |
+| `GET /api/saved-searches` / `POST /api/saved-searches` / `DELETE /api/saved-searches/<id>` | "Alert me if `<species>` reaches >= X% probability near `<place>`" |
+| `GET /api/notifications[?unread_only=1]` / `POST /api/notifications/<id>/read` | The in-app notification inbox saved-search alerts land in |
+| `POST /api/internal/check-saved-searches` (needs `X-Cron-Key: <CRON_SECRET_KEY>`) | Triggers a saved-search evaluation pass -- see "Accounts & saved-search alerts" below, not meant for the frontend |
+
+## Accounts & saved-search alerts
+
+Real per-account storage (see `backend/app/db.py`, `backend/app/services/{auth,favorites,saved_search,notification}_service.py`)
+for the favorites/alerts/notifications features above -- built on Python's
+stdlib `sqlite3` rather than an ORM, for the same "only ship what's actually
+been run here" reason this project avoids other unprovable dependencies (see
+"Design decisions worth knowing about"). Auth tokens are itsdangerous-signed
+strings (ships with Flask already), not a session cookie.
+
+**Before relying on this in production, three things need real values, not
+the defaults:**
+
+1. **`WILDCAST_SECRET_KEY`** (Render env var) -- signs login tokens. The
+   fallback in `app/config.py` is a fixed, publicly-known string (it's in
+   this repo); using it in production would let anyone forge a valid login
+   for any account. Generate one long random value, e.g. `openssl rand -hex 32`.
+2. **`CRON_SECRET_KEY`** (Render env var, and the *same* value as a
+   `CRON_SECRET_KEY` GitHub repo secret) -- gates `POST /api/internal/check-saved-searches`
+   so only your own scheduler can trigger it. No fallback at all: unset, that
+   endpoint refuses every request. See `.github/workflows/check_alerts.yml`
+   for a ready-made scheduled GitHub Actions workflow that calls it daily
+   (free, same mechanism `retrain.yml` already uses) -- it needs that repo
+   secret plus, optionally, a `WILDCAST_BACKEND_URL` repo *variable* if your
+   backend isn't at `https://wildcast.onrender.com`.
+3. **Persistent storage for the database.** Render's web services have an
+   **ephemeral filesystem by default** (confirmed against Render's docs,
+   2026-09-17) -- the SQLite file at `WILDCAST_DB_PATH` (default
+   `backend/data/wildcast.db`) is wiped on every redeploy/restart otherwise,
+   taking every account, favorite, and alert with it. Fix: attach a paid
+   Render persistent disk (not available on the free tier) and point
+   `WILDCAST_DB_PATH` at a file inside its mount path. Render's Cron Jobs
+   feature can't help here either -- it explicitly can't access a persistent
+   disk, which is exactly why the alert check is triggered over HTTP against
+   the already-running web service instead of run as its own scheduled job
+   (see `backend/scripts/check_saved_searches.py`'s docstring for the full
+   reasoning).
+
+**Not done yet:** real email/push delivery for alerts -- notifications are
+in-app only (`GET /api/notifications`) since this project has no email/push
+provider credentials to build and test against, the same reason eBird/IUCN
+API keys were obtained through the live user rather than guessed at here.
+The extension point is a single `INSERT` in
+`app/services/saved_search_service.py`'s `check_due_saved_searches` -- add a
+call there to whichever provider you pick (e.g. SendGrid for email), guarded
+by its own optional API key the same way `EBIRD_API_KEY`/`IUCN_API_KEY` are
+optional. Also not done: session revocation ("log out everywhere") and
+password reset, both needing server-side session state or outbound email,
+respectively -- both deliberate deferrals, not oversights.
+
+Migrating to a managed Postgres database instead of SQLite (so persistence
+doesn't depend on a paid Render disk at all) is a natural next step, but
+wasn't done here: it needs a driver such as `psycopg2`, which -- like every
+other new dependency this session considered -- this sandbox's blocked
+egress couldn't actually install or test, so it's left as a documented
+follow-up rather than shipped unverified. `app/db.py` is the only file that
+migration would touch; every service function above already goes through it
+alone.
 
 ## Deploying
 
@@ -607,7 +671,10 @@ push (including a `retrain.yml` run) redeploys automatically. The image
 trains on whatever's in `backend/data/cache/` at build time: real data if
 `retrain.yml` has committed it, the synthetic demo dataset otherwise (see
 "Switching to real data" above) -- so run that workflow at least once before
-deploying if you want real predictions from the start.
+deploying if you want real predictions from the start. If you're using the
+accounts/favorites/alerts features, see "Accounts & saved-search alerts"
+above for the environment variables and persistent-storage setup those need
+before going to production.
 
 **Frontend:** it's one static HTML file with no build step -- deploy it as-is
 to Vercel, Netlify, Cloudflare Pages, or GitHub Pages, or serve it via

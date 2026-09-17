@@ -1,0 +1,51 @@
+name: Check saved-search alerts
+
+# Triggers the deployed backend's own saved-search-alert check (see
+# backend/app/routers/internal.py and backend/app/services/saved_search_service.py)
+# over HTTP, on a schedule. Deliberately does NOT run the check locally on
+# GitHub's runner (scripts/check_saved_searches.py explains why: this
+# workflow has no access to the deployed service's actual database, only
+# the deployed service itself does) -- it just POSTs to the live backend
+# and lets that process do the work in its own environment.
+#
+# Setup (two secrets, both under Settings -> Secrets and variables ->
+# Actions in this repo):
+#   1. CRON_SECRET_KEY -- must match the CRON_SECRET_KEY environment
+#      variable set on the Render backend service (Render's Environment
+#      tab), NOT a GitHub-only value. It's how the backend knows this
+#      request came from you and not a random POST off the internet -- see
+#      app/routers/internal.py's docstring. Generate any long random
+#      string for it (e.g. `openssl rand -hex 32` locally) and set the
+#      SAME value in both places.
+#   2. WILDCAST_BACKEND_URL (a repo VARIABLE, not a secret -- it's not
+#      sensitive) -- e.g. https://wildcast.onrender.com. Falls back to that
+#      exact URL below if unset, so this only needs adding if your backend
+#      is deployed somewhere else.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 13 * * *" # once daily, 13:00 UTC -- arbitrary but consistent;
+    # adjust to whenever most users are likely to check the app afterwards
+
+jobs:
+  check-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: POST to the backend's internal alert-check endpoint
+        env:
+          CRON_SECRET_KEY: ${{ secrets.CRON_SECRET_KEY }}
+          BACKEND_URL: ${{ vars.WILDCAST_BACKEND_URL || 'https://wildcast.onrender.com' }}
+        run: |
+          if [ -z "$CRON_SECRET_KEY" ]; then
+            echo "::error::CRON_SECRET_KEY repo secret is not set -- see this workflow's comments for setup."
+            exit 1
+          fi
+          status=$(curl -sS -o /tmp/response.json -w "%{http_code}" -X POST \
+            -H "X-Cron-Key: $CRON_SECRET_KEY" \
+            "$BACKEND_URL/api/internal/check-saved-searches")
+          echo "Response ($status):"
+          cat /tmp/response.json
+          if [ "$status" != "200" ]; then
+            echo "::error::Alert check failed with HTTP $status"
+            exit 1
+          fi

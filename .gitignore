@@ -3,4 +3,6 @@ __pycache__/
 .env
 backend/data/cache/
 backend/app/ml/artifacts/
+backend/data/wildcast.db
+backend/data/*.db-journal
 .DS_Store

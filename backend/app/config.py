@@ -71,6 +71,38 @@ RANDOM_SEED = 42
 DEBUG = os.environ.get("WILDCAST_DEBUG", "1") == "1"
 PORT = int(os.environ.get("PORT", "8000"))
 
+# --- Accounts / auth (see app/services/auth_service.py, app/db.py) ---
+# SECRET_KEY signs auth tokens; CRON_SECRET_KEY separately gates the
+# internal saved-search-alert endpoint (app/routers/internal.py). Both MUST
+# be set to real random values via Render environment variables in
+# production -- the SECRET_KEY fallback below is a fixed, publicly-known
+# string (this file is in the repo) that exists only so local dev and tests
+# work with zero setup. Using it in production would let anyone forge a
+# valid login token for any user id. CRON_SECRET_KEY has no fallback at all
+# (empty = the internal endpoint refuses every request, see its docstring)
+# since there's no safe default for a secret that gates a write endpoint.
+SECRET_KEY = os.environ.get("WILDCAST_SECRET_KEY", "dev-only-insecure-secret-key-change-me")
+CRON_SECRET_KEY = os.environ.get("CRON_SECRET_KEY", "")
+if not DEBUG and SECRET_KEY == "dev-only-insecure-secret-key-change-me":  # pragma: no cover -- prod-only warning
+    import logging
+
+    logging.getLogger("wildcast.config").warning(
+        "WILDCAST_SECRET_KEY is not set -- running with the insecure dev default outside debug mode. "
+        "Set WILDCAST_SECRET_KEY (a long random value) in your environment before exposing this publicly."
+    )
+
+# SQLite database path for accounts/favorites/saved-searches (app/db.py).
+# IMPORTANT: Render's web services have an EPHEMERAL filesystem by default
+# (https://render.com/docs/disks, confirmed 2026-09-17) -- this file is
+# wiped on every redeploy/restart unless WILDCAST_DB_PATH points inside a
+# paid Render persistent disk's mount path. See README's "Accounts &
+# saved-search alerts" deployment section before relying on this in prod.
+# `or` (not a plain .get(key, default)) so a blank WILDCAST_DB_PATH= line
+# left in a copied .env file falls back to the default too, instead of
+# resolving to Path("") -> the current directory, which sqlite3 would then
+# fail to open as a database file at all.
+DB_PATH = Path(os.environ.get("WILDCAST_DB_PATH") or str(DATA_DIR / "wildcast.db"))
+
 # Daily weather variables pulled from Open-Meteo for both training and inference.
 WEATHER_DAILY_VARS = [
     "temperature_2m_max",

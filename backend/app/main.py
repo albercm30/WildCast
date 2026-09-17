@@ -14,18 +14,30 @@ import logging
 
 from flask import Flask, jsonify
 
+from app import db
 from app.config import DEBUG, PORT
 from app.ml import prediction_service
 from app.routers.areas import bp as areas_bp
+from app.routers.auth import bp as auth_bp
+from app.routers.favorites import bp as favorites_bp
+from app.routers.internal import bp as internal_bp
+from app.routers.notifications import bp as notifications_bp
 from app.routers.predictions import bp as predictions_bp
+from app.routers.saved_searches import bp as saved_searches_bp
 
 logging.basicConfig(level=logging.INFO)
 
 
 def create_app() -> Flask:
     app = Flask(__name__)
+    db.init_db()  # accounts/favorites/saved-searches -- fails fast at boot rather than on first request
     app.register_blueprint(areas_bp)
     app.register_blueprint(predictions_bp)
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(favorites_bp)
+    app.register_blueprint(saved_searches_bp)
+    app.register_blueprint(notifications_bp)
+    app.register_blueprint(internal_bp)
 
     @app.after_request
     def add_cors_headers(response):
@@ -33,9 +45,22 @@ def create_app() -> Flask:
         # statically-served frontend on a different origin/port can call
         # this API directly during local dev and simple deployments.
         response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
-        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        # Widened from "GET, OPTIONS" now that accounts/favorites/saved
+        # searches add real write endpoints, and "Authorization" added
+        # alongside Content-Type so the frontend's Bearer token can
+        # actually reach these routes cross-origin.
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PATCH, DELETE, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
         return response
+
+    # No explicit OPTIONS route needed for CORS preflight: Flask
+    # auto-registers an OPTIONS handler for every route unless a view opts
+    # out, and add_cors_headers (above) attaches the Allow-* headers to
+    # that automatic response too. An earlier version of this file added
+    # an explicit catch-all OPTIONS route here, which broke unknown-route
+    # 404s (Werkzeug returns 405, not 404, for a URL that matches a
+    # registered rule's pattern but not its method) -- see
+    # NotFoundTests.test_unknown_route_is_json_404.
 
     @app.get("/api/health")
     def health():
@@ -60,6 +85,10 @@ def create_app() -> Flask:
     @app.errorhandler(404)
     def not_found(_e):
         return jsonify({"error": "not found"}), 404
+
+    @app.errorhandler(405)
+    def method_not_allowed(_e):
+        return jsonify({"error": "method not allowed"}), 405
 
     return app
 
