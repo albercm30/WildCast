@@ -12,6 +12,11 @@ from __future__ import annotations
 import json
 import warnings
 
+# app.config must be imported before joblib/sklearn: it sets LOKY_MAX_CPU_COUNT,
+# which must be set before loky's cpu-count detection runs (see the comment
+# in app/config.py for why).
+from app.config import CACHE_DIR, DATA_DIR, MODEL_DIR, RANDOM_SEED, WEATHER_DAILY_VARS
+
 import joblib
 import numpy as np
 import pandas as pd
@@ -20,7 +25,6 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import brier_score_loss, roc_auc_score
 
-from app.config import CACHE_DIR, DATA_DIR, MODEL_DIR, RANDOM_SEED, WEATHER_DAILY_VARS
 from app.ml.features import ALL_FEATURE_COLUMNS, build_feature_frame, categorical_feature_mask
 from app.ml.pseudo_absence import build_labeled_dataset
 
