@@ -1,834 +1,1231 @@
 species,common_name,taxon_class,area_id,lat,lon,date
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.962787,-59.830015,2026-01-03
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.610961,-60.897057,2026-08-18
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.460902,-59.649193,2025-07-13
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.387029,-61.043858,2024-01-15
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.057944,-60.139879,2024-04-30
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.511806,-60.841005,2024-07-11
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.006495,-59.656198,2023-03-14
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.140294,-60.167921,2023-07-05
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.672377,-61.17549,2022-08-22
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.773736,-60.006944,2019-03-22
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.585731,-60.002723,2019-08-25
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.404127,-60.137628,2019-08-25
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.247948,-59.967163,2018-06-28
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.535895,-59.887525,2018-08-03
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.482215,-59.660411,2017-07-20
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.52389,-59.925218,2017-10-24
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.055719,-60.13905,2016-10-20
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.163242,-60.076034,2015-05-06
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.252475,-59.892772,2013-06-22
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.231582,-59.975272,2013-06-23
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.876274,-59.99541,2012-05-18
-Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.333241,-60.937417,2008-05-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.648879,-59.839125,2026-01-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.001554,-60.06546,2026-01-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.417644,-61.110722,2026-01-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.78241,-59.915362,2026-01-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003314,-59.939632,2026-02-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.015272,-59.910229,2026-02-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.055912,-59.839493,2026-07-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.712806,-60.959188,2026-07-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.117785,-60.515431,2026-07-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.183707,-60.032571,2026-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.149635,-59.863832,2026-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.602884,-59.848579,2025-01-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.113074,-60.107786,2025-04-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.103451,-59.858167,2025-05-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.12346,-59.926797,2025-05-31
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.069034,-59.988477,2025-06-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.152172,-60.17181,2025-06-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.072907,-59.982935,2025-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.739786,-60.619324,2025-07-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.178037,-60.12795,2025-07-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087884,-59.963142,2025-07-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.044942,-60.124474,2025-08-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.1027,-59.845126,2025-08-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.320688,-59.077218,2025-08-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.047724,-59.868256,2025-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.117271,-59.844017,2025-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.173849,-59.992043,2025-08-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.129428,-59.945377,2025-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.012292,-60.042442,2025-08-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.172829,-60.027311,2025-08-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.170925,-59.936577,2025-08-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.620554,-59.887256,2025-09-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.152351,-59.956255,2025-09-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.115545,-59.992684,2025-09-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.032218,-60.152127,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.166418,-60.013357,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.134056,-60.098587,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.015626,-60.1628,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.071946,-60.103099,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.91157,-59.804471,2025-09-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.046708,-60.035388,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.137659,-60.000618,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.10882,-60.155936,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.194073,-60.083639,2025-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.108453,-59.94153,2025-09-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.086041,-59.916039,2025-09-15
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.124255,-59.9474,2025-09-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.165547,-59.831794,2025-10-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19427,-60.094972,2025-11-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.141675,-59.950732,2025-12-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.59949,-60.764522,2024-01-15
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-01-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048674,-60.09294,2024-01-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135521,-59.90292,2024-01-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.989558,-60.061142,2024-01-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.390292,-60.99518,2024-01-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-01-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.989558,-60.061142,2024-01-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.1525,-60.0233,2024-01-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135521,-59.90292,2024-01-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048674,-60.09294,2024-01-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.174993,-59.951582,2024-02-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.63031,-60.394455,2024-02-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.024154,-59.56637,2024-02-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048657,-60.093002,2024-02-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.639701,-60.87859,2024-02-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-02-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.216366,-59.895897,2024-02-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-02-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.066316,-59.850677,2024-02-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.024154,-59.56637,2024-02-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-02-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.979081,-60.05069,2024-02-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-02-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.979081,-60.05069,2024-02-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.024154,-59.56637,2024-02-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.63031,-60.394455,2024-02-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-02-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.639701,-60.87859,2024-02-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-02-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-02-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.979081,-60.05069,2024-02-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-02-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-02-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.63031,-60.394455,2024-02-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-02-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-02-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.024154,-59.56637,2024-02-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-02-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-02-09
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-02-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.979081,-60.05069,2024-02-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-02-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-02-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.372032,-60.195118,2024-03-09
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-03-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.966507,-60.073444,2024-03-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-03-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.114866,-59.88395,2024-03-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.979081,-60.05069,2024-03-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.834079,-60.03516,2024-03-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.734772,-60.571507,2024-03-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.194074,-59.907757,2024-03-31
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.090893,-60.44051,2024-03-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-03-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-03-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-03-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-03-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.734636,-59.81967,2024-03-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-04-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-04-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-04-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.041686,-59.775986,2024-04-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-04-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-04-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079747,-59.961594,2024-04-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048657,-60.093002,2024-04-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.017361,-59.911514,2024-04-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.808508,-59.584425,2024-05-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.36405,-60.19208,2024-05-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.110576,-59.9094,2024-05-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-15
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.237013,-59.999447,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.133177,-60.366062,2024-05-15
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-05-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.349337,-60.179356,2024-05-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.130356,-60.022778,2024-05-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.129431,-59.98362,2024-05-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.115673,-59.907448,2024-05-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.129431,-59.98362,2024-05-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.237013,-59.999447,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.243174,-60.009933,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.062795,-60.107906,2024-05-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.110576,-59.9094,2024-05-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.955967,-59.20315,2024-05-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.349337,-60.179356,2024-05-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.013396,-59.08815,2024-05-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-05-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087298,-59.99792,2024-05-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.013396,-59.08815,2024-05-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-05-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.748495,-60.64577,2024-05-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-05-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.019235,-59.38967,2024-06-02
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.124119,-61.01277,2024-06-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-06-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-06-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.177556,-59.41175,2024-06-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-06-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.253885,-59.027042,2024-06-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.222609,-60.00173,2024-06-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.024154,-59.56637,2024-06-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.123794,-60.019447,2024-06-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-06-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.639701,-60.87859,2024-06-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.139834,-59.364613,2024-06-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.253885,-59.027042,2024-06-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.639701,-60.87859,2024-06-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-06-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-06-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-06-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.756161,-59.887098,2024-07-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.917106,-60.675737,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.854585,-60.715173,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96,-60.73,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96,-60.73,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.95,-60.73,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96,-60.73,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96,-60.74,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96,-60.74,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.935643,-60.777852,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.845186,-60.674623,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.903625,-60.602811,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.899444,-60.710134,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.968686,-60.662388,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.861444,-60.620383,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.863444,-60.660248,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.894612,-60.731762,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.996506,-60.62991,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.824504,-60.621146,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.901812,-60.744456,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.987709,-60.758175,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.82002,-60.742196,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.929898,-60.627246,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.986385,-60.774996,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.953461,-60.634811,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.953588,-60.793599,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.819051,-60.732821,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.879368,-60.791879,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.983462,-60.612075,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.986093,-60.704526,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.952176,-60.641606,2024-07-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.824811,-60.75922,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.947586,-60.727845,2024-07-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.111877,-60.423122,2024-07-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-09
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-07-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.084343,-59.934772,2024-07-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-07-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-07-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-07-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-07-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-07-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-07-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-07-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-07-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.084343,-59.934772,2024-07-31
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-07-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.387677,-60.980217,2024-07-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.013241,-60.625499,2024-08-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-08-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.114604,-59.90657,2024-08-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-08-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-08-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.018381,-61.150417,2024-08-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.159971,-59.914734,2024-08-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-08-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-08-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-08-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048638,-60.092983,2024-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.758587,-60.941055,2024-08-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.110576,-59.9094,2024-08-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-08-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.744955,-60.28893,2024-08-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-08-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-08-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-08-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-08-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-08-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-08-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.695782,-59.80957,2024-08-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.589115,-60.1153,2024-08-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.6638,-59.809845,2024-08-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.290055,-60.188797,2024-08-01
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-06
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.364073,-60.191982,2024-08-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-08-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-08-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-08-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-08-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.262358,-60.220776,2024-08-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.591684,-60.92286,2024-08-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-08-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.252951,-59.960632,2024-08-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.6638,-59.809845,2024-08-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.140222,-60.024326,2024-09-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.923583,-60.054768,2024-09-15
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.03553,-60.028572,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.290055,-60.188797,2024-09-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135521,-59.90292,2024-09-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.290055,-60.188797,2024-09-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.268813,-60.100834,2024-09-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.930033,-59.97548,2024-09-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.290055,-60.188797,2024-09-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.198304,-59.86923,2024-09-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.923583,-60.054768,2024-09-15
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.678738,-60.951912,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-09-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-09-09
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.1335,-60.018505,2024-09-02
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.130356,-60.022778,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.140222,-60.024326,2024-09-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.275948,-61.086693,2024-09-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.03553,-60.028572,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.290055,-60.188797,2024-09-04
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.930033,-59.97548,2024-09-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-30
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-09-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.58563,-60.11382,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-09-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-23
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-09-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.930033,-59.97548,2024-09-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-09-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.059587,-60.05807,2024-09-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19821,-60.682518,2024-09-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.227823,-59.901028,2024-10-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.088203,-60.04024,2024-10-27
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087622,-59.997154,2024-10-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.979081,-60.05069,2024-10-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.175272,-59.94672,2024-10-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.227823,-59.901028,2024-10-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.064531,-60.08442,2024-10-22
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-10-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.975732,-60.04109,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-10-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.033161,-60.02105,2024-10-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.227823,-59.901028,2024-10-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.227823,-59.901028,2024-10-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079747,-59.961594,2024-10-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048674,-60.09294,2024-10-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.975732,-60.04109,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-10-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.175272,-59.94672,2024-10-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.087654,-59.996685,2024-10-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-10
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135521,-59.90292,2024-10-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.026153,-59.914307,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.806009,-60.05826,2024-10-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.038148,-60.246674,2024-10-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-17
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.079697,-60.005596,2024-10-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.227823,-59.901028,2024-10-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.175272,-59.94672,2024-10-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.171415,-59.940296,2024-10-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.227823,-59.901028,2024-10-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.806009,-60.05826,2024-10-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.794461,-60.041634,2024-10-19
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.175272,-59.94672,2024-10-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-10-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.074359,-59.924725,2024-10-20
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-07
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.033161,-60.02105,2024-10-12
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-10-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-10-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048647,-60.09298,2024-11-28
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-11-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.169381,-59.940952,2024-11-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.275409,-60.064545,2024-11-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.097271,-59.986454,2024-11-13
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135183,-60.015965,2024-11-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135183,-60.015965,2024-11-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.262358,-60.220776,2024-11-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-11-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.262358,-60.220776,2024-11-03
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-11-29
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.161505,-59.968582,2024-11-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19727,-60.68065,2024-11-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.007413,-59.93982,2024-11-26
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-11-21
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.710474,-60.819534,2024-11-18
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.161505,-59.968582,2024-11-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048657,-60.093002,2024-11-25
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-11-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.275409,-60.064545,2024-11-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-11-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-11-11
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.161505,-59.968582,2024-11-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.169381,-59.940952,2024-11-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.169381,-59.940952,2024-11-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048638,-60.092983,2024-11-16
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.003331,-59.939644,2024-11-08
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.048638,-60.092983,2024-11-14
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.275409,-60.064545,2024-11-05
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.901896,-60.56488,2024-11-24
-Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.135183,-60.015965,2024-11-14
-Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.102047,-60.0283,2026-06-29
-Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.101676,-60.027072,2025-09-12
-Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.088148,-60.011267,2025-11-27
-Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.333241,-60.937417,2008-05-01
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.079493,-60.417689,2026-01-22
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.99935,-60.847424,2026-02-03
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.274818,-59.009963,2024-10-12
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.138153,-59.311221,2024-10-12
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.107593,-59.373773,2024-10-12
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.489303,-60.653919,2024-11-20
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.529588,-60.711614,2024-11-20
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.459523,-60.820797,2020-01-10
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.695047,-60.912552,2019-09-11
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-1.873331,-59.445556,2012-02-02
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-1.900914,-59.448364,2011-09-22
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-1.866087,-59.569471,2010-10-03
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-1.839831,-59.552763,2010-10-03
-Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.333241,-60.937417,2008-05-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.99935,-60.847424,2026-02-03
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.015272,-59.910229,2026-02-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.014157,-59.81829,2026-06-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.176916,-60.794397,2026-06-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.162556,-59.956292,2026-07-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.179323,-60.071319,2025-06-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.87368,-59.812995,2025-06-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.065239,-60.189172,2025-06-28
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.977887,-59.80784,2025-07-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.750168,-60.880247,2025-09-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.696134,-60.935131,2025-11-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.150392,-59.858171,2024-05-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.029668,-59.890804,2024-05-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.06689,-59.911694,2024-05-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.636379,-60.15358,2024-05-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2024-07-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.050298,-59.97226,2024-08-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.504731,-60.96545,2024-08-28
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.021215,-59.96406,2024-08-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.021923,-59.963783,2024-08-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.074359,-59.924725,2024-08-17
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.025438,-59.97404,2024-09-06
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.953445,-59.579063,2024-09-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.022682,-59.964096,2024-09-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.025438,-59.97404,2024-09-06
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.032878,-59.97703,2024-09-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2024-09-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.050298,-59.97226,2024-09-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.195659,-61.047813,2024-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.022682,-59.964096,2024-09-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2024-09-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.052802,-60.02552,2024-09-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2024-09-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.050298,-59.97226,2024-09-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.050298,-59.97226,2024-09-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.040173,-59.972,2024-09-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.025438,-59.97404,2024-09-06
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.177723,-59.050999,2024-10-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.966523,-59.985094,2024-10-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.026896,-59.968998,2024-10-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.707645,-60.936546,2024-10-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.017361,-59.911514,2024-10-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.022404,-59.96349,2024-10-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2024-10-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.547426,-60.03562,2024-10-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.017361,-59.911514,2024-10-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.022611,-59.96414,2024-10-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2024-10-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2024-10-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2024-10-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.052802,-60.02552,2024-11-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.052802,-60.02552,2024-11-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.052802,-60.02552,2024-11-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.02861,-59.97463,2024-12-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.979081,-60.05069,2023-02-15
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.898476,-59.956967,2023-03-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-03-17
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.084223,-61.159386,2023-03-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.394763,-60.99541,2023-03-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-03-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.052557,-61.181557,2023-03-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.93,-59.98,2023-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-07-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-08-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-08-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-08-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-08-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-08-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-08-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.809142,-59.22678,2023-10-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.552962,-60.08073,2023-10-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.552962,-60.08073,2023-10-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.552962,-60.08073,2023-10-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-11-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-11-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2023-11-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.698449,-60.934483,2023-12-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.808775,-60.097108,2022-07-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.979081,-60.05069,2022-07-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2022-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.884971,-60.484104,2022-09-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2022-11-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2022-11-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2022-11-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2022-11-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2022-12-04
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.602039,-60.926968,2021-06-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.620449,-60.86139,2021-06-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.977778,-59.931944,2021-06-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.733375,-60.059063,2021-07-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.744713,-60.055943,2021-07-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.744713,-60.055943,2021-07-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.744713,-60.055943,2021-07-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.984454,-60.051598,2021-10-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.979081,-60.05069,2021-10-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.987569,-60.052536,2021-12-05
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.987569,-60.052536,2021-12-05
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.069531,-60.052049,2019-01-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.075551,-60.01065,2019-01-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.075551,-60.01065,2019-01-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.075551,-60.01065,2019-01-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.413611,-59.873056,2019-05-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.809124,-60.471817,2019-06-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-06-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.003331,-59.939644,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.003331,-59.939644,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.003331,-59.939644,2019-06-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-08-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-08-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.722641,-60.547886,2019-09-06
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.975732,-60.04109,2019-10-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.975732,-60.04109,2019-10-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-10-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-10-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-11-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2019-11-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2018-04-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2018-04-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.594495,-60.930443,2018-06-04
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.639701,-60.87859,2018-06-04
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2018-07-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.972,-59.9656,2018-07-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2018-09-17
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2018-09-02
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2018-09-02
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2018-11-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2018-11-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2018-11-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2018-11-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2018-12-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2018-12-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.928333,-59.971389,2018-12-15
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.447,-59.7695,2017-04-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2017-06-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.007413,-59.93982,2017-06-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.446944,-59.769444,2017-06-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.593503,-60.211845,2017-07-03
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.593503,-60.211845,2017-07-03
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.593115,-60.211887,2017-07-03
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2017-09-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.972,-59.9656,2017-09-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975278,-59.908056,2017-12-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.080016,-61.108562,2016-01-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.901896,-60.56488,2016-01-03
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.93323,-59.905633,2016-02-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.890238,-59.829939,2016-02-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.895695,-59.958889,2016-02-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.870436,-59.857563,2016-02-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975439,-59.908167,2016-03-15
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.447017,-59.769517,2016-03-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.639701,-60.87859,2015-01-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.794722,-60.44091,2015-02-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975278,-59.908056,2015-02-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.446944,-59.769444,2015-03-04
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.911516,-59.880471,2015-04-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975439,-59.908167,2015-04-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.55,-59.59,2015-05-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930183,-59.975353,2015-07-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930183,-59.975353,2015-07-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.929862,-59.9752,2015-07-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.924483,-59.977947,2015-07-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930183,-59.975353,2015-07-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930183,-59.975353,2015-07-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.931099,-59.97454,2015-07-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2015-07-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930183,-59.975353,2015-07-13
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930183,-59.975353,2015-07-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2015-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-30
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2015-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.937654,-59.975395,2015-07-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.001141,-60.121483,2015-07-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.914325,-59.658337,2015-07-28
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.819125,-59.89214,2015-07-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2015-07-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-28
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.997907,-59.89136,2015-07-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.857958,-59.967503,2015-07-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2015-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.697477,-59.6996,2015-07-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2015-07-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-07-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.957355,-59.928402,2015-07-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.58563,-60.11382,2015-07-22
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-08-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-08-27
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.583333,-60.716667,2015-08-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.930739,-59.416634,2015-10-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.923961,-59.51144,2015-10-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.9245,-59.9354,2015-12-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.9262,-59.9495,2015-12-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2015-12-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975278,-59.908056,2014-02-06
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.446944,-59.769444,2014-04-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.441284,-59.663445,2014-07-31
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.552962,-60.08073,2014-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2014-07-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.552962,-60.08073,2014-07-29
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.987569,-60.052536,2014-09-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2014-09-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.975732,-60.04109,2014-09-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2014-09-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975278,-59.908056,2014-10-28
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.446944,-59.769444,2014-11-06
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.446944,-59.769444,2014-12-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.447017,-59.769517,2013-03-25
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.975439,-59.908169,2013-03-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.930033,-59.97548,2013-04-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.026153,-59.914307,2013-10-28
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.447017,-59.769517,2013-12-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.052293,-59.868532,2012-06-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.177104,-60.046898,2012-07-23
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448995,-59.77017,2012-09-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448995,-59.77017,2012-09-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448995,-59.77017,2012-09-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448995,-59.77017,2012-09-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2012-09-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2012-10-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.923444,-60.010414,2012-12-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.034385,-60.54602,2011-02-04
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2011-06-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2011-06-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2011-06-12
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2011-06-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.252951,-59.960632,2011-07-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.616667,-60.15,2011-08-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.116667,-60.25,2011-08-18
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2011-09-14
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.916667,-59.966667,2011-09-20
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.447,-59.7695,2011-10-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.083333,-58.85,2011-10-10
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.8486,-59.393533,2011-11-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.823156,-59.963525,2011-12-07
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.327104,-60.088745,2010-02-21
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.364356,-59.973377,2009-06-07
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.364356,-59.973377,2009-06-07
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.373401,-59.96808,2009-06-17
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.364356,-59.973377,2009-06-07
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.101435,-60.037453,2009-07-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.101435,-60.037453,2009-07-26
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.33856,-60.10195,2009-07-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.33856,-60.10195,2009-07-07
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.090893,-60.44051,2009-07-09
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.327104,-60.088745,2009-07-08
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2008-07-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.449167,-59.77028,2008-07-11
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2008-07-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.448906,-59.770214,2008-07-19
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.69087,-60.749836,2008-08-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.383634,-59.943333,2008-12-01
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.901896,-60.56488,2007-05-24
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.901896,-60.56488,2007-08-16
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.901896,-60.56488,2007-10-17
-Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.403729,-59.866127,2007-11-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.66484,-59.74532,2011-09-20
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.92063,-60.131,2011-09-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.33125,-60.4495,2011-10-01
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-4.07572,-59.90782,2011-10-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.93994,-60.31189,2011-10-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.41837,-60.26679,2011-10-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.86337,-59.40532,2011-10-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.94215,-59.36795,2011-10-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.66667,-59.76031,2011-10-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.0732,-60.90861,2011-10-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.82925,-59.61168,2011-10-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.5411,-60.44007,2011-10-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.52972,-59.16962,2011-10-31
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.14873,-60.34159,2011-11-12
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.37903,-60.15128,2011-11-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.30674,-60.1259,2011-11-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.23256,-59.71996,2011-11-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.81642,-60.14592,2011-11-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.01592,-59.71686,2011-12-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.89899,-59.7437,2011-12-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.98092,-59.02364,2011-12-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-4.104,-59.50699,2011-12-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.37141,-59.79311,2011-12-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.00551,-59.93787,2011-12-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.90424,-59.75847,2011-12-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.91719,-60.06203,2012-01-01
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.45296,-58.91989,2012-01-12
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.28802,-59.59432,2012-01-25
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.47629,-59.26023,2012-02-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.62851,-59.09258,2012-02-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.0741,-60.15179,2012-02-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.04502,-60.0307,2012-02-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.44587,-59.66525,2012-02-23
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.67775,-60.44487,2012-02-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.64646,-61.08897,2012-03-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.13232,-60.09133,2012-03-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.38039,-59.92254,2012-03-12
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.85887,-60.79594,2012-03-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.34456,-59.86743,2012-03-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.12674,-60.06166,2012-03-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24283,-60.27108,2012-03-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.08963,-60.00783,2012-03-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.16208,-59.56295,2012-03-27
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.87897,-60.75766,2012-04-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.31627,-59.67514,2012-04-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.26075,-59.33689,2012-04-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.26792,-59.71394,2012-04-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.60446,-60.03712,2012-05-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.81792,-60.36385,2012-05-12
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.78844,-60.0086,2012-05-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.80261,-60.80831,2012-05-30
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.46882,-59.94266,2012-06-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.9504,-59.70881,2012-06-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.93533,-60.10035,2012-06-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.81475,-60.30746,2012-06-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.62563,-60.04666,2012-06-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.3843,-61.10369,2012-06-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.06167,-59.63809,2012-06-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.75699,-59.48525,2012-06-28
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.3964,-58.89354,2012-07-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.15085,-60.18065,2012-07-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.82067,-60.02702,2012-07-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.01026,-60.14859,2012-07-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.31434,-60.13251,2012-07-18
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.30151,-59.89787,2012-07-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.14928,-60.18605,2012-07-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05696,-61.31567,2012-07-27
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.25089,-59.27046,2012-07-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.31379,-59.69814,2012-07-28
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-1.86607,-59.95681,2012-08-02
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.04765,-59.76677,2012-08-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.43041,-60.94244,2012-08-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.3492,-59.80624,2012-08-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17451,-60.23989,2012-08-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.94794,-60.15948,2012-08-12
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.23552,-59.79698,2012-08-14
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.09597,-59.99427,2012-08-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.09042,-59.92857,2012-08-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.0341,-59.8874,2012-08-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.93764,-60.26461,2012-08-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.08056,-60.42568,2012-08-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.98887,-60.34903,2012-09-05
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.25883,-59.97322,2012-09-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.64578,-59.86263,2012-09-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.24949,-60.20469,2012-09-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.83602,-60.06028,2012-09-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.39723,-59.81858,2012-09-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.97258,-60.10293,2012-09-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.76732,-59.81252,2012-09-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.149,-58.98444,2012-09-28
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.94213,-59.60931,2012-10-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.17281,-60.03819,2012-10-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.91606,-59.80699,2012-10-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.92046,-59.1063,2012-10-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.58303,-59.4389,2012-10-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.05835,-61.30573,2012-10-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.08764,-60.407,2012-10-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.21503,-60.15872,2012-10-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.43417,-60.31886,2012-10-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.35203,-60.5887,2012-10-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.50901,-59.70242,2012-10-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94886,-59.28161,2012-11-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.51706,-59.05433,2012-11-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06133,-59.75286,2012-11-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.94431,-59.99883,2012-11-30
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.11856,-61.19401,2012-12-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.33665,-59.75267,2012-12-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.45301,-59.1051,2012-12-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.8047,-60.3746,2012-12-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.03672,-59.60443,2012-12-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.57957,-59.11851,2012-12-29
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.54789,-60.9971,2013-01-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11132,-60.01814,2013-01-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.17332,-59.44126,2013-01-12
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.76637,-59.91828,2013-01-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.63984,-59.66303,2013-01-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.26574,-59.24318,2013-01-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.69913,-60.56762,2013-01-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.74139,-58.87685,2013-01-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.31316,-59.48966,2013-01-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.88456,-60.60455,2013-02-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.4988,-60.03174,2013-02-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06877,-58.92327,2013-02-24
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.14866,-60.20057,2013-03-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.38156,-58.91956,2013-03-13
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.31344,-59.678,2013-03-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.00252,-61.15092,2013-03-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.95849,-60.50775,2013-03-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.2371,-60.28936,2013-03-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.30356,-59.88088,2013-04-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.5909,-59.84661,2013-04-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.08931,-60.03811,2013-04-18
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.23086,-59.45215,2013-04-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.65467,-59.74806,2013-04-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.00427,-59.96326,2013-05-08
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.2092,-59.03209,2013-05-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.60434,-58.8232,2013-05-10
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.56106,-60.05567,2013-05-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.5563,-60.8193,2013-05-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10752,-60.18538,2013-05-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.39817,-60.13178,2013-05-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.6628,-59.89533,2013-05-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.37809,-59.57231,2013-05-24
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.42358,-59.25881,2013-05-31
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.56639,-59.86814,2013-06-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.25282,-60.02605,2013-06-04
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.25929,-60.90288,2013-06-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.09589,-60.04817,2013-06-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17083,-59.87421,2013-06-12
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.13448,-60.09243,2013-06-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.89506,-58.72124,2013-06-14
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.15783,-59.58536,2013-06-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.81398,-60.51802,2013-06-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.31033,-59.51413,2013-06-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.96243,-59.91045,2013-06-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12561,-60.06736,2013-06-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.81342,-58.74553,2013-07-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.00995,-60.02098,2013-07-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.07988,-60.15729,2013-07-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.2298,-59.02975,2013-07-07
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.97277,-59.83133,2013-07-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96621,-60.01383,2013-07-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.20128,-60.07598,2013-07-20
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.0069,-60.73253,2013-07-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.7789,-60.36952,2013-07-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.33616,-59.91628,2013-07-24
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.09877,-59.94004,2013-07-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.04642,-60.28766,2013-07-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.39311,-59.34912,2013-07-31
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.2997,-59.56139,2013-08-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06617,-60.50995,2013-08-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.54539,-61.05603,2013-08-11
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.20836,-59.63025,2013-08-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.23232,-60.02589,2013-08-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.69641,-60.38392,2013-08-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21261,-59.81503,2013-08-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.95452,-60.28508,2013-09-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.28679,-60.8455,2013-09-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.12799,-60.10479,2013-09-08
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.92282,-60.97346,2013-09-17
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.4303,-59.9658,2013-10-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.75411,-59.4902,2013-10-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.62658,-59.87211,2013-10-04
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.45286,-60.00094,2013-10-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.93541,-60.96769,2013-10-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.04545,-60.76985,2013-10-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.27352,-59.31863,2013-10-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.21603,-59.81023,2013-10-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21531,-59.53484,2013-10-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.42455,-60.07049,2013-10-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.30769,-60.1775,2013-10-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.39424,-60.18328,2013-10-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17441,-60.09849,2013-10-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.79074,-59.22594,2013-11-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19575,-58.91274,2013-11-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.20146,-59.74714,2013-11-07
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.57643,-60.24661,2013-11-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.65129,-59.9481,2013-11-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.67818,-59.89509,2013-11-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.84472,-59.86472,2013-11-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.83874,-59.79608,2013-11-15
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.91054,-60.3781,2013-11-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17621,-60.06511,2013-11-16
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.08042,-60.0144,2013-11-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.84204,-59.61594,2013-11-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.71613,-60.0645,2013-12-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.56902,-60.65307,2013-12-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.96166,-61.35688,2013-12-17
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.30541,-59.26823,2013-12-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.16325,-60.82964,2014-01-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.10776,-60.23698,2014-01-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.90278,-59.52201,2014-01-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.134,-60.01131,2014-01-31
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.00047,-60.00093,2014-02-06
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.17245,-59.16394,2014-02-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.3403,-60.50931,2014-02-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.27304,-60.76699,2014-02-20
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.92512,-60.47779,2014-02-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.23777,-59.88389,2014-02-24
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.64508,-59.87466,2014-02-24
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.56204,-59.52675,2014-03-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.89959,-59.54522,2014-03-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.57193,-59.05198,2014-04-02
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.63043,-59.85199,2014-04-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.99919,-59.83109,2014-04-05
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.59462,-60.06237,2014-04-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.60168,-59.08262,2014-04-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.75316,-59.78209,2014-04-22
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.33359,-60.0055,2014-04-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.9081,-60.65497,2014-04-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.26959,-59.89101,2014-05-01
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.98071,-59.50837,2014-05-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.32597,-60.97524,2014-05-13
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.33475,-60.07481,2014-05-18
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.99966,-59.42969,2014-05-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.10415,-60.02188,2014-05-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.67344,-60.43956,2014-05-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.92504,-60.09517,2014-05-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.68615,-59.60006,2014-05-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.60438,-60.98725,2014-05-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24027,-59.97619,2014-06-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.90261,-59.83254,2014-06-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.37418,-60.90349,2014-06-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.31962,-58.94298,2014-06-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.0494,-59.82844,2014-06-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.1008,-60.0491,2014-06-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.87761,-60.19516,2014-06-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.41056,-59.538,2014-06-15
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.4173,-59.62628,2014-06-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.75034,-59.62336,2014-06-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.31241,-60.34038,2014-06-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.93576,-60.59578,2014-06-30
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.22899,-59.57334,2014-07-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.07717,-59.432,2014-07-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.82603,-60.28156,2014-07-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.1412,-59.95246,2014-07-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.00009,-60.1249,2014-07-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.41571,-60.01809,2014-08-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.82187,-59.38292,2014-08-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24475,-60.69801,2014-08-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.59649,-61.2696,2014-08-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.65129,-59.70229,2014-08-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.84996,-60.24118,2014-08-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.16826,-60.65951,2014-08-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.63866,-59.67251,2014-09-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.66904,-60.85839,2014-09-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.51693,-60.56907,2014-09-06
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.94656,-60.03824,2014-09-07
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.28109,-60.87182,2014-09-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.43893,-59.27178,2014-09-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12877,-60.73118,2014-09-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.28723,-60.77555,2014-09-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94847,-60.72534,2014-09-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.68151,-59.74313,2014-09-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.46606,-59.50168,2014-10-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.83777,-59.81163,2014-10-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.31726,-59.62341,2014-10-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.34451,-60.39999,2014-10-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.00285,-60.02514,2014-10-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.02583,-60.37897,2014-10-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17024,-60.28989,2014-10-18
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.84471,-60.89301,2014-10-18
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.67123,-60.25947,2014-10-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.13581,-60.39132,2014-10-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.82373,-58.83269,2014-10-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.32613,-60.14549,2014-10-27
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.54837,-59.7339,2014-10-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.07045,-61.34986,2014-11-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.04046,-59.40269,2014-11-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.89848,-60.01022,2014-12-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.23946,-59.88266,2014-12-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.94505,-59.913,2014-12-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.73475,-59.27379,2014-12-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.33296,-60.27659,2015-01-07
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.08261,-59.70819,2015-01-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.04347,-60.64192,2015-01-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.38823,-60.28484,2015-01-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.28395,-60.72465,2015-01-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.03164,-59.84686,2015-02-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.89946,-59.92818,2015-02-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.5328,-59.85638,2015-02-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.3378,-60.26474,2015-02-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.13142,-60.94194,2015-02-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.79117,-59.74406,2015-02-24
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.15608,-59.85544,2015-02-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.55011,-60.1408,2015-03-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.95423,-59.68139,2015-03-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.27085,-59.6972,2015-03-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.81433,-60.36818,2015-03-31
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.63302,-58.92534,2015-04-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.29212,-59.7593,2015-04-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.51879,-59.35882,2015-04-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.94331,-59.57357,2015-04-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.97257,-59.93039,2015-04-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.03922,-60.65849,2015-04-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.05026,-60.40763,2015-04-28
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.95624,-59.56314,2015-05-04
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.1281,-59.56722,2015-05-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.22897,-59.57375,2015-05-16
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.25649,-59.98322,2015-05-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.99558,-59.56963,2015-05-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.22717,-59.45474,2015-05-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11574,-60.02437,2015-05-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.39901,-60.18806,2015-05-30
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.12589,-60.06787,2015-06-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.2159,-59.04539,2015-06-03
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.89581,-58.96715,2015-06-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.9218,-60.11173,2015-06-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.34829,-59.97011,2015-06-12
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.78803,-60.44727,2015-06-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05539,-60.02652,2015-06-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.63503,-60.12764,2015-06-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.23613,-59.9917,2015-06-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.79657,-59.2454,2015-06-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.95283,-59.39561,2015-07-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10437,-59.99479,2015-07-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.55801,-60.01174,2015-07-27
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-4.00321,-59.26776,2015-07-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.14003,-60.06998,2015-08-01
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.24651,-60.49629,2015-08-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.1208,-59.96191,2015-08-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10837,-60.07588,2015-08-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.69875,-60.68047,2015-08-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.86001,-60.80125,2015-08-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.65496,-60.90847,2015-08-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.13632,-60.07635,2015-08-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.31606,-60.82513,2015-08-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.38454,-59.11808,2015-08-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.29213,-60.36584,2015-08-28
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.3602,-60.01827,2015-08-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.0784,-60.32002,2015-09-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.78265,-60.11818,2015-09-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.03299,-60.23432,2015-09-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.81604,-60.20784,2015-09-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06822,-60.1389,2015-09-17
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.15557,-60.03187,2015-09-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.6428,-59.85979,2015-09-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.34805,-59.53783,2015-09-29
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.28854,-59.6367,2015-10-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.28991,-60.24342,2015-10-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.0889,-60.21014,2015-10-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.37777,-59.56487,2015-10-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.71715,-59.34291,2015-10-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.23706,-60.42116,2015-10-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.17312,-60.80374,2015-10-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.02863,-60.04744,2015-10-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.1213,-60.68346,2015-10-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.23407,-60.05157,2015-10-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.00567,-60.27658,2015-11-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.92943,-58.93309,2015-11-09
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.32294,-60.15693,2015-11-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.34124,-60.70077,2015-11-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.25095,-61.31681,2015-11-25
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.88446,-59.51423,2015-12-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.03245,-59.95356,2015-12-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24697,-60.68881,2015-12-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.31913,-59.15981,2015-12-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.03618,-60.12668,2015-12-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.80016,-60.16894,2015-12-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.08814,-59.49465,2016-01-01
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.06897,-60.12998,2016-01-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.42727,-60.42289,2016-01-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.34212,-59.56363,2016-01-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.26336,-59.73221,2016-01-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.34561,-59.90579,2016-01-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.93039,-60.05132,2016-01-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.73436,-59.17147,2016-02-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.44835,-59.35308,2016-02-10
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.74183,-59.16001,2016-02-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.37045,-58.96166,2016-02-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.82326,-59.63559,2016-02-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.38194,-59.80953,2016-03-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.1744,-60.82906,2016-03-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.99352,-60.19046,2016-03-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.15705,-59.75828,2016-03-31
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05931,-60.12991,2016-04-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.90485,-60.12124,2016-04-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.99489,-59.94876,2016-04-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.72677,-59.42709,2016-04-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.54998,-59.78809,2016-05-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.83445,-60.76244,2016-05-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.03931,-59.97532,2016-05-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.29605,-59.37377,2016-05-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.73141,-61.0779,2016-06-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.72176,-60.51088,2016-06-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.15156,-60.37308,2016-06-12
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.99075,-59.4004,2016-06-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21415,-60.05148,2016-06-30
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.26033,-60.2795,2016-07-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.01858,-59.11915,2016-07-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.09424,-59.90124,2016-07-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.1023,-60.49934,2016-07-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.16728,-60.12159,2016-07-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.07945,-60.03132,2016-07-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.79125,-60.01895,2016-07-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.233,-59.11858,2016-07-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.35077,-59.67199,2016-07-26
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.69727,-59.27531,2016-08-01
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.2159,-59.29433,2016-08-06
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.89131,-60.67295,2016-08-07
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.88807,-60.15851,2016-08-08
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.98698,-60.03085,2016-08-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.49761,-59.14038,2016-08-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.65511,-60.71918,2016-08-13
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.26329,-60.49183,2016-08-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.91328,-60.17483,2016-08-27
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.9947,-59.62226,2016-09-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.87312,-59.03461,2016-09-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.23589,-60.12712,2016-09-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.08094,-60.25755,2016-09-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.52277,-59.35957,2016-09-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06207,-60.02065,2016-09-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.17632,-60.60395,2016-09-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.17402,-59.97622,2016-09-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.0466,-60.16167,2016-09-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.00488,-60.88221,2016-09-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.11221,-60.11621,2016-09-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.54019,-59.54283,2016-09-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.69602,-60.22855,2016-09-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.53505,-59.44245,2016-09-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.7604,-59.43198,2016-10-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.00864,-60.23076,2016-10-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.85252,-59.66783,2016-10-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.10075,-60.14444,2016-10-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.10164,-59.7401,2016-10-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.40279,-59.50087,2016-10-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.3567,-60.21475,2016-10-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.92201,-59.65079,2016-10-28
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.3711,-60.63975,2016-10-30
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.0602,-60.06686,2016-11-11
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.0488,-59.17209,2016-11-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.75411,-59.36942,2016-11-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21344,-60.02672,2016-11-28
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.85006,-58.99131,2016-11-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.92,-60.77609,2016-11-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.02554,-60.31479,2016-11-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.50153,-61.18627,2016-11-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.60728,-60.53818,2016-12-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.19353,-60.12767,2016-12-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06765,-60.59462,2016-12-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.41526,-60.14362,2016-12-31
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06823,-59.83098,2017-01-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.10043,-60.60057,2017-01-16
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-4.22736,-60.46727,2017-01-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.61137,-59.96287,2017-01-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.0193,-59.37465,2017-02-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.57382,-60.13093,2017-03-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.76537,-59.24154,2017-03-04
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.96767,-59.34209,2017-03-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.60675,-59.8695,2017-03-24
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.83398,-59.56842,2017-03-25
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.23971,-60.04089,2017-03-29
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.26267,-60.12312,2017-03-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.10887,-61.20658,2017-04-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.00615,-59.96763,2017-05-06
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.36497,-60.54779,2017-05-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.61634,-59.67337,2017-05-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.72395,-60.00932,2017-05-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.07466,-59.8316,2017-05-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.36925,-61.01937,2017-05-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.14733,-59.17265,2017-05-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.86593,-59.91203,2017-05-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.06338,-59.52301,2017-05-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.51308,-60.64319,2017-05-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.89812,-59.94973,2017-06-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.04881,-59.21631,2017-06-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.07056,-60.70539,2017-06-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.45124,-59.73021,2017-06-13
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.03542,-59.61108,2017-06-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.07032,-60.10615,2017-06-17
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.73826,-60.19563,2017-06-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.24677,-60.2439,2017-06-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.70437,-59.69622,2017-06-20
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.0047,-60.23867,2017-06-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.20098,-59.95335,2017-06-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.9707,-60.45313,2017-06-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.94904,-60.19836,2017-06-28
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.31915,-59.63836,2017-07-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.02159,-60.13672,2017-07-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.45287,-59.95366,2017-07-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.12292,-59.81739,2017-07-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.50665,-60.60912,2017-07-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.48071,-60.07175,2017-07-16
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.32796,-59.96964,2017-07-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.01913,-59.72179,2017-07-18
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.55365,-59.01246,2017-07-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.38355,-60.95349,2017-07-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.88917,-59.36698,2017-07-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.08724,-60.12036,2017-07-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.20864,-59.42196,2017-07-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.27638,-60.83277,2017-07-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.72775,-59.61328,2017-08-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.18314,-60.124,2017-08-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.36263,-59.64786,2017-08-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.50963,-61.27104,2017-08-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.50322,-59.43925,2017-08-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.20469,-59.1318,2017-08-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.04336,-60.13802,2017-08-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.40061,-59.78463,2017-09-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.03034,-59.13546,2017-09-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.75031,-60.03819,2017-09-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.39027,-59.77474,2017-09-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.79191,-59.98508,2017-09-06
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.54638,-60.10151,2017-09-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.36448,-61.07298,2017-09-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.88348,-59.63845,2017-09-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.38931,-60.29269,2017-09-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.61333,-59.74544,2017-09-28
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.11706,-60.76229,2017-09-30
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.60927,-59.95584,2017-10-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.4612,-60.97787,2017-10-05
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.76099,-59.80369,2017-10-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.03366,-60.27592,2017-10-25
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.67026,-59.56808,2017-10-27
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.73182,-60.06669,2017-11-10
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-1.92984,-59.9835,2017-11-14
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.60185,-59.73937,2017-11-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.20434,-60.25184,2017-11-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.48325,-59.94322,2017-11-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.93732,-60.05612,2017-11-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.84262,-61.09503,2017-11-30
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.35843,-60.20127,2017-12-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12781,-60.66823,2017-12-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.99354,-59.87317,2017-12-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12401,-60.48106,2017-12-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.74714,-60.4599,2017-12-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.03539,-60.4963,2018-01-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.12685,-60.85966,2018-01-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.7138,-59.65556,2018-01-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.96351,-60.70303,2018-01-25
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.32756,-60.50901,2018-01-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.07953,-59.24366,2018-01-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.66696,-59.45973,2018-02-04
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.00871,-58.89625,2018-02-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.4674,-60.30605,2018-02-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.14774,-59.29218,2018-02-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.07614,-60.74591,2018-02-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.43159,-60.37542,2018-02-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.97579,-60.00163,2018-02-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.94348,-60.23671,2018-02-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.64109,-59.57159,2018-02-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.99162,-60.09863,2018-03-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.13477,-59.99469,2018-04-01
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.48603,-60.06152,2018-04-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.01223,-59.7906,2018-04-14
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.89568,-59.3908,2018-04-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.88743,-60.90034,2018-05-01
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.07782,-60.04011,2018-05-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.84154,-60.69859,2018-05-05
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.73127,-59.88861,2018-05-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.1147,-60.05149,2018-05-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.82982,-59.43986,2018-05-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.35995,-60.37265,2018-05-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.25107,-60.76615,2018-06-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.11886,-60.45694,2018-06-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.52721,-60.67816,2018-06-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.1313,-59.79836,2018-06-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.74392,-60.65183,2018-06-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.6053,-60.26255,2018-06-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.92617,-60.75908,2018-07-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.54949,-60.15241,2018-07-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.92352,-59.72408,2018-07-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.99395,-61.00221,2018-07-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.03549,-59.83031,2018-07-14
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.85169,-59.43248,2018-07-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.04182,-60.12608,2018-07-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.03006,-59.61159,2018-07-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.81736,-60.30196,2018-08-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.30224,-60.88127,2018-08-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.00592,-59.73993,2018-08-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.64712,-59.83127,2018-08-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.83662,-60.30406,2018-08-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05332,-60.05151,2018-08-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.65831,-60.94511,2018-08-22
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.23863,-59.52109,2018-08-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.63706,-59.87998,2018-08-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.16898,-59.05891,2018-08-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.60117,-60.70533,2018-09-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.05427,-59.861,2018-09-03
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.4822,-60.33109,2018-09-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.71986,-59.53414,2018-09-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.16283,-59.40561,2018-09-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.85793,-60.36897,2018-09-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.61799,-60.69602,2018-09-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.76583,-60.27444,2018-10-02
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.37181,-60.15416,2018-10-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.4197,-60.34645,2018-10-16
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.95829,-59.97901,2018-10-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.89793,-60.24348,2018-10-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.60318,-59.99299,2018-10-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.96096,-60.69201,2018-10-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.28598,-60.39722,2018-11-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.36169,-60.0326,2018-11-01
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.86517,-59.84482,2018-11-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.68829,-60.13606,2018-11-02
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.39914,-58.90184,2018-11-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.57817,-60.16478,2018-11-17
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.57111,-59.19269,2018-11-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.28345,-60.55377,2018-11-27
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.65054,-59.66572,2018-12-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11719,-60.03241,2018-12-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11145,-60.64777,2018-12-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.28995,-61.23456,2018-12-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.13035,-60.34384,2018-12-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.37349,-59.35742,2018-12-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24552,-61.00765,2018-12-27
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.44448,-61.10274,2019-01-11
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.56214,-61.13075,2019-01-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.45953,-60.47549,2019-01-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.60977,-59.66775,2019-01-21
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.77328,-58.87948,2019-01-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.36534,-61.16351,2019-02-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.88155,-59.82152,2019-03-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.12239,-59.77808,2019-03-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.55218,-60.32789,2019-03-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.23596,-59.09827,2019-03-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.58289,-60.28095,2019-03-24
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-1.93756,-60.02528,2019-03-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.66366,-59.95242,2019-04-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.67049,-59.23271,2019-04-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.3586,-60.6149,2019-04-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21598,-59.67816,2019-04-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.36603,-60.05244,2019-04-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.67112,-60.09245,2019-04-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.60847,-60.13611,2019-04-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.55069,-61.08343,2019-05-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.3141,-60.1687,2019-05-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.0007,-60.5734,2019-05-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10449,-60.07161,2019-05-25
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.15269,-60.15727,2019-05-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.19764,-59.67487,2019-06-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.54687,-61.00191,2019-06-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.046,-61.30812,2019-06-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.88308,-59.90539,2019-06-18
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.38235,-58.86655,2019-07-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.03125,-59.65332,2019-07-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.3902,-60.20644,2019-07-08
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.84381,-60.23619,2019-07-09
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.93413,-59.77129,2019-07-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.9131,-60.02291,2019-07-22
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.00365,-60.6807,2019-07-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24873,-61.07021,2019-07-31
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.4074,-59.96502,2019-08-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.52924,-60.07439,2019-08-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.23774,-60.56599,2019-08-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.15313,-60.02318,2019-08-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.51867,-60.43423,2019-08-14
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.1098,-59.17259,2019-08-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.06361,-59.76974,2019-08-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.33528,-59.41299,2019-08-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.1116,-60.06214,2019-08-27
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.21756,-60.19913,2019-08-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.26208,-60.20779,2019-09-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.85234,-60.45298,2019-09-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.76266,-59.91621,2019-09-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94599,-60.50908,2019-09-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.35632,-60.10832,2019-09-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.11593,-60.07812,2019-09-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.34241,-60.19478,2019-10-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.58392,-59.07647,2019-10-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.32806,-60.05926,2019-10-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.97291,-59.84518,2019-10-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.15165,-60.52453,2019-10-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.08957,-59.98629,2019-10-24
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.27139,-59.21348,2019-10-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.51417,-59.84292,2019-10-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.73167,-59.66385,2019-11-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12755,-60.08645,2019-11-10
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.17194,-61.04397,2019-11-12
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.65561,-59.82309,2019-11-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.45798,-60.82232,2019-11-17
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.39421,-60.4116,2019-11-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.36691,-59.69206,2019-11-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.85198,-60.61495,2019-12-01
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.71019,-60.89924,2019-12-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.88937,-59.50802,2019-12-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.98309,-59.11093,2019-12-08
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.09881,-60.06111,2019-12-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.51991,-59.23709,2019-12-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.1482,-60.93332,2019-12-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.10012,-60.02757,2019-12-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.17101,-60.01468,2019-12-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.18479,-60.06141,2019-12-25
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.45898,-59.34743,2019-12-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.29686,-59.09329,2020-01-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.59051,-60.85016,2020-01-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.51715,-60.06372,2020-01-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.06283,-59.89909,2020-01-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.97729,-60.12663,2020-01-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.27759,-59.92594,2020-01-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24491,-60.69724,2020-01-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.22228,-60.16156,2020-02-01
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.21883,-60.35273,2020-02-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.41567,-59.87364,2020-02-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.8272,-60.00916,2020-02-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.42107,-60.00202,2020-03-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.10906,-60.79063,2020-03-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.54064,-60.51099,2020-03-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.11655,-60.00978,2020-03-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.14393,-59.86933,2020-04-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.30252,-59.66463,2020-04-17
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.34633,-60.93652,2020-04-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24494,-59.81064,2020-04-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.5681,-59.60121,2020-05-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.11216,-60.00187,2020-05-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.14684,-60.04346,2020-05-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.45153,-61.19015,2020-05-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.16778,-59.26489,2020-05-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.84728,-60.42982,2020-05-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10705,-59.95521,2020-05-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.86418,-59.66779,2020-06-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.38985,-60.91281,2020-06-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.26607,-60.48258,2020-06-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.48969,-59.39994,2020-06-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.73569,-59.74619,2020-07-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.39425,-60.19901,2020-07-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.02095,-60.04035,2020-07-13
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.24234,-60.34689,2020-07-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10974,-60.00792,2020-07-17
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.03654,-60.10023,2020-07-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.82742,-59.49615,2020-07-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.32983,-60.03859,2020-08-02
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.10551,-60.03529,2020-08-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.63919,-59.76788,2020-08-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.86518,-60.47426,2020-08-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.80704,-60.3058,2020-08-12
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.1415,-60.1404,2020-08-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.14643,-59.45226,2020-08-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.5273,-59.94707,2020-08-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.0015,-60.9409,2020-08-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.6745,-60.34278,2020-08-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.95404,-58.72786,2020-08-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.08439,-60.65647,2020-08-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.90164,-59.37066,2020-08-31
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.04091,-59.87048,2020-09-03
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.36757,-61.23019,2020-09-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.8603,-60.93846,2020-09-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.43837,-59.93724,2020-09-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.09768,-59.49975,2020-09-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.19551,-59.85432,2020-09-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.97486,-60.42755,2020-09-25
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.10789,-60.04788,2020-10-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.53341,-59.97338,2020-10-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.00359,-59.04914,2020-10-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.35046,-59.41152,2020-10-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.99059,-60.66772,2020-10-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.95438,-60.49716,2020-10-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.04746,-59.11609,2020-10-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.41448,-59.54731,2020-10-25
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.6033,-60.27424,2020-10-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.54455,-60.23725,2020-11-02
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.9251,-58.95476,2020-11-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.69389,-60.66937,2020-11-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.03456,-60.83796,2020-11-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.6566,-60.1582,2020-11-12
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.23129,-60.41775,2020-11-19
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.65363,-60.2256,2020-11-22
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.89952,-61.2104,2020-12-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.78541,-60.34831,2020-12-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.03196,-58.94939,2020-12-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.97478,-60.11193,2020-12-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.07845,-59.23883,2020-12-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.51501,-60.10256,2020-12-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.1507,-60.20611,2020-12-24
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.92446,-59.27457,2020-12-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.3915,-59.60104,2020-12-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.13186,-60.07035,2021-01-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.0466,-59.44005,2021-02-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.80849,-60.33244,2021-02-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94433,-60.13748,2021-02-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.87663,-60.11143,2021-02-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.42761,-59.87833,2021-03-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.32053,-60.39269,2021-03-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.79051,-60.91779,2021-03-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.45228,-58.96628,2021-03-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.01935,-60.33178,2021-03-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.32164,-59.45294,2021-04-17
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.95434,-59.92774,2021-04-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.91771,-60.12981,2021-05-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.38423,-60.22972,2021-05-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.49137,-59.55556,2021-05-11
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.67243,-59.9684,2021-05-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.26618,-60.39448,2021-05-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.33877,-60.43413,2021-05-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.02643,-59.11371,2021-05-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.02799,-59.23549,2021-05-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.69518,-59.24709,2021-05-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.64359,-59.14316,2021-05-22
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.26744,-60.94654,2021-05-25
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.39896,-59.65411,2021-05-29
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.20401,-59.95641,2021-06-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11777,-60.03672,2021-06-11
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.16987,-60.01715,2021-06-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.80104,-60.9125,2021-06-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.05411,-59.93483,2021-07-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.49248,-59.82162,2021-07-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.32047,-59.77086,2021-07-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.07995,-61.24428,2021-07-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.41394,-60.69256,2021-07-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.15443,-60.21183,2021-07-25
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.5149,-59.98346,2021-07-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.33802,-60.3057,2021-08-02
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.51828,-59.21686,2021-08-02
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.2852,-59.49073,2021-08-05
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.57063,-60.56344,2021-08-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.3477,-59.65723,2021-08-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.15398,-59.69953,2021-08-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.80017,-60.49356,2021-08-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.62154,-59.93653,2021-08-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.60679,-59.3317,2021-08-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.01259,-60.03184,2021-08-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.34777,-60.05775,2021-08-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.60218,-60.27704,2021-08-30
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.59042,-59.09806,2021-08-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.16638,-60.68641,2021-09-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.42078,-60.48553,2021-09-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.9542,-60.0648,2021-09-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.97877,-60.36875,2021-09-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.62162,-60.4311,2021-09-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.12004,-59.32542,2021-09-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.17275,-60.41861,2021-09-25
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.73171,-60.10717,2021-10-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.10352,-60.49598,2021-10-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.04811,-59.79493,2021-10-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.7128,-60.01003,2021-10-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.92071,-59.40029,2021-11-09
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.20878,-60.58756,2021-11-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.14894,-60.00467,2021-11-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.19733,-60.19639,2021-11-13
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.86519,-59.67469,2021-11-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.17958,-59.92873,2021-11-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.8081,-61.03768,2021-11-20
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.65536,-60.94754,2021-11-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.20377,-59.26639,2021-12-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.54298,-60.63129,2021-12-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.5894,-59.35758,2021-12-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.41808,-60.50425,2021-12-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05451,-60.17888,2021-12-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.07587,-58.73432,2021-12-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.16934,-60.41174,2022-01-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.99552,-61.01403,2022-01-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.25075,-59.79179,2022-01-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.63494,-59.93977,2022-01-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.77992,-59.48218,2022-01-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.21381,-59.8634,2022-01-30
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.5577,-60.64494,2022-02-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94244,-59.84601,2022-02-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.17784,-60.03631,2022-02-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.40289,-58.9755,2022-02-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.20772,-59.45787,2022-02-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.25193,-60.33816,2022-03-04
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.92433,-59.3487,2022-03-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.84384,-60.73289,2022-03-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.71165,-60.47535,2022-04-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.57675,-59.20109,2022-04-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.89735,-59.76163,2022-04-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.16821,-59.95362,2022-04-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.0935,-59.94035,2022-04-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.83768,-60.10853,2022-05-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.23112,-60.40316,2022-05-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94634,-59.97002,2022-05-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.92022,-59.96647,2022-05-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.13425,-59.75789,2022-05-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.01007,-59.96483,2022-05-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.24138,-61.03284,2022-05-24
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.61945,-59.59045,2022-05-25
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.93621,-58.78942,2022-05-28
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.90736,-59.43872,2022-05-30
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.71381,-60.12842,2022-06-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.74861,-59.6136,2022-06-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.10824,-60.05484,2022-06-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.73239,-60.33416,2022-06-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.56042,-60.65911,2022-06-20
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.27037,-60.54701,2022-06-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.22749,-60.25411,2022-07-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.79585,-60.2264,2022-07-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.94171,-60.58919,2022-07-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.79471,-59.50371,2022-07-14
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.08612,-59.86568,2022-07-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.61113,-58.93062,2022-07-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.63334,-59.94385,2022-07-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.90154,-59.61965,2022-07-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.6749,-60.60526,2022-08-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.99099,-60.23513,2022-08-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.66836,-60.21678,2022-08-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.29022,-60.03474,2022-08-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.0654,-59.75549,2022-08-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.72201,-59.85635,2022-08-11
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.09751,-60.01476,2022-08-17
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.0992,-58.84666,2022-08-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.0671,-59.32698,2022-08-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.26238,-59.65517,2022-08-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.27597,-59.74031,2022-09-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.00032,-60.17997,2022-09-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.56864,-61.20713,2022-09-11
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.79761,-59.55824,2022-09-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.80866,-60.08506,2022-09-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94962,-60.99446,2022-10-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.31357,-60.00143,2022-10-11
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.02533,-59.63146,2022-10-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.21587,-60.1502,2022-10-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.87581,-59.29655,2022-10-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.81035,-60.3434,2022-10-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.86812,-60.19324,2022-10-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.22863,-59.99028,2022-11-03
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.55253,-59.21096,2022-11-04
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.32463,-60.04912,2022-11-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.08079,-59.33104,2022-11-09
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.38435,-60.34802,2022-11-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.73837,-59.25045,2022-11-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.05649,-59.90982,2022-11-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.95305,-59.57792,2022-11-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.12215,-60.06104,2022-11-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.60255,-59.53034,2022-12-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.02613,-60.16932,2022-12-22
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.99589,-60.33622,2022-12-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.04035,-59.16661,2023-01-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.78672,-60.06503,2023-01-09
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.73558,-59.57116,2023-01-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.12147,-60.58302,2023-01-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.41446,-59.62772,2023-02-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.3363,-59.99471,2023-02-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.76494,-60.14027,2023-03-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10288,-60.15477,2023-03-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.81167,-59.83194,2023-03-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17648,-60.00975,2023-03-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.30489,-60.05289,2023-03-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.05088,-60.40593,2023-03-31
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.0103,-59.7836,2023-04-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.12689,-60.24121,2023-05-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.79697,-59.71203,2023-05-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.20739,-60.037,2023-05-15
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.82431,-60.39675,2023-05-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.71402,-60.80735,2023-05-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.61789,-59.66366,2023-05-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.67283,-60.76648,2023-06-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.41364,-60.1152,2023-06-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.11656,-59.85079,2023-06-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.33294,-59.4774,2023-06-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.51903,-60.72527,2023-06-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.90337,-59.15722,2023-06-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.14344,-59.60068,2023-06-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.4671,-60.30698,2023-06-16
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.10354,-60.09923,2023-06-18
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.47369,-59.33647,2023-06-20
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.46879,-60.03759,2023-06-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-4.41791,-60.31111,2023-07-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.55416,-60.49334,2023-07-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.80022,-60.11013,2023-07-13
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.53636,-60.03676,2023-07-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.09181,-60.0112,2023-08-02
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.20088,-59.53214,2023-08-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.4384,-60.6826,2023-08-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.24201,-59.76198,2023-08-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.33547,-60.01299,2023-08-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.11051,-60.70644,2023-08-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.38696,-61.26629,2023-08-16
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.18132,-59.98024,2023-08-21
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.78162,-59.88029,2023-09-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.03146,-60.07838,2023-09-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.00563,-59.49147,2023-09-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.87119,-60.51586,2023-09-07
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.24118,-59.87256,2023-09-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.04965,-60.26762,2023-09-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.12924,-59.94432,2023-09-18
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.09601,-59.58994,2023-09-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.81956,-59.6805,2023-09-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.2673,-60.14735,2023-09-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.88159,-59.70316,2023-09-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.82705,-59.5029,2023-09-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.13468,-59.3923,2023-10-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.32933,-60.5025,2023-10-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.59896,-60.31989,2023-10-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.88486,-59.74406,2023-10-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.0881,-59.97309,2023-10-12
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.73532,-59.72909,2023-10-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.19336,-60.49077,2023-10-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12078,-59.99939,2023-10-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.94152,-60.07333,2023-10-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.96779,-60.12816,2023-10-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.02189,-60.37412,2023-10-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.09043,-59.84884,2023-11-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.95958,-59.55162,2023-11-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.62678,-59.891,2023-11-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.40781,-59.48862,2023-11-22
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.98201,-59.9647,2023-11-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.17509,-59.61803,2023-11-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.15598,-60.72276,2023-11-27
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.23437,-59.71946,2023-11-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.40942,-60.16808,2023-11-29
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.58168,-60.33365,2023-12-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.84649,-60.68177,2023-12-07
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-4.09201,-59.45855,2023-12-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.09884,-60.03025,2023-12-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.29513,-59.6641,2023-12-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.02967,-59.81271,2024-01-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.6492,-59.20435,2024-01-11
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.521,-59.64053,2024-01-13
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.41359,-59.80514,2024-02-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.32307,-60.08282,2024-02-05
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.69812,-60.00749,2024-02-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.80628,-59.41722,2024-02-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.39436,-60.41731,2024-03-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.05394,-60.47361,2024-03-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11202,-60.03878,2024-03-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.51778,-59.48002,2024-03-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.99816,-60.26722,2024-03-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.41118,-60.31576,2024-04-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11553,-61.21281,2024-04-06
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.04818,-59.95947,2024-04-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.95782,-60.20274,2024-04-10
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.56313,-59.15385,2024-04-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.06976,-59.92184,2024-04-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05825,-60.27126,2024-05-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.80299,-60.78729,2024-05-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.33492,-59.24786,2024-05-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.26519,-60.07398,2024-05-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.22293,-59.90286,2024-06-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.90666,-59.80928,2024-06-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.31959,-58.78814,2024-06-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.98939,-59.998,2024-06-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.0696,-59.95817,2024-06-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10271,-60.24444,2024-06-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.1168,-60.24588,2024-06-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.45242,-59.55382,2024-07-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.31501,-59.68382,2024-07-03
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.23128,-59.80637,2024-07-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.6901,-60.03525,2024-07-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.83982,-58.73259,2024-07-08
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.45457,-59.45013,2024-07-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.4518,-59.08688,2024-07-09
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.99432,-59.51756,2024-07-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.38523,-60.55194,2024-07-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.44509,-59.77842,2024-07-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.13285,-59.99736,2024-07-16
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.12068,-60.27745,2024-07-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.60337,-59.64754,2024-07-18
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.18555,-59.86103,2024-07-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.08634,-59.75567,2024-07-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.11189,-59.49164,2024-07-31
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.37911,-60.321,2024-08-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.56963,-59.83475,2024-08-04
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.24298,-59.81332,2024-08-05
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.59991,-60.09424,2024-08-10
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.14323,-60.68281,2024-08-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.78768,-59.78378,2024-08-14
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.87541,-60.31624,2024-08-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.49382,-60.05393,2024-08-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.02611,-59.01838,2024-08-16
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.90142,-59.87018,2024-08-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.85256,-59.8505,2024-08-20
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.89828,-59.44034,2024-08-22
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.4439,-60.19233,2024-08-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.07617,-59.696,2024-08-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.91906,-60.32274,2024-09-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.76538,-61.10109,2024-09-09
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.67629,-61.07076,2024-09-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21089,-60.1777,2024-09-22
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.89388,-59.36395,2024-09-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.06423,-60.40913,2024-09-27
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.39824,-58.77261,2024-09-29
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-4.06175,-59.90386,2024-09-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.2073,-59.14711,2024-10-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.04691,-59.088,2024-10-08
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.73931,-60.43527,2024-10-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.30767,-59.75066,2024-10-29
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.06573,-59.53087,2024-10-31
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.06367,-60.12535,2024-10-31
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.3134,-60.11128,2024-11-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-1.92159,-60.44383,2024-11-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.16662,-59.66398,2024-12-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.67481,-60.34601,2024-12-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.30668,-59.37205,2024-12-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.84855,-59.8963,2024-12-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.39827,-59.17431,2025-01-07
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.1345,-60.54473,2025-01-16
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.83426,-60.03402,2025-01-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.14251,-59.99893,2025-01-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.45715,-59.87766,2025-01-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.3804,-60.21795,2025-01-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.58586,-60.75034,2025-02-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.75762,-59.78088,2025-02-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.25734,-60.70859,2025-03-04
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.65368,-60.29511,2025-03-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.9022,-59.25115,2025-03-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.42785,-60.16741,2025-03-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.64452,-60.1453,2025-03-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.50029,-59.08924,2025-04-01
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.23489,-59.59872,2025-04-05
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.74652,-60.17319,2025-04-22
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.09387,-60.00496,2025-05-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05171,-60.11078,2025-05-13
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.99809,-59.60173,2025-05-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.98497,-60.20878,2025-05-20
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.1453,-60.04213,2025-05-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.38677,-60.12958,2025-05-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.10479,-59.39244,2025-05-29
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.06274,-59.57475,2025-06-04
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.64418,-59.6299,2025-06-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06489,-58.84939,2025-06-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.74387,-59.89794,2025-06-17
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.84454,-59.65088,2025-06-17
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.22207,-58.97711,2025-06-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.6576,-60.0971,2025-07-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.09629,-60.28971,2025-07-06
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.9037,-60.13715,2025-07-11
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.4188,-59.51788,2025-07-15
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.22507,-60.68074,2025-07-18
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.21371,-59.45632,2025-07-21
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.58685,-60.98365,2025-07-22
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.25032,-59.79271,2025-07-25
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.38836,-60.04443,2025-07-31
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11842,-60.2696,2025-08-07
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.02339,-60.40805,2025-08-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.17715,-60.05161,2025-08-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.86523,-59.32628,2025-08-13
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.50957,-59.75001,2025-08-16
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.82617,-60.28052,2025-08-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.60062,-58.8675,2025-09-06
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.06406,-59.90407,2025-09-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.77934,-59.07164,2025-09-23
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.09417,-60.02066,2025-09-23
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.63251,-60.65621,2025-09-29
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.70097,-59.75633,2025-10-01
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.64124,-58.76382,2025-10-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.51902,-59.67065,2025-10-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.12856,-60.17885,2025-10-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-4.05795,-59.51214,2025-10-20
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.30692,-59.20271,2025-10-20
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.02388,-60.34662,2025-10-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.12001,-60.45959,2025-10-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.87805,-60.76844,2025-10-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.83581,-59.92322,2025-10-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.03256,-60.04197,2025-11-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.57412,-59.6303,2025-11-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.95862,-60.83842,2025-11-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.38928,-60.0603,2025-11-18
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.10021,-60.36051,2025-11-21
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.68063,-58.90832,2025-11-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.2685,-60.95245,2025-11-27
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.38043,-59.71862,2025-11-30
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.5731,-58.97175,2025-12-05
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.54491,-59.17799,2025-12-11
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.0444,-60.06591,2025-12-12
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.11495,-60.47379,2025-12-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.48846,-60.09732,2025-12-18
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.29572,-59.92562,2025-12-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.73425,-59.83774,2026-01-07
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.38334,-59.84933,2026-01-08
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.25841,-59.94045,2026-01-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.84197,-59.73844,2026-01-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.25345,-59.5253,2026-01-27
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.80631,-60.273,2026-02-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.56272,-59.04937,2026-02-12
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.9128,-59.44131,2026-02-18
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-2.78057,-59.56277,2026-02-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.7126,-60.51054,2026-03-10
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.87307,-59.49864,2026-03-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05105,-60.02319,2026-03-13
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.1864,-59.81961,2026-03-15
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.53329,-59.68076,2026-03-15
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.71126,-60.00162,2026-03-19
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-3.87779,-59.67819,2026-03-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.9189,-59.5486,2026-03-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.79165,-60.28731,2026-03-26
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-4.30942,-59.90763,2026-04-01
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.07391,-60.1749,2026-04-01
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.08159,-60.24569,2026-04-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05878,-60.05017,2026-04-09
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.37312,-60.82243,2026-04-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.68422,-60.22371,2026-04-19
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.00099,-60.59755,2026-04-24
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.69762,-60.69194,2026-04-26
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.83894,-60.24447,2026-05-05
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.10377,-60.02437,2026-05-25
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.70889,-60.62015,2026-05-25
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.49374,-61.02292,2026-05-28
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.13016,-59.96031,2026-05-28
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.70484,-60.67387,2026-06-01
+Harpia harpyja,Harpy Eagle,Aves,amazon_rainforest,-3.29657,-60.22143,2026-06-08
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-3.97644,-59.44658,2026-06-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.72651,-60.37746,2026-06-17
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.11233,-60.31623,2026-06-21
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-1.77858,-60.11671,2026-06-22
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.91311,-60.14048,2026-06-28
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.93675,-60.27668,2026-06-29
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.98239,-60.05627,2026-07-03
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05846,-60.08604,2026-07-06
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.85897,-59.11897,2026-07-08
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.89907,-61.21557,2026-07-09
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.25904,-59.54076,2026-07-10
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.6249,-59.67159,2026-07-12
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.13713,-60.0021,2026-07-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.73981,-59.042,2026-07-16
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.05823,-59.86145,2026-07-19
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.90898,-60.00876,2026-07-24
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.96731,-60.04246,2026-07-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.80546,-60.44016,2026-08-03
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.94036,-59.8829,2026-08-05
+Panthera onca,Jaguar,Mammalia,amazon_rainforest,-2.25287,-59.62297,2026-08-07
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.96735,-60.07437,2026-08-14
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.00494,-60.44483,2026-08-14
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-1.92891,-60.54993,2026-08-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.36905,-60.1442,2026-08-15
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-3.19323,-59.85984,2026-08-20
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.38968,-59.9546,2026-08-23
+Pteronura brasiliensis,Giant Otter,Mammalia,amazon_rainforest,-2.07397,-59.84031,2026-08-27
+Hydrochoerus hydrochaeris,Capybara,Mammalia,amazon_rainforest,-2.97982,-59.07245,2026-09-02
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-3.93889,-60.64857,2026-09-10
+Ara macao,Scarlet Macaw,Aves,amazon_rainforest,-2.5779,-60.15491,2026-09-16

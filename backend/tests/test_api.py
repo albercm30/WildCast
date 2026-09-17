@@ -181,6 +181,7 @@ class PredictLocationEndpointTests(ApiTestCase):
         # exact bound to use the endpoint at all.
         with (
             patch("app.services.gbif_client.presence_count", return_value=200),
+            patch("app.services.inaturalist_client.presence_count", return_value=0),
             patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
         ):
             resp = self.client.get("/api/predict-location?lat=44.65&lon=-110.45&date=2027-06-15&radius_km=99999")
@@ -199,6 +200,7 @@ class BestWindowLocationEndpointTests(ApiTestCase):
     def test_valid_request(self):
         with (
             patch("app.services.gbif_client.presence_count", return_value=200),
+            patch("app.services.inaturalist_client.presence_count", return_value=0),
             patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
         ):
             resp = self.client.get(
@@ -208,8 +210,18 @@ class BestWindowLocationEndpointTests(ApiTestCase):
         self.assertGreater(len(resp.get_json()["points"]), 0)
 
     def test_species_not_confirmed_nearby_is_404(self):
+        # Both sources must report nothing for this to 404 -- GBIF alone
+        # coming up empty isn't enough, since iNaturalist is an independent
+        # corroboration source (see app.ml.prediction_service._local_evidence_cached)
+        # and could still confirm the species on its own. This test was a
+        # real regression on GitHub's CI runners (which have live internet,
+        # unlike the sandbox this was built in): with only GBIF mocked to 0,
+        # a real live iNaturalist record of a grizzly bear near Yellowstone
+        # (a real, correct sighting -- grizzlies do live there) made the
+        # species pass the presence gate and return 200 instead of 404.
         with (
             patch("app.services.gbif_client.presence_count", return_value=0),
+            patch("app.services.inaturalist_client.presence_count", return_value=0),
             patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
         ):
             resp = self.client.get(
