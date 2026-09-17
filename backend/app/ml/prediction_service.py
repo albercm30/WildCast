@@ -617,33 +617,58 @@ def _local_evidence_cached(
     if cached is not None and now - cached[0] < _PRESENCE_CACHE_TTL_SECONDS:
         return cached[1]
 
-    sources: dict[str, int] = {}
-    try:
-        sources["gbif"] = gbif_client.presence_count(
-            scientific_name, lat, lon, radius_km,
-            timeout=_ANYWHERE_PRESENCE_TIMEOUT_S, plausible_countries=plausible_countries,
-            max_retries=gbif_client.INTERACTIVE_MAX_RETRIES,
-            base_backoff=gbif_client.INTERACTIVE_BASE_BACKOFF,
-            max_backoff=gbif_client.INTERACTIVE_MAX_BACKOFF,
-        )
-    except Exception as exc:
-        log.warning("Live GBIF presence check failed for %s near (%.2f, %.2f): %s", scientific_name, lat, lon, exc)
-        sources["gbif"] = 0
-
-    try:
-        sources["inaturalist"] = inaturalist_client.presence_count(
-            scientific_name, lat, lon, radius_km, timeout=_ANYWHERE_PRESENCE_TIMEOUT_S,
-        )
-    except Exception as exc:
-        log.warning("Live iNaturalist presence check failed for %s near (%.2f, %.2f): %s", scientific_name, lat, lon, exc)
-        sources["inaturalist"] = 0
-
-    if taxon_class == "Aves" and ebird_client.is_configured():
+    def _fetch_gbif() -> int:
         try:
-            sources["ebird"] = ebird_client.presence_count(scientific_name, lat, lon, radius_km)
+            return gbif_client.presence_count(
+                scientific_name, lat, lon, radius_km,
+                timeout=_ANYWHERE_PRESENCE_TIMEOUT_S, plausible_countries=plausible_countries,
+                max_retries=gbif_client.INTERACTIVE_MAX_RETRIES,
+                base_backoff=gbif_client.INTERACTIVE_BASE_BACKOFF,
+                max_backoff=gbif_client.INTERACTIVE_MAX_BACKOFF,
+            )
+        except Exception as exc:
+            log.warning("Live GBIF presence check failed for %s near (%.2f, %.2f): %s", scientific_name, lat, lon, exc)
+            return 0
+
+    def _fetch_inaturalist() -> int:
+        try:
+            return inaturalist_client.presence_count(
+                scientific_name, lat, lon, radius_km, timeout=_ANYWHERE_PRESENCE_TIMEOUT_S,
+            )
+        except Exception as exc:
+            log.warning(
+                "Live iNaturalist presence check failed for %s near (%.2f, %.2f): %s", scientific_name, lat, lon, exc,
+            )
+            return 0
+
+    def _fetch_ebird() -> int:
+        try:
+            return ebird_client.presence_count(
+                scientific_name, lat, lon, radius_km, timeout=_ANYWHERE_PRESENCE_TIMEOUT_S,
+            )
         except Exception as exc:
             log.warning("Live eBird presence check failed for %s near (%.2f, %.2f): %s", scientific_name, lat, lon, exc)
-            sources["ebird"] = 0
+            return 0
+
+    fetchers = {"gbif": _fetch_gbif, "inaturalist": _fetch_inaturalist}
+    if taxon_class == "Aves" and ebird_client.is_configured():
+        fetchers["ebird"] = _fetch_ebird
+
+    # Run every source concurrently, not one after another. These used to
+    # run sequentially -- fine when it was just GBIF + iNaturalist, but a
+    # real 2026-09-17 incident found the actual cost of that design once
+    # EBIRD_API_KEY was first configured in production: three sequential
+    # ~8-20s-timeout calls for one species could sum past gunicorn's default
+    # 30s worker timeout, and Render's proxy returned a bare 502 to the
+    # user instead of a slow-but-working prediction. Fetching in parallel
+    # bounds one species' worst-case wait to its single slowest source,
+    # not the sum of all of them -- this also means a future 4th source
+    # doesn't reintroduce the same failure mode by construction.
+    sources: dict[str, int] = {}
+    with ThreadPoolExecutor(max_workers=len(fetchers)) as pool:
+        future_to_name = {pool.submit(fn): name for name, fn in fetchers.items()}
+        for future in as_completed(future_to_name):
+            sources[future_to_name[future]] = future.result()
 
     primary_count = sources["gbif"] if sources["gbif"] > 0 else max(sources.values(), default=0)
     corroborating_count = sum(1 for v in sources.values() if v > 0)

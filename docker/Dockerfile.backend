@@ -35,4 +35,12 @@ RUN if python -m scripts.check_real_data_complete; then \
 
 EXPOSE 8000
 ENV PORT=8000
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8000", "app.main:app"]
+# --timeout 60 (gunicorn's default is 30s) is defense-in-depth, not the
+# real fix -- that's app.ml.prediction_service._local_evidence_cached now
+# fetching GBIF/iNaturalist/eBird concurrently instead of sequentially (see
+# its comment for the real 2026-09-17 incident: three sequential ~8-20s
+# live source checks for one Explore Anywhere species could sum past the
+# default 30s and come back as a bare 502). This just adds headroom for a
+# slow live source on top of that fix, since Explore Anywhere's live calls
+# are the slowest request path this API has.
+CMD ["gunicorn", "-w", "2", "--timeout", "60", "-b", "0.0.0.0:8000", "app.main:app"]

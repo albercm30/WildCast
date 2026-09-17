@@ -278,6 +278,17 @@ error in seconds rather than hanging the page -- see
 `weather_client.INTERACTIVE_*` / `gbif_client.INTERACTIVE_*` and the tests in
 `AnywhereModeTests` / `PredictLocationEndpointTests` that pin this.
 
+For one species, GBIF, iNaturalist, and (for Aves, when `EBIRD_API_KEY` is
+set) eBird are all fetched **concurrently**, not one after another --
+`LiveEvidenceConcurrencyTests` pins this. This isn't just an optimization:
+a real 2026-09-17 production incident found that fetching them sequentially
+let their timeouts SUM, and the moment `EBIRD_API_KEY` was first configured
+live, a single bird-species request could exceed gunicorn's default 30s
+worker timeout and Render's proxy returned a bare 502 instead of a slow
+prediction. `docker/Dockerfile.backend` also now sets gunicorn's
+`--timeout` to 60s (was the 30s default) as extra headroom on top of the
+concurrency fix.
+
 The presence check stacks two independent filters against false positives
 from zoo/captive animals, because one alone was not enough:
 
@@ -527,7 +538,7 @@ cd backend
 pip install -r requirements-dev.txt
 ruff check .
 flake8 --max-line-length=130 --extend-ignore=E501,W503,E127 app scripts tests
-python -m unittest discover -s tests -v      # 173 tests, ~15 seconds
+python -m unittest discover -s tests -v      # 178 tests, ~15 seconds
 ```
 
 The suite is plain `unittest.TestCase` (no pytest dependency required to run

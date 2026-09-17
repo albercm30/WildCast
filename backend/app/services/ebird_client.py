@@ -46,19 +46,23 @@ def recent_observations(region_code: str, back_days: int = 14) -> list[dict[str,
     return resp.json()
 
 
-def nearby_observations(lat: float, lon: float, dist_km: int = 25, back_days: int = 14) -> list[dict[str, Any]]:
+def nearby_observations(
+    lat: float, lon: float, dist_km: int = 25, back_days: int = 14, timeout: float = 20.0,
+) -> list[dict[str, Any]]:
     """Recent observations within `dist_km` of a point -- the call WildCast actually uses per-area."""
     resp = requests.get(
         f"{EBIRD_API_BASE}/data/obs/geo/recent",
         headers=_headers(),
         params={"lat": lat, "lng": lon, "dist": dist_km, "back": back_days},
-        timeout=20.0,
+        timeout=timeout,
     )
     resp.raise_for_status()
     return resp.json()
 
 
-def presence_count(scientific_name: str, lat: float, lon: float, radius_km: float, back_days: int = 30) -> int:
+def presence_count(
+    scientific_name: str, lat: float, lon: float, radius_km: float, back_days: int = 30, timeout: float = 20.0,
+) -> int:
     """
     Count of distinct recent eBird checklist reports of `scientific_name`
     within `radius_km` of (lat, lon) in the last `back_days` -- used as an
@@ -77,9 +81,19 @@ def presence_count(scientific_name: str, lat: float, lon: float, radius_km: floa
     eBird's own `dist` parameter caps at 50km, unlike GBIF/iNaturalist's
     much larger search radii, so this is a tighter-radius signal by nature
     of the API, not a WildCast choice.
+
+    `timeout` defaults to a patient 20s (fine for an occasional manual
+    call), but app.ml.prediction_service's live "Explore Anywhere" caller
+    MUST pass its short interactive timeout explicitly -- see that module's
+    _ANYWHERE_PRESENCE_TIMEOUT_S and the real 2026-09-17 incident in its
+    docstring: this call used to have no caller-configurable timeout at
+    all, so once EBIRD_API_KEY was first configured in production, a slow
+    eBird response (stacked sequentially after the GBIF and iNaturalist
+    checks) pushed one request past gunicorn's default 30s worker timeout
+    and Render's proxy returned a bare 502 to the user.
     """
     dist_km = min(int(round(radius_km)), 50)
-    observations = nearby_observations(lat, lon, dist_km=dist_km, back_days=back_days)
+    observations = nearby_observations(lat, lon, dist_km=dist_km, back_days=back_days, timeout=timeout)
     return sum(1 for obs in observations if obs.get("sciName") == scientific_name)
 
 

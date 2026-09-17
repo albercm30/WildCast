@@ -7,6 +7,8 @@ catch problems in how the pieces fit together -- exactly the class of bug
 would not have caught. If these fail, retrain first: `python -m app.ml.train`.
 """
 import datetime as dt
+import threading
+import time
 import unittest
 from unittest.mock import patch
 
@@ -514,6 +516,86 @@ class AnywhereModeTests(unittest.TestCase):
         ):
             strong_points = ps.best_window_at_location(44.65, -110.45, "Ursus arctos")
         self.assertLess(max(p["probability"] for p in thin_points), max(p["probability"] for p in strong_points))
+
+
+class LiveEvidenceConcurrencyTests(unittest.TestCase):
+    """
+    Regression coverage for a real 2026-09-17 production incident:
+    `_local_evidence_cached` used to fetch GBIF, iNaturalist, and (for Aves
+    species) eBird one after another, so their timeouts SUMMED. That was
+    fine with just GBIF + iNaturalist, but the moment EBIRD_API_KEY was
+    first configured in production, a single "Explore Anywhere" request for
+    one bird species could exceed gunicorn's default 30s worker timeout and
+    Render's proxy returned a bare 502 -- confirmed live against
+    wildcast.onrender.com. The fix fetches all sources concurrently, so one
+    species' worst-case wait is bounded by its single slowest source, not
+    the sum of all of them.
+    """
+
+    def setUp(self):
+        ps._presence_cache.clear()
+
+    def test_sources_are_fetched_concurrently_not_sequentially(self):
+        start_times = {}
+        lock = threading.Lock()
+
+        def _make_source(name, value):
+            def _fn(*args, **kwargs):
+                with lock:
+                    start_times[name] = time.monotonic()
+                time.sleep(0.2)
+                return value
+            return _fn
+
+        with (
+            patch("app.services.gbif_client.presence_count", side_effect=_make_source("gbif", 10)),
+            patch("app.services.inaturalist_client.presence_count", side_effect=_make_source("inaturalist", 5)),
+            patch("app.services.ebird_client.presence_count", side_effect=_make_source("ebird", 3)),
+            patch("app.services.ebird_client.is_configured", return_value=True),
+        ):
+            t0 = time.monotonic()
+            evidence = ps._local_evidence_cached("Corvus corax", 44.6, -110.5, 60, "Aves")
+            elapsed = time.monotonic() - t0
+
+        # If these ran sequentially, the three start times would be spread
+        # ~0.2s apart (one source's whole sleep duration) and the call
+        # would take ~0.6s total. Run concurrently, all three should start
+        # within a few ms of each other and the whole call should take
+        # roughly one sleep's worth of time, not the sum of three.
+        self.assertEqual(set(start_times), {"gbif", "inaturalist", "ebird"})
+        spread = max(start_times.values()) - min(start_times.values())
+        self.assertLess(spread, 0.1)
+        self.assertLess(elapsed, 0.4)
+        self.assertEqual(evidence["sources"], {"gbif": 10, "inaturalist": 5, "ebird": 3})
+
+    def test_ebird_receives_the_short_interactive_timeout_not_ebirds_own_default(self):
+        seen_kwargs = {}
+
+        def _fake_ebird(*args, **kwargs):
+            seen_kwargs.update(kwargs)
+            return 0
+
+        with (
+            patch("app.services.gbif_client.presence_count", return_value=0),
+            patch("app.services.inaturalist_client.presence_count", return_value=0),
+            patch("app.services.ebird_client.presence_count", side_effect=_fake_ebird),
+            patch("app.services.ebird_client.is_configured", return_value=True),
+        ):
+            ps._local_evidence_cached("Corvus corax", 44.6, -110.5, 60, "Aves")
+
+        self.assertEqual(seen_kwargs.get("timeout"), ps._ANYWHERE_PRESENCE_TIMEOUT_S)
+
+    def test_ebird_is_skipped_entirely_for_non_aves_species(self):
+        with (
+            patch("app.services.gbif_client.presence_count", return_value=5),
+            patch("app.services.inaturalist_client.presence_count", return_value=0),
+            patch("app.services.ebird_client.presence_count") as mock_ebird,
+            patch("app.services.ebird_client.is_configured", return_value=True),
+        ):
+            evidence = ps._local_evidence_cached("Ursus arctos", 44.6, -110.5, 60, "Mammalia")
+
+        mock_ebird.assert_not_called()
+        self.assertNotIn("ebird", evidence["sources"])
 
 
 if __name__ == "__main__":
