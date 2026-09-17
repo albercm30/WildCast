@@ -13,6 +13,8 @@ than just reading the raw numbers.
 from __future__ import annotations
 
 import datetime as dt
+import logging
+import time
 from functools import lru_cache
 from typing import Any
 
@@ -26,7 +28,40 @@ from app.config import (
     WEATHER_DAILY_VARS,
 )
 
+log = logging.getLogger("wildcast.weather")
+
 _SESSION = requests.Session()
+
+# Open-Meteo's free tier is generous in absolute terms, but a shared CI
+# runner IP (many different GitHub Actions jobs, from many different repos,
+# all sharing the same small pool of outbound IPs) can trip its per-minute
+# rate limit even at low request volume from any one job. Retrying with
+# backoff on 429/5xx is what turned an ingestion run that failed outright on
+# its 5th request (real incident: scripts/ingest_weather.py, 2026-09-17)
+# into one that rides the limit out instead.
+_MAX_RETRIES = 5
+_BASE_BACKOFF_SECONDS = 3.0
+
+
+def _get_with_retry(url: str, params: dict) -> requests.Response:
+    delay = _BASE_BACKOFF_SECONDS
+    for attempt in range(1, _MAX_RETRIES + 1):
+        resp = _SESSION.get(url, params=params, timeout=30.0)
+        if resp.status_code == 429 or resp.status_code >= 500:
+            if attempt == _MAX_RETRIES:
+                resp.raise_for_status()  # out of retries -- surface the real error
+            retry_after = resp.headers.get("Retry-After")
+            wait = float(retry_after) if retry_after else delay
+            log.warning(
+                "Open-Meteo returned %s; retrying in %.1fs (attempt %d/%d).",
+                resp.status_code, wait, attempt, _MAX_RETRIES,
+            )
+            time.sleep(wait)
+            delay *= 2
+            continue
+        resp.raise_for_status()
+        return resp
+    raise AssertionError("unreachable")  # loop always returns or raises above
 
 
 def _round_coord(x: float) -> float:
@@ -45,8 +80,7 @@ def historical_daily(lat: float, lon: float, start_date: str, end_date: str) -> 
         "daily": ",".join(WEATHER_DAILY_VARS),
         "timezone": "auto",
     }
-    resp = _SESSION.get(OPEN_METEO_ARCHIVE_BASE, params=params, timeout=30.0)
-    resp.raise_for_status()
+    resp = _get_with_retry(OPEN_METEO_ARCHIVE_BASE, params)
     payload = resp.json()
     daily = payload.get("daily", {})
     if not daily or "time" not in daily:
@@ -66,8 +100,7 @@ def forecast_daily(lat: float, lon: float, days: int = 16) -> pd.DataFrame:
         "forecast_days": min(days, 16),
         "timezone": "auto",
     }
-    resp = _SESSION.get(OPEN_METEO_FORECAST_BASE, params=params, timeout=30.0)
-    resp.raise_for_status()
+    resp = _get_with_retry(OPEN_METEO_FORECAST_BASE, params)
     daily = resp.json().get("daily", {})
     if not daily or "time" not in daily:
         return pd.DataFrame(columns=["date", *WEATHER_DAILY_VARS])
