@@ -64,6 +64,7 @@ def occurrence_search(
     country: str | None = None,
     limit: int = 300,
     offset: int = 0,
+    timeout: float = 20.0,
 ) -> dict[str, Any]:
     """One page of GBIF occurrence records matching the given filters."""
     params: dict[str, Any] = {
@@ -84,7 +85,7 @@ def occurrence_search(
         min_lat, max_lat, min_lon, max_lon = _bbox_from_point(lat, lon, radius_km)
         params["decimalLatitude"] = f"{min_lat:.4f},{max_lat:.4f}"
         params["decimalLongitude"] = f"{min_lon:.4f},{max_lon:.4f}"
-    return _get("/occurrence/search", params)
+    return _get("/occurrence/search", params, timeout=timeout)
 
 
 def occurrences_near(
@@ -125,7 +126,17 @@ def occurrences_near(
     return results[:max_records]
 
 
-def has_any_presence(scientific_name: str, lat: float, lon: float, radius_km: float) -> bool:
-    """Cheap plausibility check: does GBIF have >=1 record of this species near this point, ever?"""
-    page = occurrence_search(scientific_name=scientific_name, lat=lat, lon=lon, radius_km=radius_km, limit=1)
+def has_any_presence(
+    scientific_name: str, lat: float, lon: float, radius_km: float, timeout: float = 20.0
+) -> bool:
+    """Cheap plausibility check: does GBIF have >=1 record of this species near this point, ever?
+
+    `timeout` is lower by default for interactive "Explore Anywhere" callers
+    (see app.ml.prediction_service.species_for_location, which runs many of
+    these concurrently against a real user's click) than for the batch
+    ingestion scripts, which can afford to wait longer per call.
+    """
+    page = occurrence_search(
+        scientific_name=scientific_name, lat=lat, lon=lon, radius_km=radius_km, limit=1, timeout=timeout
+    )
     return page.get("count", 0) > 0
