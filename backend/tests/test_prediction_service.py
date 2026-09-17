@@ -8,10 +8,29 @@ would not have caught. If these fail, retrain first: `python -m app.ml.train`.
 """
 import datetime as dt
 import unittest
+from unittest.mock import patch
+
+import pandas as pd
 
 from app.ml import prediction_service as ps
 
 ALL_PILOT_AREA_IDS = {"yellowstone", "kruger", "brisbane_urban", "svalbard_arctic", "amazon_rainforest"}
+
+
+def _synthetic_normals() -> pd.DataFrame:
+    """A minimal but schema-correct climate-normals DataFrame, standing in
+    for a live `weather_client.climate_normals()` call in tests that must
+    not hit the real network."""
+    from app.config import WEATHER_DAILY_VARS
+
+    rows = []
+    for doy in range(1, 367):
+        row = {"day_of_year": doy}
+        for var in WEATHER_DAILY_VARS:
+            row[f"{var}_normal_mean"] = 15.0
+            row[f"{var}_normal_std"] = 3.0
+        rows.append(row)
+    return pd.DataFrame(rows)
 
 
 class ListAndGetAreaTests(unittest.TestCase):
@@ -155,6 +174,114 @@ class BestWindowTests(unittest.TestCase):
     def test_unknown_species_raises_key_error(self):
         with self.assertRaises(KeyError):
             ps.best_window("yellowstone", "Loxodonta africana")
+
+
+class AnywhereModeTests(unittest.TestCase):
+    """
+    'Explore Anywhere' mode (species_for_location / predict_at_location /
+    best_window_at_location) is tested with GBIF and live weather mocked
+    out -- the point of these tests is the wiring (does a live presence
+    result correctly gate the candidate list? does an arbitrary point still
+    produce valid, correctly-labeled predictions?), not GBIF's or
+    Open-Meteo's actual live data, which the *_client modules' own tests
+    and the manual Render smoke test already cover.
+    """
+
+    def setUp(self):
+        # The live-presence cache is process-global (by design -- see its
+        # docstring) so it must not leak results between tests that reuse
+        # the same coordinates with different mocked GBIF answers.
+        ps._presence_cache.clear()
+
+    def test_haversine_zero_for_same_point(self):
+        self.assertAlmostEqual(ps._haversine_km(44.6, -110.5, 44.6, -110.5), 0.0, places=6)
+
+    def test_haversine_roughly_correct_known_distance(self):
+        # New York City to London is ~5570km.
+        d = ps._haversine_km(40.7128, -74.0060, 51.5074, -0.1278)
+        self.assertGreater(d, 5400)
+        self.assertLess(d, 5700)
+
+    def test_nearest_area_finds_the_close_one(self):
+        # A point a few km from Yellowstone's center should resolve to
+        # Yellowstone, not one of the other 4 (much farther) areas.
+        nearest = ps._nearest_area(44.65, -110.45)
+        self.assertEqual(nearest["id"], "yellowstone")
+
+    def test_species_for_location_only_returns_gbif_confirmed_species(self):
+        confirmed = {"Ursus arctos", "Canis lupus"}
+        with patch("app.services.gbif_client.has_any_presence", side_effect=lambda name, *a, **k: name in confirmed):
+            results = ps.species_for_location(44.6, -110.5)
+        names = {s["scientific_name"] for s in results}
+        self.assertEqual(names, confirmed)
+        for s in results:
+            self.assertGreater(s["training_support"], 0)
+
+    def test_species_for_location_excludes_everything_on_gbif_outage(self):
+        # A live API failure must fail closed (nothing offered), never open
+        # (everything offered) -- an empty/erroring GBIF response is not
+        # evidence a species is plausible somewhere.
+        with patch("app.services.gbif_client.has_any_presence", side_effect=RuntimeError("network down")):
+            results = ps.species_for_location(44.6, -110.5)
+        self.assertEqual(results, [])
+
+    def test_predict_at_location_labels_the_nearest_area_and_distance(self):
+        with (
+            patch("app.services.gbif_client.has_any_presence", return_value=True),
+            patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
+        ):
+            result = ps.predict_at_location(44.65, -110.45, "2027-06-15")
+        self.assertEqual(result["nearest_area"]["id"], "yellowstone")
+        self.assertGreaterEqual(result["nearest_area"]["distance_km"], 0)
+        self.assertGreater(len(result["predictions"]), 0)
+        for p in result["predictions"]:
+            self.assertGreaterEqual(p["probability"], 0.0)
+            self.assertLessEqual(p["probability"], 1.0)
+            self.assertTrue(any("Verified live against GBIF" in f for f in p["factors"]))
+
+    def test_predict_at_location_with_no_gbif_matches_returns_empty_not_error(self):
+        # A real point with genuinely no curated species nearby (e.g. open
+        # ocean) is a valid, non-error result -- just an empty list.
+        with (
+            patch("app.services.gbif_client.has_any_presence", return_value=False),
+            patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
+        ):
+            result = ps.predict_at_location(0.0, -140.0, "2027-06-15")
+        self.assertEqual(result["predictions"], [])
+
+    def test_predict_at_location_species_filter_raises_if_not_confirmed_nearby(self):
+        with (
+            patch("app.services.gbif_client.has_any_presence", return_value=False),
+            patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
+        ):
+            with self.assertRaises(KeyError):
+                ps.predict_at_location(44.65, -110.45, "2027-06-15", species_key="Ursus arctos")
+
+    def test_predict_at_location_raises_live_data_unavailable_on_weather_outage(self):
+        # Unlike curated areas (pre-cached normals, zero network dependency),
+        # anywhere-mode's climate normals are a live call with no offline
+        # fallback. A failure there must surface as a clear, catchable
+        # error -- not an unhandled crash (this was a real bug found via a
+        # local end-to-end smoke test: a live Open-Meteo outage took the
+        # whole request down with an unhandled exception instead of a
+        # clean 503).
+        with (
+            patch("app.services.gbif_client.has_any_presence", return_value=True),
+            patch("app.services.weather_client.climate_normals", side_effect=RuntimeError("network down")),
+        ):
+            with self.assertRaises(ps.LiveDataUnavailable):
+                ps.predict_at_location(44.65, -110.45, "2027-06-15")
+
+    def test_best_window_at_location_returns_points_across_the_year(self):
+        with (
+            patch("app.services.gbif_client.has_any_presence", return_value=True),
+            patch("app.services.weather_client.climate_normals", return_value=_synthetic_normals()),
+        ):
+            points = ps.best_window_at_location(44.65, -110.45, "Ursus arctos")
+        self.assertGreaterEqual(len(points), 70)
+        for p in points:
+            self.assertGreaterEqual(p["probability"], 0.0)
+            self.assertLessEqual(p["probability"], 1.0)
 
 
 if __name__ == "__main__":
