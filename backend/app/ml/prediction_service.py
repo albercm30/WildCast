@@ -11,10 +11,14 @@ import json
 import logging
 from functools import lru_cache
 
+# app.config must be imported before joblib: it sets LOKY_MAX_CPU_COUNT,
+# which must be set before loky's cpu-count detection runs (see the comment
+# in app/config.py for why).
+from app.config import CACHE_DIR, DATA_DIR, MODEL_DIR, WEATHER_DAILY_VARS
+
 import joblib
 import pandas as pd
 
-from app.config import CACHE_DIR, DATA_DIR, MODEL_DIR, WEATHER_DAILY_VARS
 from app.ml.features import build_feature_frame
 from app.services import weather_client
 
