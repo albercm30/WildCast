@@ -25,6 +25,28 @@ _SESSION.headers.update({"User-Agent": "WildCast/0.1 (wildlife-encounter-forecas
 
 _MAX_PAGE_SIZE = 300  # GBIF's hard per-request cap
 
+# GBIF's basisOfRecord vocabulary includes LIVING_SPECIMEN (an individual
+# held alive in a collection -- in practice this is dominated by zoo,
+# aquarium, and botanical-garden holdings) and FOSSIL_SPECIMEN. Neither
+# means "this species lives here": a zoo lion a few km from a user's click
+# is a real GBIF record, correctly geocoded, and a completely wrong answer
+# to "would you encounter this animal in the wild near this point?" --
+# WildCast's whole premise. Excluding both from presence/plausibility
+# checks is the standard mitigation for exactly this class of false
+# positive (found via a real report: a lion and leopard both showing up as
+# "verified" near Bangkok, Thailand -- Bangkok has multiple zoos and safari
+# parks; the leopard is very plausibly a genuine wild Indochinese leopard
+# record, but the lion almost certainly is not, since lions have no wild
+# range anywhere near Southeast Asia).
+_WILD_BASIS_OF_RECORD = [
+    "HUMAN_OBSERVATION",
+    "OBSERVATION",
+    "MACHINE_OBSERVATION",
+    "PRESERVED_SPECIMEN",
+    "MATERIAL_SAMPLE",
+    "OCCURRENCE",
+]
+
 
 def _get(path: str, params: dict[str, Any], timeout: float = 20.0) -> dict[str, Any]:
     resp = _SESSION.get(f"{GBIF_API_BASE}{path}", params=params, timeout=timeout)
@@ -65,8 +87,17 @@ def occurrence_search(
     limit: int = 300,
     offset: int = 0,
     timeout: float = 20.0,
+    wild_only: bool = False,
 ) -> dict[str, Any]:
-    """One page of GBIF occurrence records matching the given filters."""
+    """One page of GBIF occurrence records matching the given filters.
+
+    `wild_only=True` excludes captive (LIVING_SPECIMEN) and fossil
+    (FOSSIL_SPECIMEN) records -- see `_WILD_BASIS_OF_RECORD`'s comment.
+    Off by default (existing callers like `occurrences_near`, used to build
+    real training examples from dated sighting records, want everything);
+    `has_any_presence` turns it on, since a zoo record is exactly the wrong
+    answer to the plausibility question it's asking.
+    """
     params: dict[str, Any] = {
         "hasCoordinate": "true",
         "hasGeospatialIssue": "false",
@@ -81,6 +112,8 @@ def occurrence_search(
         params["country"] = country
     if year_range:
         params["year"] = f"{year_range[0]},{year_range[1]}"
+    if wild_only:
+        params["basisOfRecord"] = _WILD_BASIS_OF_RECORD
     if lat is not None and lon is not None and radius_km:
         min_lat, max_lat, min_lon, max_lon = _bbox_from_point(lat, lon, radius_km)
         params["decimalLatitude"] = f"{min_lat:.4f},{max_lat:.4f}"
@@ -129,7 +162,13 @@ def occurrences_near(
 def has_any_presence(
     scientific_name: str, lat: float, lon: float, radius_km: float, timeout: float = 20.0
 ) -> bool:
-    """Cheap plausibility check: does GBIF have >=1 record of this species near this point, ever?
+    """Cheap plausibility check: does GBIF have >=1 *wild* record of this species near this point, ever?
+
+    `wild_only=True` (excludes zoo/captive and fossil records -- see
+    `_WILD_BASIS_OF_RECORD`): a captive record passing this check would
+    mean WildCast telling someone they might encounter a lion near a
+    Bangkok zoo, which is real GBIF data but a wrong answer to the
+    question this function exists to answer.
 
     `timeout` is lower by default for interactive "Explore Anywhere" callers
     (see app.ml.prediction_service.species_for_location, which runs many of
@@ -137,6 +176,12 @@ def has_any_presence(
     ingestion scripts, which can afford to wait longer per call.
     """
     page = occurrence_search(
-        scientific_name=scientific_name, lat=lat, lon=lon, radius_km=radius_km, limit=1, timeout=timeout
+        scientific_name=scientific_name,
+        lat=lat,
+        lon=lon,
+        radius_km=radius_km,
+        limit=1,
+        timeout=timeout,
+        wild_only=True,
     )
     return page.get("count", 0) > 0
