@@ -47,6 +47,15 @@ _MAX_RETRIES = 8
 _BASE_BACKOFF_SECONDS = 4.0
 _MAX_BACKOFF_SECONDS = 60.0
 
+# Kruger's ~20-year historical range (2006-2026) is a much bigger single
+# request than Yellowstone's ~5-year one (2021-2026) -- a real 2026-09-17
+# incident hit the old 30s default fetching Kruger specifically, while every
+# other (shorter-range) area in the same ingest_weather.py run succeeded.
+# Batch ingestion can afford to wait longer for one large request; the
+# interactive path (INTERACTIVE_REQUEST_TIMEOUT below) still needs to fail
+# fast, so it is left untouched.
+_BATCH_REQUEST_TIMEOUT_SECONDS = 60.0
+
 # The patient retry schedule above (~8 attempts, up to ~4 minutes of total
 # backoff) is right for scripts/ingest_weather.py: an unattended batch job
 # where riding out a contention window matters more than speed. It is
@@ -70,11 +79,33 @@ def _get_with_retry(
     max_retries: int = _MAX_RETRIES,
     base_backoff: float = _BASE_BACKOFF_SECONDS,
     max_backoff: float = _MAX_BACKOFF_SECONDS,
-    request_timeout: float = 30.0,
+    request_timeout: float = _BATCH_REQUEST_TIMEOUT_SECONDS,
 ) -> requests.Response:
     delay = base_backoff
     for attempt in range(1, max_retries + 1):
-        resp = _SESSION.get(url, params=params, timeout=request_timeout)
+        try:
+            resp = _SESSION.get(url, params=params, timeout=request_timeout)
+        except requests.exceptions.RequestException as exc:
+            # A raw transport failure (read timeout, connection reset, DNS
+            # hiccup, ...) never produces a `resp` to status-code-check
+            # below -- without this it bypasses the retry/backoff schedule
+            # entirely and kills the whole ingestion run on one bad
+            # request. Real 2026-09-17 incident: a ReadTimeout fetching
+            # Kruger's ~20-year archive (the request itself stalled, there
+            # was no error *response* to react to) propagated straight out
+            # of scripts/ingest_weather.py and crashed the whole script,
+            # even though Open-Meteo itself may well have come back fine on
+            # a retry a few seconds later, same as a 429/5xx would.
+            if attempt == max_retries:
+                raise
+            wait = min(delay, max_backoff)
+            log.warning(
+                "Open-Meteo request failed (%s: %s); retrying in %.1fs (attempt %d/%d).",
+                type(exc).__name__, exc, wait, attempt, max_retries,
+            )
+            time.sleep(wait)
+            delay *= 2
+            continue
         if resp.status_code == 429 or resp.status_code >= 500:
             if attempt == max_retries:
                 resp.raise_for_status()  # out of retries -- surface the real error
@@ -107,7 +138,7 @@ def historical_daily(
     max_retries: int = _MAX_RETRIES,
     base_backoff: float = _BASE_BACKOFF_SECONDS,
     max_backoff: float = _MAX_BACKOFF_SECONDS,
-    request_timeout: float = 30.0,
+    request_timeout: float = _BATCH_REQUEST_TIMEOUT_SECONDS,
 ) -> pd.DataFrame:
     """Daily weather observations for one location and date range. Dates are 'YYYY-MM-DD'.
 
@@ -149,7 +180,7 @@ def forecast_daily(
     max_retries: int = _MAX_RETRIES,
     base_backoff: float = _BASE_BACKOFF_SECONDS,
     max_backoff: float = _MAX_BACKOFF_SECONDS,
-    request_timeout: float = 30.0,
+    request_timeout: float = _BATCH_REQUEST_TIMEOUT_SECONDS,
 ) -> pd.DataFrame:
     """Upcoming forecast, used when a user asks about a near-future date. See `historical_daily` for the retry kwargs."""
     params = {
@@ -185,7 +216,7 @@ def climate_normals(
     max_retries: int = _MAX_RETRIES,
     base_backoff: float = _BASE_BACKOFF_SECONDS,
     max_backoff: float = _MAX_BACKOFF_SECONDS,
-    request_timeout: float = 30.0,
+    request_timeout: float = _BATCH_REQUEST_TIMEOUT_SECONDS,
 ) -> pd.DataFrame:
     """
     Mean and std of each weather variable per day-of-year, computed from the

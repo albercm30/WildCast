@@ -622,6 +622,9 @@ def _local_evidence_cached(
         sources["gbif"] = gbif_client.presence_count(
             scientific_name, lat, lon, radius_km,
             timeout=_ANYWHERE_PRESENCE_TIMEOUT_S, plausible_countries=plausible_countries,
+            max_retries=gbif_client.INTERACTIVE_MAX_RETRIES,
+            base_backoff=gbif_client.INTERACTIVE_BASE_BACKOFF,
+            max_backoff=gbif_client.INTERACTIVE_MAX_BACKOFF,
         )
     except Exception as exc:
         log.warning("Live GBIF presence check failed for %s near (%.2f, %.2f): %s", scientific_name, lat, lon, exc)

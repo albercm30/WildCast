@@ -157,6 +157,17 @@ locally from a sandboxed/locked-down environment, these calls will fail with
 a connection or proxy error -- use the GitHub Actions path above instead, or
 run it from a normal machine.
 
+Both `ingest_gbif.py` and `ingest_weather.py` retry transient failures with
+exponential backoff -- not just HTTP 429/5xx responses, but raw transport
+failures too (`ReadTimeout`, `ConnectionError`, ...), since a shared
+GitHub-runner IP or a slow response for a large request (e.g. fetching ~20
+years of history for one area) can trip either failure mode. A real
+`retrain.yml` run hit a `ReadTimeout` fetching Kruger National Park's full
+historical range and crashed the whole ingestion script before this was
+added -- see `weather_client._get_with_retry` / `gbif_client._get` for the
+retry schedule (patient for batch ingestion, fast-fail via `INTERACTIVE_*`
+for live "Explore Anywhere" calls -- see below).
+
 iNaturalist needs no key at all and is queried automatically in Explore
 Anywhere mode alongside GBIF (see "Multi-source data quality" below).
 Optional: copy `backend/.env.example` to `backend/.env` and add
@@ -250,8 +261,8 @@ to it, so the approximation is never hidden. All live calls on this path
 budget (a couple of seconds, not the ~4-minute-worst-case patience
 `retrain.yml`'s batch ingestion uses) so a live outage surfaces as a clear
 error in seconds rather than hanging the page -- see
-`weather_client.INTERACTIVE_*` and the tests in `AnywhereModeTests` /
-`PredictLocationEndpointTests` that pin this.
+`weather_client.INTERACTIVE_*` / `gbif_client.INTERACTIVE_*` and the tests in
+`AnywhereModeTests` / `PredictLocationEndpointTests` that pin this.
 
 The presence check stacks two independent filters against false positives
 from zoo/captive animals, because one alone was not enough:
@@ -502,7 +513,7 @@ cd backend
 pip install -r requirements-dev.txt
 ruff check .
 flake8 --max-line-length=130 --extend-ignore=E501,W503,E127 app scripts tests
-python -m unittest discover -s tests -v      # 150 tests, ~5 seconds
+python -m unittest discover -s tests -v      # 159 tests, ~15 seconds
 ```
 
 The suite is plain `unittest.TestCase` (no pytest dependency required to run

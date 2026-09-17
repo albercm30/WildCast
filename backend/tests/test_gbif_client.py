@@ -9,7 +9,19 @@ should be re-verified with a real call before trusting this in production.
 import unittest
 from unittest.mock import MagicMock, patch
 
+import requests
+
 from app.services import gbif_client
+
+
+def _response(status_code, payload=None, headers=None):
+    resp = MagicMock(status_code=status_code, headers=headers or {})
+    resp.json.return_value = payload or {}
+    if status_code == 200:
+        resp.raise_for_status.return_value = None
+    else:
+        resp.raise_for_status.side_effect = requests.exceptions.HTTPError(f"{status_code} error", response=resp)
+    return resp
 
 
 class BboxFromPointTests(unittest.TestCase):
@@ -86,6 +98,78 @@ class OccurrenceSearchTests(unittest.TestCase):
         gbif_client.occurrence_search(scientific_name="Ursus arctos")
         params = mock_get.call_args[1]["params"]
         self.assertNotIn("basisOfRecord", params)
+
+
+class GetRetryTests(unittest.TestCase):
+    """
+    `_get` used to be a bare `_SESSION.get(...).raise_for_status()` with no
+    retry logic of any kind -- hardened proactively after the same class of
+    bug (an unretried transport timeout) took down
+    scripts/ingest_weather.py on 2026-09-17 (see test_weather_client.py's
+    RetryOnTransportFailureTests); GBIF ingestion runs earlier in the same
+    retrain.yml pipeline and was structurally even more exposed.
+    """
+
+    @patch("app.services.gbif_client.time.sleep")
+    @patch("app.services.gbif_client._SESSION.get")
+    def test_succeeds_after_a_read_timeout_then_a_200(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            requests.exceptions.ReadTimeout("read timed out"),
+            _response(200, {"usageKey": 1, "scientificName": "Ursus arctos"}),
+        ]
+        result = gbif_client.match_species("Ursus arctos")
+        self.assertEqual(result["usageKey"], 1)
+        self.assertEqual(mock_get.call_count, 2)
+        mock_sleep.assert_called_once()
+
+    @patch("app.services.gbif_client.time.sleep")
+    @patch("app.services.gbif_client._SESSION.get")
+    def test_succeeds_after_one_429_then_a_200(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            _response(429),
+            _response(200, {"results": [], "endOfRecords": True, "count": 0}),
+        ]
+        gbif_client.occurrence_search(scientific_name="Ursus arctos")
+        self.assertEqual(mock_get.call_count, 2)
+        mock_sleep.assert_called_once()
+
+    @patch("app.services.gbif_client.time.sleep")
+    @patch("app.services.gbif_client._SESSION.get")
+    def test_gives_up_and_raises_the_transport_error_after_exhausting_retries(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            requests.exceptions.ConnectionError("connection reset") for _ in range(gbif_client._MAX_RETRIES)
+        ]
+        with self.assertRaises(requests.exceptions.ConnectionError):
+            gbif_client.match_species("Ursus arctos")
+        self.assertEqual(mock_get.call_count, gbif_client._MAX_RETRIES)
+
+    @patch("app.services.gbif_client.time.sleep")
+    @patch("app.services.gbif_client._SESSION.get")
+    def test_a_real_error_like_404_is_not_retried(self, mock_get, mock_sleep):
+        mock_get.return_value = _response(404)
+        with self.assertRaises(requests.exceptions.HTTPError):
+            gbif_client.match_species("Ursus arctos")
+        self.assertEqual(mock_get.call_count, 1)
+        mock_sleep.assert_not_called()
+
+    @patch("app.services.gbif_client.time.sleep")
+    @patch("app.services.gbif_client._SESSION.get")
+    def test_presence_count_passes_the_interactive_retry_schedule_through(self, mock_get, mock_sleep):
+        # species_for_location's live "Explore Anywhere" calls must fail
+        # fast (INTERACTIVE_*), not ride out the patient batch schedule and
+        # leave a real user's click hanging.
+        mock_get.side_effect = [
+            requests.exceptions.ReadTimeout("read timed out")
+            for _ in range(gbif_client.INTERACTIVE_MAX_RETRIES)
+        ]
+        with self.assertRaises(requests.exceptions.ReadTimeout):
+            gbif_client.presence_count(
+                "Panthera pardus", 14.24, 101.87, 150,
+                max_retries=gbif_client.INTERACTIVE_MAX_RETRIES,
+                base_backoff=gbif_client.INTERACTIVE_BASE_BACKOFF,
+                max_backoff=gbif_client.INTERACTIVE_MAX_BACKOFF,
+            )
+        self.assertEqual(mock_get.call_count, gbif_client.INTERACTIVE_MAX_RETRIES)
 
 
 class OccurrencesNearPaginationTests(unittest.TestCase):

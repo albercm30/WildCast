@@ -12,6 +12,7 @@ buffer via the `geometry` WKT parameter is a drop-in upgrade for Phase 1).
 """
 from __future__ import annotations
 
+import logging
 import math
 import time
 from typing import Any
@@ -20,10 +21,35 @@ import requests
 
 from app.config import GBIF_API_BASE
 
+log = logging.getLogger("wildcast.gbif")
+
 _SESSION = requests.Session()
 _SESSION.headers.update({"User-Agent": "WildCast/0.1 (wildlife-encounter-forecast)"})
 
 _MAX_PAGE_SIZE = 300  # GBIF's hard per-request cap
+
+# `_get` used to be a plain `_SESSION.get(...).raise_for_status()` with no
+# retry logic at all -- a single transient failure (a GBIF 5xx, a 429, or a
+# raw connection/read timeout) killed whichever call made it. Hardened
+# proactively after the same class of bug (an unretried ReadTimeout) took
+# down scripts/ingest_weather.py on 2026-09-17 -- see weather_client.py's
+# _get_with_retry -- since scripts/ingest_gbif.py runs earlier in the same
+# retrain.yml pipeline and was structurally even more exposed (weather_client
+# at least already retried 429/5xx). Same idea, a smaller schedule: GBIF
+# occurrence pages are far smaller requests than Open-Meteo's multi-year
+# archive fetches, so there's less to wait out.
+_MAX_RETRIES = 5
+_BASE_BACKOFF_SECONDS = 3.0
+_MAX_BACKOFF_SECONDS = 30.0
+
+# Interactive "Explore Anywhere" callers (species_for_location, run many at
+# once via a ThreadPoolExecutor against a real user's click -- see
+# app.ml.prediction_service) need to fail fast, not ride out the patient
+# batch-ingestion schedule above and leave someone staring at a spinner for
+# a minute-plus. Same rationale as weather_client.INTERACTIVE_*.
+INTERACTIVE_MAX_RETRIES = 2
+INTERACTIVE_BASE_BACKOFF = 1.0
+INTERACTIVE_MAX_BACKOFF = 3.0
 
 # GBIF's basisOfRecord vocabulary includes LIVING_SPECIMEN (an individual
 # held alive in a collection -- in practice this is dominated by zoo,
@@ -48,10 +74,49 @@ _WILD_BASIS_OF_RECORD = [
 ]
 
 
-def _get(path: str, params: dict[str, Any], timeout: float = 20.0) -> dict[str, Any]:
-    resp = _SESSION.get(f"{GBIF_API_BASE}{path}", params=params, timeout=timeout)
-    resp.raise_for_status()
-    return resp.json()
+def _get(
+    path: str,
+    params: dict[str, Any],
+    timeout: float = 20.0,
+    *,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
+) -> dict[str, Any]:
+    url = f"{GBIF_API_BASE}{path}"
+    delay = base_backoff
+    for attempt in range(1, max_retries + 1):
+        try:
+            resp = _SESSION.get(url, params=params, timeout=timeout)
+        except requests.exceptions.RequestException as exc:
+            # See the module-level comment above _MAX_RETRIES: a raw
+            # transport failure never reaches the status-code check below,
+            # so without this it bypasses the retry schedule entirely.
+            if attempt == max_retries:
+                raise
+            wait = min(delay, max_backoff)
+            log.warning(
+                "GBIF request failed (%s: %s); retrying in %.1fs (attempt %d/%d).",
+                type(exc).__name__, exc, wait, attempt, max_retries,
+            )
+            time.sleep(wait)
+            delay *= 2
+            continue
+        if resp.status_code == 429 or resp.status_code >= 500:
+            if attempt == max_retries:
+                resp.raise_for_status()  # out of retries -- surface the real error
+            retry_after = resp.headers.get("Retry-After")
+            wait = float(retry_after) if retry_after else min(delay, max_backoff)
+            log.warning(
+                "GBIF returned %s; retrying in %.1fs (attempt %d/%d).",
+                resp.status_code, wait, attempt, max_retries,
+            )
+            time.sleep(wait)
+            delay *= 2
+            continue
+        resp.raise_for_status()
+        return resp.json()
+    raise AssertionError("unreachable")  # loop always returns or raises above
 
 
 def match_species(scientific_name: str) -> dict[str, Any]:
@@ -88,8 +153,16 @@ def occurrence_search(
     offset: int = 0,
     timeout: float = 20.0,
     wild_only: bool = False,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
 ) -> dict[str, Any]:
     """One page of GBIF occurrence records matching the given filters.
+
+    Pass the `INTERACTIVE_*` module constants for `max_retries`/`base_backoff`/
+    `max_backoff` from a live, user-facing call (fails fast); the defaults
+    are the patient, batch-ingestion schedule -- see those constants'
+    docstring for why they differ.
 
     `country` accepts a single ISO 3166-1 alpha-2 code or a list of them
     (GBIF ORs multiple `country` query params together) -- a list is how
@@ -123,7 +196,14 @@ def occurrence_search(
         min_lat, max_lat, min_lon, max_lon = _bbox_from_point(lat, lon, radius_km)
         params["decimalLatitude"] = f"{min_lat:.4f},{max_lat:.4f}"
         params["decimalLongitude"] = f"{min_lon:.4f},{max_lon:.4f}"
-    return _get("/occurrence/search", params, timeout=timeout)
+    return _get(
+        "/occurrence/search",
+        params,
+        timeout=timeout,
+        max_retries=max_retries,
+        base_backoff=base_backoff,
+        max_backoff=max_backoff,
+    )
 
 
 def occurrences_near(
@@ -171,6 +251,9 @@ def presence_count(
     radius_km: float,
     timeout: float = 20.0,
     plausible_countries: list[str] | None = None,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
 ) -> int:
     """The real number of *wild* GBIF records of this species within radius_km of this point.
 
@@ -209,6 +292,9 @@ def presence_count(
         timeout=timeout,
         wild_only=True,
         country=plausible_countries,
+        max_retries=max_retries,
+        base_backoff=base_backoff,
+        max_backoff=max_backoff,
     )
     return int(page.get("count", 0) or 0)
 
@@ -220,6 +306,9 @@ def has_any_presence(
     radius_km: float,
     timeout: float = 20.0,
     plausible_countries: list[str] | None = None,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
 ) -> bool:
     """Cheap plausibility check: does GBIF have >=1 *wild* record of this species near this point, ever?
 
@@ -254,4 +343,5 @@ def has_any_presence(
     """
     return presence_count(
         scientific_name, lat, lon, radius_km, timeout=timeout, plausible_countries=plausible_countries,
+        max_retries=max_retries, base_backoff=base_backoff, max_backoff=max_backoff,
     ) > 0

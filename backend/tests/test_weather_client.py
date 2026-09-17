@@ -117,6 +117,67 @@ class RetryOnRateLimitTests(unittest.TestCase):
         mock_sleep.assert_not_called()
 
 
+class RetryOnTransportFailureTests(unittest.TestCase):
+    """
+    Regression coverage for a real 2026-09-17 incident: fetching ~20 years
+    of Kruger's historical archive hit a raw requests.exceptions.ReadTimeout
+    -- a transport-level failure with no HTTP response at all -- which used
+    to propagate straight out of _get_with_retry uncaught, since the retry
+    loop only ever inspected resp.status_code. That killed the whole
+    scripts/ingest_weather.py run even though Yellowstone (a shorter date
+    range, fetched just before) had already succeeded in the same run.
+    """
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_succeeds_after_a_read_timeout_then_a_200(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            requests.exceptions.ReadTimeout("read timed out"),
+            _response(200, _archive_response(["2026-06-01"], [25.0])),
+        ]
+        df = weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(len(df), 1)
+        self.assertEqual(mock_get.call_count, 2)
+        mock_sleep.assert_called_once()
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_also_retries_a_connection_error(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            requests.exceptions.ConnectionError("connection reset"),
+            _response(200, _archive_response(["2026-06-01"], [25.0])),
+        ]
+        df = weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(len(df), 1)
+        self.assertEqual(mock_get.call_count, 2)
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_gives_up_and_raises_the_transport_error_after_exhausting_retries(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            requests.exceptions.ReadTimeout("read timed out") for _ in range(weather_client._MAX_RETRIES)
+        ]
+        with self.assertRaises(requests.exceptions.ReadTimeout):
+            weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(mock_get.call_count, weather_client._MAX_RETRIES)
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_a_timeout_then_a_429_then_success_rides_out_both_failure_kinds(self, mock_get, mock_sleep):
+        # The two retry paths (transport exceptions and 429/5xx responses)
+        # share one delay/attempt counter, so a run that hits one of each
+        # kind of transient failure before succeeding must still work.
+        mock_get.side_effect = [
+            requests.exceptions.ReadTimeout("read timed out"),
+            _response(429),
+            _response(200, _archive_response(["2026-06-01"], [25.0])),
+        ]
+        df = weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(len(df), 1)
+        self.assertEqual(mock_get.call_count, 3)
+        self.assertEqual(mock_sleep.call_count, 2)
+
+
 class ClimateNormalsTests(unittest.TestCase):
     def setUp(self):
         weather_client.climate_normals.cache_clear()
