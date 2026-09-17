@@ -135,6 +135,16 @@ class PredictLocationEndpointTests(ApiTestCase):
     def setUp(self):
         super().setUp()
         ps._presence_cache.clear()
+        ps._effort_cache.clear()
+        # Same fix as AnywhereModeTests.setUp in test_prediction_service.py:
+        # without this, gbif_client.total_wild_occurrence_count hits the
+        # real network on any runner that isn't egress-blocked, which
+        # breaks this file's own "no network, no sockets" promise (see its
+        # module docstring) even though no assertion here happened to
+        # notice on a real 2026-09-17 CI run.
+        self._effort_patcher = patch("app.services.gbif_client.total_wild_occurrence_count", return_value=None)
+        self._effort_patcher.start()
+        self.addCleanup(self._effort_patcher.stop)
 
     def test_missing_lat_lon_is_400(self):
         resp = self.client.get("/api/predict-location?date=2027-06-15")
@@ -192,6 +202,11 @@ class BestWindowLocationEndpointTests(ApiTestCase):
     def setUp(self):
         super().setUp()
         ps._presence_cache.clear()
+        ps._effort_cache.clear()
+        # See PredictLocationEndpointTests.setUp's comment above.
+        self._effort_patcher = patch("app.services.gbif_client.total_wild_occurrence_count", return_value=None)
+        self._effort_patcher.start()
+        self.addCleanup(self._effort_patcher.stop)
 
     def test_missing_species_is_400(self):
         resp = self.client.get("/api/best-window-location?lat=44.65&lon=-110.45")

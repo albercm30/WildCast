@@ -347,6 +347,27 @@ class AnywhereModeTests(unittest.TestCase):
         # mocked source answers.
         ps._presence_cache.clear()
         ps._effort_cache.clear()
+        # Default every test in this class to "no live effort data" (the
+        # same fail-closed behavior this sandbox's blocked egress produces
+        # for real) unless a specific test overrides this with its own
+        # nested `patch(...)`, the same way EffortAdjustedEvidenceFactorTests'
+        # siblings below do. Without this default, this class's tests only
+        # looked deterministic in this sandbox by accident: on a real
+        # network (GitHub's CI runners), an unmocked
+        # gbif_client.total_wild_occurrence_count call returns a REAL
+        # effort index, which changed strong_pred's evidence factor away
+        # from 1.0 and broke
+        # test_predict_at_location_dampens_probability_for_thin_local_evidence's
+        # `strong_pred["probability"] == strong_pred["raw_model_probability"]`
+        # assertion in a real 2026-09-17 CI run -- a genuine test-isolation
+        # gap from round 15g (the effort-correction feature), not a bug in
+        # the effort-adjustment logic itself, which is correctly exercised
+        # on its own terms by EffortAdjustedEvidenceFactorTests and the
+        # test_predict_at_location_includes_effort_index_and_*_adjustment_note
+        # tests below.
+        self._effort_patcher = patch("app.services.gbif_client.total_wild_occurrence_count", return_value=None)
+        self._effort_patcher.start()
+        self.addCleanup(self._effort_patcher.stop)
 
     def test_haversine_zero_for_same_point(self):
         self.assertAlmostEqual(ps._haversine_km(44.6, -110.5, 44.6, -110.5), 0.0, places=6)
