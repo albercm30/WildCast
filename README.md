@@ -45,9 +45,15 @@ wildcast/
     app/
       main.py              Flask app (routes)
       config.py             All settings / API base URLs / pilot areas paths
-      routers/               areas.py, predictions.py -- the HTTP layer
+      routers/               areas.py, predictions.py, auth.py, favorites.py,
+                               saved_searches.py, notifications.py, internal.py,
+                               parks.py -- the HTTP layer
       services/               gbif_client.py, inaturalist_client.py, ebird_client.py,
-                               iucn_client.py, weather_client.py, data_source_marker.py
+                               iucn_client.py, weather_client.py, data_source_marker.py,
+                               protected_planet_client.py, auth_service.py,
+                               favorites_service.py, saved_search_service.py,
+                               notification_service.py
+      db.py                   stdlib-sqlite3 accounts/favorites/saved-searches storage
       ml/
         features.py           Shared train/serve feature engineering
         pseudo_absence.py     Target-group background sampling
@@ -58,6 +64,8 @@ wildcast/
       seed_species.json       The 50 seed species (Phase 0/1's curated catalog),
                                each with a real activity_pattern (diurnal/
                                nocturnal/crepuscular/cathemeral)
+      countries.py / .json    Static ISO3 code/name table for the Browse Parks
+                               country picker (regenerate with `python data/countries.py`)
       cache/                  Ingested/generated data lands here (gitignored,
                                except when .github/workflows/retrain.yml
                                force-commits real data back to the repo);
@@ -69,14 +77,14 @@ wildcast/
       generate_sample_fixtures.py   SYNTHETIC offline demo data (see below)
       check_real_data_complete.py   Used by Dockerfile.backend: is every area's
                                      real cache present, or fall back to synthetic?
-    tests/                     150 unit/integration tests, see "Testing & CI"
+    tests/                     283 unit/integration tests, see "Testing & CI"
     requirements.txt
     requirements-dev.txt       ruff, flake8, pytest (optional runner)
   frontend/
     index.html                 Single-file map + forecast UI (no build step);
-                                mode switch (curated / explore anywhere),
-                                favorites, area comparison, coordinate entry,
-                                an unmissable real-vs-demo-data banner
+                                mode switch (curated / explore anywhere / browse
+                                parks), favorites, area comparison, coordinate
+                                entry, an unmissable real-vs-demo-data banner
     manifest.json, sw.js, icons/   PWA: installable as a real app -- see
                                 "Installing WildCast as an app" below
   docker/
@@ -602,6 +610,9 @@ Open-Meteo data on GitHub's runners and commits it back to the repo -- see
 | `GET /api/saved-searches` / `POST /api/saved-searches` / `DELETE /api/saved-searches/<id>` | "Alert me if `<species>` reaches >= X% probability near `<place>`" |
 | `GET /api/notifications[?unread_only=1]` / `POST /api/notifications/<id>/read` | The in-app notification inbox saved-search alerts land in |
 | `POST /api/internal/check-saved-searches` (needs `X-Cron-Key: <CRON_SECRET_KEY>`) | Triggers a saved-search evaluation pass -- see "Accounts & saved-search alerts" below, not meant for the frontend |
+| `GET /api/parks/countries` | Static ISO3 code/name list for the Browse Parks country picker -- works with no `PROTECTED_PLANET_API_KEY` set |
+| `GET /api/parks?country=<ISO3>[&marine=true\|false][&page=&per_page=]` | Country + marine-status filtered browse over WDPA protected areas (see "Browse Parks" below for why this isn't free-text search); `503` if `PROTECTED_PLANET_API_KEY` is unset |
+| `GET /api/parks/<site_id>` | One protected area by its WDPA site_id |
 
 ## Accounts & saved-search alerts
 
@@ -660,6 +671,52 @@ egress couldn't actually install or test, so it's left as a documented
 follow-up rather than shipped unverified. `app/db.py` is the only file that
 migration would touch; every service function above already goes through it
 alone.
+
+## Browse Parks
+
+A "Browse parks" mode (alongside Curated areas / Explore anywhere) lets you
+pick a country and browse its protected areas -- national parks, reserves,
+marine protected areas, and more -- from the [World Database on Protected
+Areas](https://www.protectedplanet.net/) (WDPA), then jump straight into
+Explore Anywhere at that park's approximate location. Backed by
+`app/services/protected_planet_client.py` and `app/routers/parks.py`.
+
+**This is deliberately a country + filter browser, not a "type a park name
+and jump to it" search box.** Real research against Protected Planet's live
+v4 API documentation (2026-09-17) found that *neither* the deprecated v3 API
+nor the current v4 API has a free-text/name-search endpoint -- only
+structured filters (country, marine status, designation, governance, IUCN
+category) on a separate `/v4/protected_areas/search` endpoint. A true
+name-search feature would need a locally-built index from Protected
+Planet's bulk WDPA geodatabase download instead, which was investigated and
+explicitly **not** built here: it's ~1.1GB as a File Geodatabase only (no
+CSV), needs a GDAL processing pipeline this sandbox can't pip-install (same
+blocked-PyPI issue documented elsewhere in this README), ships no
+pre-computed centroid field, and -- most importantly -- is licensed
+**non-commercial use only** by UNEP-WCMC, which would need a separate
+license resolved before shipping given WildCast's monetization plans. The
+country+filter approach avoids all of that and is fully buildable today; if
+real name search is wanted later, revisit that bulk-download path (or check
+whether UNEP-WCMC will grant a commercial license) rather than assuming the
+live API grew a search endpoint.
+
+**Requires `PROTECTED_PLANET_API_KEY`** (free, request at
+<https://api.protectedplanet.net/request>, same opt-in-key pattern as
+eBird/IUCN) -- unset, `/api/parks` and `/api/parks/<id>` return a clean
+`503` and the frontend shows a "not configured" message rather than a
+broken UI; `/api/parks/countries` always works (it's a static local file,
+not a live API call, since Protected Planet has no "list countries"
+endpoint either).
+
+A park's `centroid` is a plain average of its polygon's vertices, not a
+true area-weighted centroid (that needs a GIS library like Shapely, same
+install problem as GDAL above) -- close enough to seed an "explore this
+area" click, not meant to be geometrically precise. `designation`,
+`governance`, and `iucn_category` come back from the API as **integer IDs**
+per the docs, not names/codes, and the docs page didn't give the ID->label
+mapping, so those three aren't exposed as user-facing filters yet (only the
+unambiguous `country` and `marine` are) -- see
+`protected_planet_client.py`'s module docstring before wiring them up.
 
 ## Deploying
 

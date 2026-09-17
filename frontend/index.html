@@ -348,6 +348,16 @@
   .fav-item .fav-remove { border: none; background: none; color: var(--text-muted); cursor: pointer; font-size: 15px; flex: none; padding: 2px 4px; }
   .fav-item .fav-remove:hover { color: var(--status-serious); }
 
+  /* ---------- Browse Parks ---------- */
+  .park-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 9px 10px; border-radius: 8px; background: var(--surface-2); font-size: 13px;
+  }
+  .park-item .park-info { min-width: 0; }
+  .park-item .park-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+  .park-item .park-meta { color: var(--text-muted); font-size: 12px; }
+  .park-item .link-btn { flex: none; }
+
   /* ---------- Compare ---------- */
   .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 560px) { .compare-grid { grid-template-columns: 1fr; } }
@@ -397,6 +407,7 @@
       <div class="mode-switch" role="tablist" aria-label="Browsing mode">
         <button type="button" id="mode-curated" class="active">Curated areas</button>
         <button type="button" id="mode-anywhere">Explore anywhere</button>
+        <button type="button" id="mode-parks">Browse parks</button>
       </div>
       <div class="account-area" id="account-area"></div>
     </div>
@@ -473,6 +484,32 @@
       <div id="compare-results" class="compare-grid" style="margin-top:10px;"></div>
     </div>
 
+    <div class="panel" id="parks-panel" style="display:none;">
+      <div class="controls" id="parks-controls">
+        <div class="field">
+          <label for="parks-country-select">Country</label>
+          <select id="parks-country-select"><option value="">Loading countries&hellip;</option></select>
+        </div>
+        <div class="field">
+          <label for="parks-marine-select">Type</label>
+          <select id="parks-marine-select">
+            <option value="">Any</option>
+            <option value="false">Land</option>
+            <option value="true">Marine</option>
+          </select>
+        </div>
+        <button type="button" class="link-btn" id="parks-search-btn" style="align-self:center;">Search</button>
+      </div>
+      <div id="parks-results">
+        <div class="empty-state">Pick a country above and search to browse its protected areas (national parks, reserves, and more) from the World Database on Protected Areas.</div>
+      </div>
+      <div id="parks-pagination" style="margin-top:10px; display:none; text-align:center;">
+        <button type="button" class="link-btn" id="parks-prev">&larr; Prev</button>
+        <span id="parks-page-label" class="hint" style="margin:0 10px;"></span>
+        <button type="button" class="link-btn" id="parks-next">Next &rarr;</button>
+      </div>
+    </div>
+
     <div class="panel" id="favorites-panel" style="display:none;">
       <p class="area-name" style="margin-bottom:8px;">&#9733; Saved places</p>
       <div class="fav-list" id="fav-list"></div>
@@ -519,13 +556,17 @@
   const AUTH_TOKEN_KEY = "wildcast_auth_token_v1";
 
   const state = {
-    mode: "curated",           // 'curated' | 'anywhere'
+    mode: "curated",           // 'curated' | 'anywhere' | 'parks'
     areaId: null,
     compareAreaId: null,
     compareOpen: false,
     areas: [],
     anywhere: { lat: null, lon: null },
     favorites: loadFavorites(),
+    // Browse Parks (Task #20) -- see backend/app/routers/parks.py and
+    // app/services/protected_planet_client.py for why this is a
+    // country+filter browse, not a free-text park-name search.
+    parks: { countryIso3: "", marine: "", page: 1, results: [], hasMore: false },
     // Real per-account state (registered/logged-in users only -- see
     // backend/app/routers/{auth,favorites,saved_searches,notifications}.py).
     // Guests keep using the localStorage-only favorites above; auth.token
@@ -1078,11 +1119,118 @@
     }
   }
 
+  // ---------------- Browse Parks (Task #20) ----------------
+  // Country + filter browsing over Protected Planet's WDPA dataset -- not a
+  // free-text park-name search, since neither the v3 nor v4 API supports
+  // one (see backend/app/services/protected_planet_client.py's docstring
+  // for the real research behind that). Each result can be jumped into the
+  // existing "Explore Anywhere" prediction flow at the park's approximate
+  // centroid, rather than this panel trying to run its own prediction UI.
+  const parksCountrySelect = document.getElementById("parks-country-select");
+  const parksMarineSelect = document.getElementById("parks-marine-select");
+  const parksResultsEl = document.getElementById("parks-results");
+  const parksPaginationEl = document.getElementById("parks-pagination");
+  const parksPageLabel = document.getElementById("parks-page-label");
+
+  async function loadParkCountries() {
+    try {
+      const res = await fetch(`${apiBase()}/api/parks/countries`);
+      if (!res.ok) throw new Error("failed");
+      const countries = await res.json();
+      parksCountrySelect.innerHTML =
+        `<option value="">Choose a country&hellip;</option>` +
+        countries.map((c) => `<option value="${c.iso3}">${c.name}</option>`).join("");
+    } catch (err) {
+      parksCountrySelect.innerHTML = `<option value="">Countries unavailable</option>`;
+    }
+  }
+
+  function renderParksResults() {
+    const { results, hasMore, page } = state.parks;
+    if (!results.length) {
+      parksResultsEl.innerHTML = `<div class="empty-state">No protected areas found for this filter -- try a different country.</div>`;
+      parksPaginationEl.style.display = "none";
+      return;
+    }
+    parksResultsEl.innerHTML = `<div class="fav-list">${results
+      .map(
+        (p) => `
+      <div class="park-item">
+        <div class="park-info">
+          <span class="park-name">${p.name || "Unnamed protected area"}</span>
+          <span class="park-meta">${[p.designation, p.iucn_category ? `IUCN ${p.iucn_category}` : null, p.marine ? "Marine" : null]
+            .filter(Boolean)
+            .join(" &middot; ") || "&nbsp;"}</span>
+        </div>
+        <button type="button" class="link-btn" data-site-id="${p.site_id}" ${p.centroid ? "" : "disabled"}>Explore &rarr;</button>
+      </div>`
+      )
+      .join("")}</div>`;
+    parksResultsEl.querySelectorAll("[data-site-id]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const park = results.find((p) => String(p.site_id) === btn.dataset.siteId);
+        if (park && park.centroid) exploreThisPark(park);
+      });
+    });
+    parksPaginationEl.style.display = "flex";
+    document.getElementById("parks-prev").disabled = page <= 1;
+    document.getElementById("parks-next").disabled = !hasMore;
+    parksPageLabel.textContent = `Page ${page}`;
+  }
+
+  function exploreThisPark(park) {
+    setMode("anywhere");
+    state.anywhere.lat = park.centroid.lat;
+    state.anywhere.lon = park.centroid.lon;
+    placeAnywhereMarker(park.centroid.lat, park.centroid.lon);
+    if (map) map.setView([park.centroid.lat, park.centroid.lon], 7);
+    renderAnywhereResults();
+  }
+
+  async function searchParks() {
+    state.parks.countryIso3 = parksCountrySelect.value;
+    state.parks.marine = parksMarineSelect.value;
+    parksResultsEl.innerHTML = `<div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div>`;
+    parksPaginationEl.style.display = "none";
+    try {
+      const params = new URLSearchParams({ page: String(state.parks.page), per_page: "25" });
+      if (state.parks.countryIso3) params.set("country", state.parks.countryIso3);
+      if (state.parks.marine) params.set("marine", state.parks.marine);
+      const res = await fetch(`${apiBase()}/api/parks?${params}`);
+      if (res.status === 503) {
+        parksResultsEl.innerHTML =
+          `<div class="empty-state">Park browsing isn't configured on this backend yet (needs a free Protected Planet API key -- see the README's "Browse Parks" section).</div>`;
+        return;
+      }
+      if (!res.ok) throw new Error("failed");
+      const body = await res.json();
+      state.parks.results = body.protected_areas || [];
+      state.parks.hasMore = !!body.has_more;
+      renderParksResults();
+    } catch (err) {
+      parksResultsEl.innerHTML = `<div class="empty-state">Can't reach the WildCast API at ${apiBase()}.<br/>Try again shortly, or check the API base URL below.</div>`;
+    }
+  }
+  document.getElementById("parks-search-btn").addEventListener("click", () => {
+    state.parks.page = 1;
+    searchParks();
+  });
+  document.getElementById("parks-prev").addEventListener("click", () => {
+    if (state.parks.page > 1) { state.parks.page -= 1; searchParks(); }
+  });
+  document.getElementById("parks-next").addEventListener("click", () => {
+    if (state.parks.hasMore) { state.parks.page += 1; searchParks(); }
+  });
+  loadParkCountries();
+
   // ---------------- mode switching ----------------
   function setMode(mode) {
     state.mode = mode;
     document.getElementById("mode-curated").classList.toggle("active", mode === "curated");
     document.getElementById("mode-anywhere").classList.toggle("active", mode === "anywhere");
+    document.getElementById("mode-parks").classList.toggle("active", mode === "parks");
+    document.getElementById("main-panel").style.display = mode === "parks" ? "none" : "block";
+    document.getElementById("parks-panel").style.display = mode === "parks" ? "block" : "none";
     document.getElementById("curated-controls").style.display = mode === "curated" ? "flex" : "none";
     document.getElementById("anywhere-controls").style.display = mode === "anywhere" ? "flex" : "none";
     document.getElementById("anywhere-coords").style.display = mode === "anywhere" ? "flex" : "none";
@@ -1091,7 +1239,10 @@
     document.getElementById("compare-results").innerHTML = "";
     const mapHint = document.getElementById("map-hint");
     const note = document.getElementById("anywhere-note");
-    if (mode === "anywhere") {
+    if (mode === "parks") {
+      mapHint.textContent = "Browsing protected areas by country -- pick a result's \"Explore\" button to check it on the map.";
+      note.classList.remove("visible");
+    } else if (mode === "anywhere") {
       mapHint.textContent = mapAvailable
         ? "Click anywhere on the map, or type coordinates below, to check that exact spot."
         : "Type coordinates below to check a spot (map tiles are unavailable right now).";
@@ -1114,6 +1265,7 @@
   }
   document.getElementById("mode-curated").addEventListener("click", () => setMode("curated"));
   document.getElementById("mode-anywhere").addEventListener("click", () => setMode("anywhere"));
+  document.getElementById("mode-parks").addEventListener("click", () => setMode("parks"));
 
   async function selectArea(areaId) {
     state.areaId = areaId;

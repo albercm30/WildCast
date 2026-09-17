@@ -43,6 +43,7 @@ OPEN_ELEVATION_BASE = "https://api.open-elevation.com/api/v1/lookup"
 EBIRD_API_BASE = "https://api.ebird.org/v2"
 INATURALIST_API_BASE = "https://api.inaturalist.org/v1"
 IUCN_API_BASE = "https://api.iucnredlist.org/api/v4"
+PROTECTED_PLANET_API_BASE = "https://api.protectedplanet.net/v4"
 
 # --- Optional keys, read from environment / .env ---
 # iNaturalist needs no key for read-only search (public API). eBird, IUCN,

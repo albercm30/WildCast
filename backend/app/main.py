@@ -22,6 +22,7 @@ from app.routers.auth import bp as auth_bp
 from app.routers.favorites import bp as favorites_bp
 from app.routers.internal import bp as internal_bp
 from app.routers.notifications import bp as notifications_bp
+from app.routers.parks import bp as parks_bp
 from app.routers.predictions import bp as predictions_bp
 from app.routers.saved_searches import bp as saved_searches_bp
 
@@ -38,6 +39,7 @@ def create_app() -> Flask:
     app.register_blueprint(saved_searches_bp)
     app.register_blueprint(notifications_bp)
     app.register_blueprint(internal_bp)
+    app.register_blueprint(parks_bp)
 
     @app.after_request
     def add_cors_headers(response):
