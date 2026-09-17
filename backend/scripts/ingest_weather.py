@@ -46,6 +46,9 @@ def main():
         daily.to_csv(CACHE_DIR / f"weather_daily_{area_id}.csv", index=False)
         print(f"  wrote {len(daily)} rows -> weather_daily_{area_id}.csv")
 
+        # A courtesy pause between the two calls this area makes.
+        time.sleep(5)
+
         print(f"Computing climate normals for {area['name']} (this fetches ~15 years of history)...")
         normals = weather_client.climate_normals(area["lat"], area["lon"])
         normals.insert(0, "area_id", area_id)
@@ -54,11 +57,14 @@ def main():
 
         # A courtesy pause between areas. weather_client's own retry-with-
         # backoff (see _get_with_retry) is what actually rides out a 429 if
-        # one happens anyway -- this is just to make one less likely in the
+        # one happens anyway (patiently -- up to ~4 minutes per request as of
+        # this version) -- this pause is just to make one less likely in the
         # first place, since a shared CI-runner IP can trip Open-Meteo's
-        # rate limit even at this low a request volume (real incident:
-        # 2026-09-17, failed on the 3rd area's 5th request).
-        time.sleep(2)
+        # rate limit even at this low a request volume (real incidents,
+        # 2026-09-17: one run failed with no retry logic at all; a second,
+        # with a shorter/5-retry schedule, still exhausted retries on the
+        # last, largest area).
+        time.sleep(8)
 
 
 if __name__ == "__main__":
