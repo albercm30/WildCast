@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -50,6 +51,14 @@ def main():
         normals.insert(0, "area_id", area_id)
         normals.to_csv(CACHE_DIR / f"climate_normals_{area_id}.csv", index=False)
         print(f"  wrote {len(normals)} rows -> climate_normals_{area_id}.csv")
+
+        # A courtesy pause between areas. weather_client's own retry-with-
+        # backoff (see _get_with_retry) is what actually rides out a 429 if
+        # one happens anyway -- this is just to make one less likely in the
+        # first place, since a shared CI-runner IP can trip Open-Meteo's
+        # rate limit even at this low a request volume (real incident:
+        # 2026-09-17, failed on the 3rd area's 5th request).
+        time.sleep(2)
 
 
 if __name__ == "__main__":
