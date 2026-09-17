@@ -67,7 +67,9 @@ wildcast/
       ingest_weather.py       REAL: pulls live Open-Meteo weather + normals
       ingest_iucn.py           REAL, OPTIONAL: pulls live IUCN conservation status
       generate_sample_fixtures.py   SYNTHETIC offline demo data (see below)
-    tests/                     146 unit/integration tests, see "Testing & CI"
+      check_real_data_complete.py   Used by Dockerfile.backend: is every area's
+                                     real cache present, or fall back to synthetic?
+    tests/                     150 unit/integration tests, see "Testing & CI"
     requirements.txt
     requirements-dev.txt       ruff, flake8, pytest (optional runner)
   frontend/
@@ -127,10 +129,17 @@ real ingestion scripts on GitHub's own runners (which have real internet,
 unlike a locked-down sandbox) and commits the result back to `backend/data/cache/`.
 Trigger it from the repo's **Actions** tab -> **Retrain on live data** ->
 **Run workflow**, or just let its weekly schedule (Mondays, 06:00 UTC) keep
-it fresh. Once it's run at least once, `docker/Dockerfile.backend` automatically
-detects the committed real data and trains on it instead of the synthetic
-demo fixtures -- so the very next Docker build (including a redeploy on
-Render/Fly/etc.) bakes in real predictions, no other change needed.
+it fresh. Once it's run at least once **and produced a complete cache for
+every pilot area**, `docker/Dockerfile.backend` automatically detects that
+and trains on it instead of the synthetic demo fixtures -- so the very next
+Docker build (including a redeploy on Render/Fly/etc.) bakes in real
+predictions, no other change needed. The completeness check
+(`scripts/check_real_data_complete.py`) falls back to generating synthetic
+fixtures for every area whenever any single area's real cache is missing
+or partial (e.g. right after a new area is added to `pilot_areas.json` but
+before the next `retrain.yml` run covers it) -- this is deliberate and
+all-or-nothing, so the Docker build never crashes and never silently mixes
+real data for some areas with synthetic for others.
 
 **Or run it yourself, locally:**
 
@@ -493,7 +502,7 @@ cd backend
 pip install -r requirements-dev.txt
 ruff check .
 flake8 --max-line-length=130 --extend-ignore=E501,W503,E127 app scripts tests
-python -m unittest discover -s tests -v      # 146 tests, ~8 seconds
+python -m unittest discover -s tests -v      # 150 tests, ~5 seconds
 ```
 
 The suite is plain `unittest.TestCase` (no pytest dependency required to run

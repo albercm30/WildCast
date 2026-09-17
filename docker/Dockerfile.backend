@@ -9,17 +9,26 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ .
 
-# Bake a trained model into the image at build time. If real data has
-# already been committed to data/cache/ -- which .github/workflows/retrain.yml
-# does automatically, fetching it live from GBIF + Open-Meteo -- that real
-# data is used. Otherwise (a fresh clone before retrain.yml has ever run)
-# this falls back to the synthetic offline demo dataset, so the image
-# always builds successfully either way. See the README's "Switching to
-# real data" section.
-RUN if [ -f data/cache/occurrences_yellowstone.csv ]; then \
+# Bake a trained model into the image at build time. If a COMPLETE real
+# data cache exists for every pilot area -- which .github/workflows/retrain.yml
+# produces automatically, fetching it live from GBIF + Open-Meteo -- that
+# real data is used. Otherwise (a fresh clone before retrain.yml has ever
+# run, OR a partial cache covering only some areas -- e.g. right after new
+# areas are added to data/pilot_areas.json but before the next retrain.yml
+# run covers them) this falls back to generating the synthetic offline demo
+# dataset for ALL areas, so the image always builds successfully either
+# way. This check used to just test for one hardcoded file
+# (data/cache/occurrences_yellowstone.csv), which broke silently once the
+# catalog grew past its original 5 areas: it kept passing on Yellowstone's
+# real data alone while 5 newer areas had no cache at all, so the build
+# skipped the fallback and crashed deep inside app.ml.train instead of
+# generating a consistent dataset -- see scripts/check_real_data_complete.py's
+# docstring for the real failure this caused. See the README's "Switching
+# to real data" section.
+RUN if python -m scripts.check_real_data_complete; then \
       echo "Using committed real GBIF/Open-Meteo data from data/cache/."; \
     else \
-      echo "No committed real data yet -- generating the synthetic offline demo dataset instead."; \
+      echo "No complete committed real data yet -- generating the synthetic offline demo dataset instead."; \
       python -m scripts.generate_sample_fixtures; \
     fi && \
     python -m app.ml.train
