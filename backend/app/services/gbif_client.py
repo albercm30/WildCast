@@ -83,13 +83,18 @@ def occurrence_search(
     lon: float | None = None,
     radius_km: float | None = None,
     year_range: tuple[int, int] | None = None,
-    country: str | None = None,
+    country: str | list[str] | None = None,
     limit: int = 300,
     offset: int = 0,
     timeout: float = 20.0,
     wild_only: bool = False,
 ) -> dict[str, Any]:
     """One page of GBIF occurrence records matching the given filters.
+
+    `country` accepts a single ISO 3166-1 alpha-2 code or a list of them
+    (GBIF ORs multiple `country` query params together) -- a list is how
+    `has_any_presence`'s `plausible_countries` restricts a search to a
+    species' real native range.
 
     `wild_only=True` excludes captive (LIVING_SPECIMEN) and fossil
     (FOSSIL_SPECIMEN) records -- see `_WILD_BASIS_OF_RECORD`'s comment.
@@ -160,15 +165,34 @@ def occurrences_near(
 
 
 def has_any_presence(
-    scientific_name: str, lat: float, lon: float, radius_km: float, timeout: float = 20.0
+    scientific_name: str,
+    lat: float,
+    lon: float,
+    radius_km: float,
+    timeout: float = 20.0,
+    plausible_countries: list[str] | None = None,
 ) -> bool:
     """Cheap plausibility check: does GBIF have >=1 *wild* record of this species near this point, ever?
 
-    `wild_only=True` (excludes zoo/captive and fossil records -- see
-    `_WILD_BASIS_OF_RECORD`): a captive record passing this check would
-    mean WildCast telling someone they might encounter a lion near a
-    Bangkok zoo, which is real GBIF data but a wrong answer to the
-    question this function exists to answer.
+    Two independent filters, stacked, because they catch different failure
+    modes of the same underlying problem:
+
+    1. `wild_only=True` excludes captive (LIVING_SPECIMEN) and fossil
+       (FOSSIL_SPECIMEN) records -- see `_WILD_BASIS_OF_RECORD`'s comment.
+       This only catches formal institutional living-collection records
+       (zoo/garden accession databases published straight to GBIF); it does
+       NOT catch a casual visitor's photo of a zoo animal, which typically
+       still carries basisOfRecord=HUMAN_OBSERVATION -- the same value a
+       genuine wild sighting has. GBIF simply has no reliable per-record
+       "this individual was captive" flag for that far more common case.
+    2. `plausible_countries` (from the species' curated entry in
+       seed_species.json, a hand-checked list of its real native-range
+       countries) restricts the GBIF query itself to those countries. This
+       is what actually closes the gap #1 leaves open: whatever basisOfRecord
+       a Bangkok zoo lion's citizen-science photo carries, Thailand is
+       simply never in Panthera leo's plausible-country list, so the query
+       cannot return it. Found and added after a real report: a lion and a
+       gray wolf both still passed the wild_only-only filter near Bangkok.
 
     `timeout` is lower by default for interactive "Explore Anywhere" callers
     (see app.ml.prediction_service.species_for_location, which runs many of
@@ -183,5 +207,6 @@ def has_any_presence(
         limit=1,
         timeout=timeout,
         wild_only=True,
+        country=plausible_countries,
     )
     return page.get("count", 0) > 0
