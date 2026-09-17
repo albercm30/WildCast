@@ -1,7 +1,15 @@
 # Dev/test/lint tools -- not needed to run the app itself.
+#
+# ruff and flake8 are PINNED, not left to float to "latest". An unpinned
+# `pip install ruff` genuinely broke CI here once already: a newer ruff
+# release changed which lint rules run by default (it started flagging
+# DTZ011 -- naive datetime.date.today() calls -- which this exact version
+# does not), so a green local run and a red CI run disagreed on the same
+# code. Pinning both tools means CI runs the identical linter this project
+# was actually developed and verified against.
 -r requirements.txt
-ruff
-flake8
+ruff==0.15.11
+flake8==7.3.0
 pytest   # optional: the test suite is plain unittest.TestCase and runs fine
          # with `python -m unittest discover -s tests`, but pytest also
          # picks it up unmodified if you prefer its runner/output.
