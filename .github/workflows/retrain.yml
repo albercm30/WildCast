@@ -1,0 +1,65 @@
+name: Retrain on live data
+
+# Fetches REAL occurrence + weather data from GBIF and Open-Meteo (not the
+# synthetic demo fixtures) and commits the result back to the repo, so the
+# next Docker build (see docker/Dockerfile.backend) bakes in real data
+# instead of the illustrative synthetic dataset. Runs on GitHub's own
+# runners, which have real internet access -- neither the sandbox this
+# project was developed in nor a locally-blocked machine could do this.
+#
+# Trigger it manually any time from the Actions tab ("Retrain on live data"
+# -> "Run workflow"), or let the weekly schedule keep the data fresh.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # every Monday 06:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ingest live GBIF occurrences
+        run: python -m scripts.ingest_gbif
+
+      - name: Ingest live Open-Meteo weather + climate normals
+        run: python -m scripts.ingest_weather
+
+      # Train here too, as a sanity check -- if the live data can't produce
+      # a working model (e.g. GBIF returned too few records for some
+      # species), fail the workflow loudly instead of committing data that
+      # would break the next Docker build. The model itself isn't
+      # committed (data/cache/ is); Dockerfile.backend retrains from
+      # data/cache/ at build/deploy time so the trained model is always
+      # freshly produced from whatever data is currently committed.
+      - name: Train on the real data (sanity check before committing)
+        run: python -m app.ml.train
+
+      - name: Commit the refreshed data cache back to the repo
+        run: |
+          cd ..
+          git config user.name "wildcast-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f backend/data/cache/
+          if git diff --cached --quiet; then
+            echo "No changes -- live data is identical to what's already committed."
+          else
+            git commit -m "Retrain: refresh live GBIF/Open-Meteo data cache [automated]"
+            git push
+          fi
