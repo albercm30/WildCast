@@ -10,6 +10,7 @@ weather). Requires outbound internet access to https://archive-api.open-meteo.co
 from __future__ import annotations
 
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -22,6 +23,8 @@ from app.config import CACHE_DIR, DATA_DIR  # noqa: E402  (needs the sys.path.in
 from app.services import data_source_marker, weather_client  # noqa: E402
 
 PILOT_AREAS = json.loads((DATA_DIR / "pilot_areas.json").read_text())
+
+_FULL_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def main():
@@ -38,7 +41,34 @@ def main():
             print(f"Skipping {area_id}: no occurrence records.")
             continue
 
-        dates = pd.to_datetime(occ["date"])
+        # This is a defensive second layer, not the real fix -- that's
+        # scripts/ingest_gbif.py's _record_date, which now only ever writes
+        # a real day-precision date. This just means a still-unparseable
+        # date (a stale CSV committed before that fix, or a future GBIF
+        # quirk nobody's hit yet) gets skipped with a warning instead of
+        # crashing the whole ingestion run, the way a bare-year "2008" from
+        # a Scottish Highlands record did on 2026-09-17 (pd.to_datetime,
+        # with no format hint, locked onto "%Y-%m-%d" from the surrounding
+        # good rows and then raised on that one bad one).
+        #
+        # The regex pre-filter matters: pd.to_datetime with errors="coerce"
+        # alone does NOT reject a bare year like "2008" -- its flexible
+        # parser happily fills in a fabricated "2008-01-01" instead of
+        # rejecting it, which is exactly the fabricated-date problem this
+        # whole fix is trying to avoid. Only a string that already looks
+        # like a full YYYY-MM-DD date is handed to to_datetime at all; a
+        # value that matches that shape but still isn't a real date (e.g.
+        # "2008-13-40") is what errors="coerce" is there to catch.
+        date_strs = occ["date"].astype(str)
+        looks_like_a_full_date = date_strs.str.match(_FULL_DATE_RE)
+        dates = pd.to_datetime(date_strs.where(looks_like_a_full_date), format="%Y-%m-%d", errors="coerce")
+        n_bad = int(dates.isna().sum())
+        if n_bad:
+            print(f"  ({n_bad} of {len(dates)} occurrence dates for {area_id} were unparseable and skipped)")
+            dates = dates.dropna()
+        if dates.empty:
+            print(f"Skipping {area_id}: no occurrence records with a parseable date.")
+            continue
         start, end = dates.min().date(), dates.max().date()
         print(f"Fetching daily weather for {area['name']}: {start} -> {end} ...")
         daily = weather_client.historical_daily(area["lat"], area["lon"], start.isoformat(), end.isoformat())

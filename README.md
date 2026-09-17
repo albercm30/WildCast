@@ -168,6 +168,20 @@ added -- see `weather_client._get_with_retry` / `gbif_client._get` for the
 retry schedule (patient for batch ingestion, fast-fail via `INTERACTIVE_*`
 for live "Explore Anywhere" calls -- see below).
 
+`ingest_gbif.py` also only ever writes a real, day-precision date
+(`scripts/ingest_gbif._record_date`) for each occurrence record. GBIF's
+`eventDate` is not reliably a full date -- it can be year-only, year-month,
+an ISO8601 interval, or occasionally malformed text -- and a record without
+real day precision is worse than useless for joining a sighting to one
+day's weather, so it's dropped rather than guessed at (no more silently
+defaulting a missing month/day to "the 1st"). A real `retrain.yml` run hit
+exactly this: a Scottish Highlands record's `eventDate` was a bare "2008",
+which used to pass straight through into `occurrences_scottish_highlands.csv`
+and crash `ingest_weather.py`'s date parsing downstream. `ingest_weather.py`
+also has a defensive second layer (an unparseable date is skipped with a
+warning rather than crashing the run) in case a stale cache file or a future
+GBIF quirk slips past the first fix.
+
 iNaturalist needs no key at all and is queried automatically in Explore
 Anywhere mode alongside GBIF (see "Multi-source data quality" below).
 Optional: copy `backend/.env.example` to `backend/.env` and add
@@ -513,7 +527,7 @@ cd backend
 pip install -r requirements-dev.txt
 ruff check .
 flake8 --max-line-length=130 --extend-ignore=E501,W503,E127 app scripts tests
-python -m unittest discover -s tests -v      # 159 tests, ~15 seconds
+python -m unittest discover -s tests -v      # 173 tests, ~15 seconds
 ```
 
 The suite is plain `unittest.TestCase` (no pytest dependency required to run
