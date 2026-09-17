@@ -9,11 +9,20 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ .
 
-# Bake the offline demo model into the image so the container is useful the
-# moment it starts. Swap this for the real ingestion + training pipeline
-# (scripts/ingest_gbif.py -> scripts/ingest_weather.py -> app.ml.train) once
-# you're ready to serve real predictions -- see the README.
-RUN python -m scripts.generate_sample_fixtures && python -m app.ml.train
+# Bake a trained model into the image at build time. If real data has
+# already been committed to data/cache/ -- which .github/workflows/retrain.yml
+# does automatically, fetching it live from GBIF + Open-Meteo -- that real
+# data is used. Otherwise (a fresh clone before retrain.yml has ever run)
+# this falls back to the synthetic offline demo dataset, so the image
+# always builds successfully either way. See the README's "Switching to
+# real data" section.
+RUN if [ -f data/cache/occurrences_yellowstone.csv ]; then \
+      echo "Using committed real GBIF/Open-Meteo data from data/cache/."; \
+    else \
+      echo "No committed real data yet -- generating the synthetic offline demo dataset instead."; \
+      python -m scripts.generate_sample_fixtures; \
+    fi && \
+    python -m app.ml.train
 
 EXPOSE 8000
 ENV PORT=8000
