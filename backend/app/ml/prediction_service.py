@@ -114,6 +114,7 @@ def _explain(
     seasonality: dict,
     support: int,
     confidence: str,
+    support_source: str | None = None,
 ) -> list[str]:
     """
     2-3 short, plain-language reasons behind a prediction: data support,
@@ -121,15 +122,25 @@ def _explain(
     This is Phase 0's version of the design doc's Product & UX "why"
     explanation text -- deliberately simple (no free-text LLM generation,
     so it's fast, deterministic, and always traceable to a concrete number).
+
+    `support_source`: set only by "Explore Anywhere" mode, where `support`
+    and `seasonality` come from the species' curated home area's training
+    data, not the actual clicked point -- without this, "in this area" /
+    "here" would misleadingly read as being about the click itself. Found
+    via a real report: a lion showing "500 historical sighting records...
+    in this area" near Bangkok read as GBIF evidence for Bangkok, when it
+    was really Kruger's training count carried over as the closest analog.
     """
+    location_phrase = "in this area" if support_source is None else f"in {support_source} (closest trained analog)"
+    seasonal_phrase = "here" if support_source is None else f"in {support_source}"
     factors = []
 
     if support >= 150:
-        factors.append(f"High confidence: {support} historical sighting records for this species in this area.")
+        factors.append(f"High confidence: {support} historical sighting records for this species {location_phrase}.")
     elif support >= 40:
-        factors.append(f"Medium confidence: {support} historical sighting records for this species in this area.")
+        factors.append(f"Medium confidence: {support} historical sighting records for this species {location_phrase}.")
     else:
-        factors.append(f"Low confidence: only {support} historical sighting records for this species in this area.")
+        factors.append(f"Low confidence: only {support} historical sighting records for this species {location_phrase}.")
 
     season = seasonality.get(species_key)
     if season:
@@ -139,11 +150,11 @@ def _explain(
         peak_month = _month_label(season["peak_doy"])
         trough_month = _month_label(season["trough_doy"])
         if dist_peak <= 35 and dist_peak <= dist_trough:
-            factors.append(f"Near this species' peak season here (historically strongest around {peak_month}).")
+            factors.append(f"Near this species' peak season {seasonal_phrase} (historically strongest around {peak_month}).")
         elif dist_trough <= 35 and dist_trough < dist_peak:
-            factors.append(f"Near this species' quietest time of year here (weakest around {trough_month}).")
+            factors.append(f"Near this species' quietest time of year {seasonal_phrase} (weakest around {trough_month}).")
         else:
-            factors.append(f"Shoulder season here -- peak is around {peak_month}, quietest around {trough_month}.")
+            factors.append(f"Shoulder season {seasonal_phrase} -- peak is around {peak_month}, quietest around {trough_month}.")
 
     best_var, best_z = None, 0.0
     for var in _WEATHER_VAR_META:
@@ -541,9 +552,12 @@ def predict_at_location(
         for sp, p in zip(candidates, proba):
             support = sp["training_support"]
             confidence = "high" if support >= 150 else "medium" if support >= 40 else "low"
-            factors = _explain(sp["scientific_name"], target_date, weather_row, seasonality, support, confidence)
+            factors = _explain(
+                sp["scientific_name"], target_date, weather_row, seasonality, support, confidence,
+                support_source=nearest["name"],
+            )
             factors.append(
-                f"Verified live against GBIF within {radius_km:.0f}km of this exact point "
+                f"Verified live against GBIF (wild records only) within {radius_km:.0f}km of this exact point "
                 f"(closest flagship area: {nearest['name']}, {distance_km:.0f}km away)."
             )
             results.append(
