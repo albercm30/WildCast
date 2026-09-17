@@ -6,9 +6,17 @@ conservation-status context (Red List category + population trend) per
 species: not a sighting-evidence source like GBIF/iNaturalist/eBird, but a
 real, authoritative signal that a rare/declining species should be expected
 to have fewer sightings than a common one, independent of local search
-effort -- used only at TRAINING time (see app.ml.train), since a species'
-Red List status doesn't change per location or date the way live occurrence
-counts do.
+effort -- used only at TRAINING time, since a species' Red List status
+doesn't change per location or date the way live occurrence counts do. In
+production this module is called from `scripts/ingest_iucn.py` (run on
+GitHub's runners via .github/workflows/retrain.yml, where the
+IUCN_API_KEY secret and real network access both exist) rather than from
+`app.ml.train` directly -- see that script's docstring for why: a Docker
+build (where `app.ml.train` actually runs to produce the deployed model)
+has neither secrets nor a guaranteed live-API path by default.
+`app.ml.train._compute_conservation_status()` still calls this module
+directly too, as a local-dev convenience when IUCN_API_KEY is set in your
+own `.env` and no committed cache file exists yet.
 
 Built from the IUCN Red List API v4's public documentation -- this
 sandbox's locked-down egress cannot reach api.iucnredlist.org to verify
@@ -31,6 +39,24 @@ from app.config import IUCN_API_BASE, IUCN_API_KEY
 
 class IUCNUnavailable(RuntimeError):
     """Raised when IUCN integration is used without an API key configured."""
+
+
+# IUCN Red List category codes -> plain-language labels, for the factor
+# text in prediction_service._explain(). Codes per IUCN's own standard
+# categories. Lives here (not app.ml.train) so both app.ml.train (live
+# fallback path) and scripts.ingest_iucn (the real production path -- see
+# that script's docstring) can share one definition.
+CATEGORY_LABELS = {
+    "EX": "Extinct",
+    "EW": "Extinct in the Wild",
+    "CR": "Critically Endangered",
+    "EN": "Endangered",
+    "VU": "Vulnerable",
+    "NT": "Near Threatened",
+    "LC": "Least Concern",
+    "DD": "Data Deficient",
+    "NE": "Not Evaluated",
+}
 
 
 def is_configured() -> bool:

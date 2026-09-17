@@ -41,6 +41,20 @@ jobs:
       - name: Ingest live Open-Meteo weather + climate normals
         run: python -m scripts.ingest_weather
 
+      # Optional: real IUCN Red List conservation status. Needs the
+      # IUCN_API_KEY repo secret to do anything -- add it under Settings ->
+      # Secrets and variables -> Actions if you have one (see
+      # backend/.env.example). Skips cleanly (exit 0) with no key, so this
+      # step never fails the workflow for someone who hasn't gotten a key
+      # yet. Runs here specifically (not inside app.ml.train at Docker
+      # build time) because this is the one place the secret and real
+      # network access both actually exist -- see scripts/ingest_iucn.py's
+      # docstring.
+      - name: Ingest live IUCN conservation status (optional)
+        env:
+          IUCN_API_KEY: ${{ secrets.IUCN_API_KEY }}
+        run: python -m scripts.ingest_iucn
+
       # Train here too, as a sanity check -- if the live data can't produce
       # a working model (e.g. GBIF returned too few records for some
       # species), fail the workflow loudly instead of committing data that
@@ -60,6 +74,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes -- live data is identical to what's already committed."
           else
-            git commit -m "Retrain: refresh live GBIF/Open-Meteo data cache [automated]"
+            git commit -m "Retrain: refresh live GBIF/Open-Meteo/IUCN data cache [automated]"
             git push
           fi

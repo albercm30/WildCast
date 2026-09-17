@@ -65,8 +65,9 @@ wildcast/
     scripts/
       ingest_gbif.py          REAL: pulls live GBIF occurrence records
       ingest_weather.py       REAL: pulls live Open-Meteo weather + normals
+      ingest_iucn.py           REAL, OPTIONAL: pulls live IUCN conservation status
       generate_sample_fixtures.py   SYNTHETIC offline demo data (see below)
-    tests/                     137 unit/integration tests, see "Testing & CI"
+    tests/                     146 unit/integration tests, see "Testing & CI"
     requirements.txt
     requirements-dev.txt       ruff, flake8, pytest (optional runner)
   frontend/
@@ -137,6 +138,7 @@ Render/Fly/etc.) bakes in real predictions, no other change needed.
 cd backend
 python -m scripts.ingest_gbif      # live GBIF occurrence records, no API key needed
 python -m scripts.ingest_weather   # live Open-Meteo historical weather + climate normals
+python -m scripts.ingest_iucn      # optional: live IUCN conservation status, needs IUCN_API_KEY in .env
 python -m app.ml.train             # retrain on the real cache
 ```
 
@@ -156,6 +158,16 @@ always instant) to enable real conservation-status context in every
 prediction's "why" explanation (see "Population and ability-to-evade
 factors" below). Both are skipped automatically, with a clear log message,
 when unset -- nothing breaks without them.
+
+**IUCN specifically needs one extra step to actually reach production,**
+unlike eBird: add `IUCN_API_KEY` as a **GitHub repo secret** (Settings ->
+Secrets and variables -> Actions -> New repository secret) so
+`.github/workflows/retrain.yml`'s `scripts/ingest_iucn.py` step can see it
+and commit `data/cache/conservation_status.json`. A key only in your local
+`.env` reaches conservation status if you run `python -m app.ml.train`
+yourself, but not the deployed model -- see "Population and ability to
+evade factors" below for exactly why (Docker build steps, where the
+deployed model is actually trained, have no access to secrets).
 
 ## Adding your own areas or species
 
@@ -369,12 +381,26 @@ species ability to evade, and add more relevant ones,"* shown clearly to
 the user -- and, per the same requirement, only using **real data**, never
 an invented statistic.
 
-- **Population / conservation status**: when `IUCN_API_KEY` is configured,
-  `app/ml/train.py`'s `_compute_conservation_status()` looks up each
-  species' latest IUCN Red List assessment (category + population trend)
-  at training time -- real, authoritative data, not sighting counts, and
-  training-time only since a species' Red List status doesn't change per
-  location or date the way live occurrence counts do. When available, it's
+- **Population / conservation status**: `app/ml/train.py`'s
+  `_compute_conservation_status()` looks up each species' latest IUCN Red
+  List assessment (category + population trend) at training time -- real,
+  authoritative data, not sighting counts, and training-time only since a
+  species' Red List status doesn't change per location or date the way live
+  occurrence counts do. **Production path:** `scripts/ingest_iucn.py` runs
+  on GitHub's runners via `.github/workflows/retrain.yml` (where the
+  `IUCN_API_KEY` secret and real network access both exist) and commits
+  `data/cache/conservation_status.json`; `train()` just reads that file --
+  the same "fetch with real access on GitHub, commit as cache, train from
+  the cache" pattern GBIF/weather already use. This matters because the
+  model that actually ships is trained inside
+  `docker/Dockerfile.backend`'s build step, which has **no access to repo
+  secrets** unless explicitly wired through -- calling the IUCN API
+  directly from inside `train()` (an earlier version of this feature) would
+  have meant conservation status could never reach a deployed model no
+  matter how correctly `IUCN_API_KEY` was configured as a secret. `train()`
+  still falls back to a live IUCN call when no cache file exists yet and a
+  key happens to be set locally, purely as a convenience for running
+  `python -m app.ml.train` directly during development. When available, it's
   surfaced as a real prediction factor, e.g. *"IUCN Red List status:
   Endangered (population trend: decreasing) -- real conservation data, not
   sighting data; rarer/declining species are naturally harder to
@@ -467,7 +493,7 @@ cd backend
 pip install -r requirements-dev.txt
 ruff check .
 flake8 --max-line-length=130 --extend-ignore=E501,W503,E127 app scripts tests
-python -m unittest discover -s tests -v      # 137 tests, ~7 seconds
+python -m unittest discover -s tests -v      # 146 tests, ~8 seconds
 ```
 
 The suite is plain `unittest.TestCase` (no pytest dependency required to run

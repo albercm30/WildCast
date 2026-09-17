@@ -184,33 +184,43 @@ def _compute_species_seasonality(calibrated: CalibratedClassifierCV, normals: pd
     return seasonality
 
 
-# IUCN Red List category codes -> plain-language labels, for the factor text
-# in prediction_service._explain(). Codes per IUCN's own standard categories.
-_IUCN_CATEGORY_LABELS = {
-    "EX": "Extinct",
-    "EW": "Extinct in the Wild",
-    "CR": "Critically Endangered",
-    "EN": "Endangered",
-    "VU": "Vulnerable",
-    "NT": "Near Threatened",
-    "LC": "Least Concern",
-    "DD": "Data Deficient",
-    "NE": "Not Evaluated",
-}
+_CONSERVATION_STATUS_CACHE_PATH = CACHE_DIR / "conservation_status.json"
 
 
 def _compute_conservation_status() -> dict:
     """
-    Real IUCN Red List category + population trend per seed species, fetched
-    once here (not per-request -- see iucn_client.py's docstring for why)
-    and shipped in the model bundle. Skipped entirely, returning {}, when
-    IUCN_API_KEY is unset -- this is optional enrichment, the same pattern
-    eBird already uses (app.services.ebird_client.is_configured()). A
-    species IUCN has no findable assessment for is simply left out of the
-    dict rather than guessed at.
+    Real IUCN Red List category + population trend per seed species, shipped
+    in the model bundle for prediction_service._explain()'s factor text.
+
+    Prefers the committed `data/cache/conservation_status.json` produced by
+    `scripts/ingest_iucn.py` (run on GitHub's runners via
+    .github/workflows/retrain.yml, where IUCN_API_KEY and real network
+    access both actually exist) -- this is the production path, since this
+    function runs inside `docker/Dockerfile.backend`'s build step, which has
+    neither secrets nor a guaranteed live-API path. See ingest_iucn.py's
+    docstring for the full "why a separate script" reasoning; this used to
+    call iucn_client directly here, which meant conservation status could
+    never actually reach a deployed model no matter how the secret was
+    configured -- a real bug, not just a style choice.
+
+    Falls back to a live call only when no cache file exists yet AND
+    IUCN_API_KEY happens to be set in the current environment -- a
+    local-dev convenience for `python -m app.ml.train` run directly with a
+    key in your own `.env`, not the production path. Returns {} (skipped
+    entirely) when neither is available -- optional enrichment, same
+    pattern eBird already uses (app.services.ebird_client.is_configured()).
     """
+    if _CONSERVATION_STATUS_CACHE_PATH.exists():
+        try:
+            cached = json.loads(_CONSERVATION_STATUS_CACHE_PATH.read_text())
+            if isinstance(cached, dict):
+                print(f"  Using committed conservation status for {len(cached)} species (data/cache/conservation_status.json).")
+                return cached
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"  Couldn't read data/cache/conservation_status.json ({exc}); falling back to a live IUCN check.")
+
     if not iucn_client.is_configured():
-        print("  IUCN_API_KEY not set -- skipping conservation-status enrichment (optional; see .env.example).")
+        print("  IUCN_API_KEY not set and no committed cache -- skipping conservation-status enrichment (optional; see .env.example).")
         return {}
     status = {}
     for sp in SEED_SPECIES:
@@ -224,7 +234,7 @@ def _compute_conservation_status() -> dict:
             continue
         status[name] = {
             **assessment,
-            "category_label": _IUCN_CATEGORY_LABELS.get(assessment["category"], assessment["category"]),
+            "category_label": iucn_client.CATEGORY_LABELS.get(assessment["category"], assessment["category"]),
         }
     return status
 

@@ -9,6 +9,7 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
+import requests
 
 from app.services import weather_client
 
@@ -53,6 +54,67 @@ class HistoricalDailyTests(unittest.TestCase):
         df = weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
         self.assertTrue(df.empty)
         self.assertIn("date", df.columns)
+
+
+def _response(status_code, payload=None, headers=None):
+    resp = MagicMock(status_code=status_code, headers=headers or {})
+    resp.json.return_value = payload or {}
+    if status_code == 200:
+        resp.raise_for_status.return_value = None
+    else:
+        resp.raise_for_status.side_effect = requests.exceptions.HTTPError(f"{status_code} error", response=resp)
+    return resp
+
+
+class RetryOnRateLimitTests(unittest.TestCase):
+    """
+    Regression coverage for the retry-with-backoff logic added after a real
+    ingestion run failed outright on a 429 from Open-Meteo (2026-09-17) --
+    a shared CI-runner IP tripped its rate limit at a low request volume.
+    time.sleep is patched throughout so these tests run instantly rather
+    than actually waiting out the backoff.
+    """
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_succeeds_after_one_429_then_a_200(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            _response(429),
+            _response(200, _archive_response(["2026-06-01"], [25.0])),
+        ]
+        df = weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(len(df), 1)
+        self.assertEqual(mock_get.call_count, 2)
+        mock_sleep.assert_called_once()
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_honors_retry_after_header_when_present(self, mock_get, mock_sleep):
+        mock_get.side_effect = [
+            _response(429, headers={"Retry-After": "7"}),
+            _response(200, _archive_response(["2026-06-01"], [25.0])),
+        ]
+        weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        mock_sleep.assert_called_once_with(7.0)
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_gives_up_and_raises_after_exhausting_retries(self, mock_get, mock_sleep):
+        mock_get.side_effect = [_response(429) for _ in range(weather_client._MAX_RETRIES)]
+        with self.assertRaises(requests.exceptions.HTTPError):
+            weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(mock_get.call_count, weather_client._MAX_RETRIES)
+
+    @patch("app.services.weather_client.time.sleep")
+    @patch("app.services.weather_client._SESSION.get")
+    def test_a_real_error_like_404_is_not_retried(self, mock_get, mock_sleep):
+        # Only 429 and 5xx are worth retrying -- a 404 (e.g. a bad URL) is
+        # never going to succeed on retry and should fail immediately.
+        mock_get.return_value = _response(404)
+        with self.assertRaises(requests.exceptions.HTTPError):
+            weather_client.historical_daily(44.6, -110.5, "2026-06-01", "2026-06-01")
+        self.assertEqual(mock_get.call_count, 1)
+        mock_sleep.assert_not_called()
 
 
 class ClimateNormalsTests(unittest.TestCase):
