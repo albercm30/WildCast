@@ -34,13 +34,18 @@ _SESSION = requests.Session()
 
 # Open-Meteo's free tier is generous in absolute terms, but a shared CI
 # runner IP (many different GitHub Actions jobs, from many different repos,
-# all sharing the same small pool of outbound IPs) can trip its per-minute
-# rate limit even at low request volume from any one job. Retrying with
-# backoff on 429/5xx is what turned an ingestion run that failed outright on
-# its 5th request (real incident: scripts/ingest_weather.py, 2026-09-17)
-# into one that rides the limit out instead.
-_MAX_RETRIES = 5
-_BASE_BACKOFF_SECONDS = 3.0
+# all sharing the same small pool of outbound IPs) can trip its rate limit
+# even at low request volume from any one job -- and how long that
+# contention lasts varies run to run (real incidents, both 2026-09-17: one
+# run failed outright on its 5th request with no retry logic at all; after
+# adding retries with a 5-attempt/3s-doubling schedule, a second run got
+# through 4 of 5 areas before still exhausting all 5 retries on the 5th).
+# The fix is more patience, not smarter logic: more retries, a higher cap
+# per wait, so a longer contention window gets ridden out rather than timed
+# out on.
+_MAX_RETRIES = 8
+_BASE_BACKOFF_SECONDS = 4.0
+_MAX_BACKOFF_SECONDS = 60.0
 
 
 def _get_with_retry(url: str, params: dict) -> requests.Response:
@@ -51,7 +56,7 @@ def _get_with_retry(url: str, params: dict) -> requests.Response:
             if attempt == _MAX_RETRIES:
                 resp.raise_for_status()  # out of retries -- surface the real error
             retry_after = resp.headers.get("Retry-After")
-            wait = float(retry_after) if retry_after else delay
+            wait = float(retry_after) if retry_after else min(delay, _MAX_BACKOFF_SECONDS)
             log.warning(
                 "Open-Meteo returned %s; retrying in %.1fs (attempt %d/%d).",
                 resp.status_code, wait, attempt, _MAX_RETRIES,
