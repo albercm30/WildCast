@@ -8,6 +8,18 @@ no key) and simply skips the extra sources if their keys are unset.
 import os
 from pathlib import Path
 
+# scikit-learn's HistGradientBoostingClassifier / CalibratedClassifierCV use
+# joblib's "loky" backend, which tries to auto-detect the number of
+# *physical* CPU cores. In some constrained/virtualized build containers
+# (real incident: Render's Docker build environment, 2026-09-17) that
+# detection returns 0, and loky raises `ValueError: found 0 physical cores
+# < 1` instead of falling back gracefully. Setting LOKY_MAX_CPU_COUNT
+# explicitly skips that detection entirely. This must be set before
+# anything imports joblib/sklearn, so it's set here, at the very top of the
+# module every entry point (train.py, prediction_service.py, main.py)
+# imports first.
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", "2")
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 MODEL_DIR = BASE_DIR / "app" / "ml" / "artifacts"
