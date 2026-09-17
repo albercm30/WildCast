@@ -92,7 +92,20 @@ if not DEBUG and SECRET_KEY == "dev-only-insecure-secret-key-change-me":  # prag
         "Set WILDCAST_SECRET_KEY (a long random value) in your environment before exposing this publicly."
     )
 
-# SQLite database path for accounts/favorites/saved-searches (app/db.py).
+# Optional: Turso (free, HTTP-reachable, SQLite-compatible hosted database
+# -- see app/turso_client.py) as the accounts/favorites/saved-searches
+# backend instead of a local SQLite file. Both must be set together to take
+# effect (app/db.py falls back to local SQLite if either is missing) --
+# this is what actually makes accounts survive a redeploy on Render's free
+# tier, which has no persistent disk at all. See README's "Accounts &
+# saved-search alerts" section for how to create a free Turso database.
+TURSO_DATABASE_URL = os.environ.get("TURSO_DATABASE_URL", "")
+TURSO_AUTH_TOKEN = os.environ.get("TURSO_AUTH_TOKEN", "")
+
+# SQLite database path for accounts/favorites/saved-searches (app/db.py) --
+# used only when TURSO_DATABASE_URL/TURSO_AUTH_TOKEN above are unset (local
+# dev and this project's own tests always use this path; the real deployed
+# service should set the Turso variables instead, see README).
 # IMPORTANT: Render's web services have an EPHEMERAL filesystem by default
 # (https://render.com/docs/disks, confirmed 2026-09-17) -- this file is
 # wiped on every redeploy/restart unless WILDCAST_DB_PATH points inside a

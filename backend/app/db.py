@@ -2,32 +2,36 @@
 Lightweight persistence layer for user accounts, favorites, saved searches,
 and saved-search notifications.
 
-Built directly on Python's stdlib `sqlite3` rather than an ORM (SQLAlchemy
-or similar) for the same reason this project avoids other unprovable
-dependencies (see README's "Why Flask, not FastAPI" note): this sandbox's
-egress is blocked to PyPI, so a new third-party dependency added here could
-not actually be installed or tested end-to-end before delivery -- only
-claimed to work. stdlib `sqlite3` needs no install step at all, so every
-line of this module has actually been run against a real database file in
-this sandbox, the same standard this project holds every other piece of
-code to.
+Two backends, chosen automatically by which config values are set (see
+_connect() below) -- both speak the same sqlite3-Connection-shaped
+interface (.execute/.executescript/.commit/.rollback/.close, Row objects
+supporting `row["col"]` and `dict(row)`), so every service-layer function
+in app/services/{auth,favorites,saved_search,notification}_service.py
+works unchanged against either one:
+
+  1. **Local stdlib `sqlite3`** (the default, and always what this
+     project's own tests use) -- a plain file at WILDCAST_DB_PATH. Needs no
+     install step, so every line of this path has actually been run
+     against a real database file in this sandbox, the same standard this
+     project holds every other piece of code to (see README's "Why Flask,
+     not FastAPI" note for why third-party dependencies are avoided here
+     generally -- this sandbox's PyPI access is blocked).
+  2. **Turso** (app/turso_client.py) -- a free, SQLite-compatible hosted
+     database reached over plain HTTPS with a stdlib-only client (no new
+     pip dependency either). Used automatically when both
+     TURSO_DATABASE_URL and TURSO_AUTH_TOKEN are set.
 
 IMPORTANT -- read before deploying: Render's web services have an
 EPHEMERAL filesystem by default (https://render.com/docs/disks, confirmed
-2026-09-17) -- any local file, including this SQLite database, is wiped on
-every redeploy or restart. Accounts, favorites and saved searches WILL be
-lost on the next deploy unless you either:
-  1. Attach a Render persistent disk (paid plans only -- not available on
-     the free tier) and set WILDCAST_DB_PATH to a file inside its mount, or
-  2. Migrate this module to a managed Postgres database instead (not done
-     here -- would need a driver such as psycopg2, which this sandbox
-     cannot install or test either, so it's left as a documented follow-up
-     rather than shipped unverified. The service-layer functions in
-     app/services/auth_service.py, favorites_service.py,
-     saved_search_service.py and notification_service.py all go through
-     this module alone, so that migration would only touch this one file).
-See README.md's "Accounts & saved-search alerts" section for the full
-deployment checklist.
+2026-09-17) -- any local file, including a local SQLite database, is wiped
+on every redeploy or restart. Accounts, favorites and saved searches WILL
+be lost on the next deploy **unless TURSO_DATABASE_URL/TURSO_AUTH_TOKEN are
+set** (the free fix -- see README's "Accounts & saved-search alerts"
+section for how to create a free Turso database) or a paid Render
+persistent disk is attached instead. The app still runs and passes every
+test with neither configured (falls back to local SQLite, fine for local
+dev), but that combination is NOT safe for the real deployed service on
+Render's free tier.
 """
 from __future__ import annotations
 
@@ -36,7 +40,16 @@ import sqlite3
 import threading
 from contextlib import contextmanager
 
+from app import turso_client
 from app.config import DB_PATH as _DEFAULT_DB_PATH
+from app.config import TURSO_AUTH_TOKEN as _DEFAULT_TURSO_AUTH_TOKEN
+from app.config import TURSO_DATABASE_URL as _DEFAULT_TURSO_DATABASE_URL
+
+# Mutable on purpose, same reason as DB_PATH below: tests (and a future
+# caller) can override these directly on the module rather than only via
+# environment variables set before import.
+TURSO_DATABASE_URL = _DEFAULT_TURSO_DATABASE_URL
+TURSO_AUTH_TOKEN = _DEFAULT_TURSO_AUTH_TOKEN
 
 # Mutable on purpose (not a frozen import-time constant): tests point this
 # at an isolated temp-file path per test case via `db.DB_PATH = ...` +
@@ -103,7 +116,9 @@ CREATE INDEX IF NOT EXISTS idx_notifications_user ON notifications(user_id);
 """
 
 
-def _connect() -> sqlite3.Connection:
+def _connect():
+    if TURSO_DATABASE_URL and TURSO_AUTH_TOKEN:
+        return turso_client.connect(TURSO_DATABASE_URL, TURSO_AUTH_TOKEN)
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(DB_PATH), timeout=10.0)
     conn.row_factory = sqlite3.Row

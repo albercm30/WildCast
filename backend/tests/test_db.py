@@ -1,5 +1,6 @@
 import sqlite3
 import unittest
+from unittest.mock import MagicMock, patch
 
 from app import db
 from tests._db_test_utils import TempDbTestCase
@@ -67,6 +68,55 @@ class SchemaTests(TempDbTestCase):
             emails = {r[0] for r in conn.execute("SELECT email FROM users").fetchall()}
         self.assertIn("rollback@example.com", emails)
         self.assertNotIn("second@example.com", emails)  # rolled back, never committed
+
+
+class BackendDispatchTests(unittest.TestCase):
+    """_connect()'s choice of backend (local sqlite3 vs. Turso) -- see
+    db.py's module docstring. Patches db.TURSO_DATABASE_URL/TURSO_AUTH_TOKEN
+    directly (the module-level names _connect() actually reads, same
+    pattern used for EBIRD_API_KEY/IUCN_API_KEY elsewhere in this project)
+    rather than touching real config or the environment."""
+
+    def test_uses_turso_when_both_vars_set(self):
+        with (
+            patch("app.db.TURSO_DATABASE_URL", "https://db-org.turso.io"),
+            patch("app.db.TURSO_AUTH_TOKEN", "tok"),
+            patch("app.db.turso_client.connect") as mock_connect,
+        ):
+            mock_connect.return_value = MagicMock()
+            db._connect()
+        mock_connect.assert_called_once_with("https://db-org.turso.io", "tok")
+
+    def test_falls_back_to_sqlite_when_turso_url_missing(self):
+        with (
+            patch("app.db.TURSO_DATABASE_URL", ""),
+            patch("app.db.TURSO_AUTH_TOKEN", "tok"),
+            patch("app.db.turso_client.connect") as mock_connect,
+        ):
+            conn = db._connect()
+        mock_connect.assert_not_called()
+        self.assertIsInstance(conn, sqlite3.Connection)
+        conn.close()
+
+    def test_falls_back_to_sqlite_when_turso_token_missing(self):
+        with (
+            patch("app.db.TURSO_DATABASE_URL", "https://db-org.turso.io"),
+            patch("app.db.TURSO_AUTH_TOKEN", ""),
+            patch("app.db.turso_client.connect") as mock_connect,
+        ):
+            conn = db._connect()
+        mock_connect.assert_not_called()
+        self.assertIsInstance(conn, sqlite3.Connection)
+        conn.close()
+
+    def test_tests_themselves_always_use_local_sqlite(self):
+        # Guards against a real footgun: if this project's own test
+        # environment ever accidentally had real Turso credentials in it
+        # (e.g. a leaked .env), every test in this suite would silently
+        # start hitting a real network service instead of a throwaway temp
+        # file. Confirms the actual default state instead of just assuming it.
+        self.assertEqual(db.TURSO_DATABASE_URL, "")
+        self.assertEqual(db.TURSO_AUTH_TOKEN, "")
 
 
 if __name__ == "__main__":

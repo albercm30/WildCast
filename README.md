@@ -53,7 +53,10 @@ wildcast/
                                protected_planet_client.py, auth_service.py,
                                favorites_service.py, saved_search_service.py,
                                notification_service.py
-      db.py                   stdlib-sqlite3 accounts/favorites/saved-searches storage
+      db.py                   accounts/favorites/saved-searches storage (local
+                               sqlite3, or Turso in production -- see below)
+      turso_client.py          Stdlib-only HTTP client for Turso (app/db.py's
+                               free persistent-storage backend)
       ml/
         features.py           Shared train/serve feature engineering
         pseudo_absence.py     Target-group background sampling
@@ -77,7 +80,7 @@ wildcast/
       generate_sample_fixtures.py   SYNTHETIC offline demo data (see below)
       check_real_data_complete.py   Used by Dockerfile.backend: is every area's
                                      real cache present, or fall back to synthetic?
-    tests/                     283 unit/integration tests, see "Testing & CI"
+    tests/                     324 unit/integration tests, see "Testing & CI"
     requirements.txt
     requirements-dev.txt       ruff, flake8, pytest (optional runner)
   frontend/
@@ -638,17 +641,40 @@ the defaults:**
    (free, same mechanism `retrain.yml` already uses) -- it needs that repo
    secret plus, optionally, a `WILDCAST_BACKEND_URL` repo *variable* if your
    backend isn't at `https://wildcast.onrender.com`.
-3. **Persistent storage for the database.** Render's web services have an
-   **ephemeral filesystem by default** (confirmed against Render's docs,
-   2026-09-17) -- the SQLite file at `WILDCAST_DB_PATH` (default
-   `backend/data/wildcast.db`) is wiped on every redeploy/restart otherwise,
-   taking every account, favorite, and alert with it. Fix: attach a paid
-   Render persistent disk (not available on the free tier) and point
-   `WILDCAST_DB_PATH` at a file inside its mount path. Render's Cron Jobs
-   feature can't help here either -- it explicitly can't access a persistent
-   disk, which is exactly why the alert check is triggered over HTTP against
-   the already-running web service instead of run as its own scheduled job
-   (see `backend/scripts/check_saved_searches.py`'s docstring for the full
+3. **Persistent storage for the database -- `TURSO_DATABASE_URL` and
+   `TURSO_AUTH_TOKEN`.** Render's web services have an **ephemeral
+   filesystem by default** (confirmed against Render's docs, 2026-09-17) --
+   a local SQLite file is wiped on every redeploy/restart, taking every
+   account, favorite, and alert with it, and Render's free-tier Postgres
+   also isn't a real fix (it now expires 30 days after creation). Since
+   WildCast is meant to stay completely free, the fix is
+   [Turso](https://turso.tech) -- a free, SQLite-compatible hosted database
+   reached over plain HTTPS (`app/turso_client.py`, a small stdlib-only
+   client, no new pip dependency). Setup (about 2 minutes):
+   ```
+   curl -sSfL https://get.tur.so/install.sh | bash   # installs the turso CLI
+   turso auth signup                                  # free account, no card
+   turso db create wildcast
+   turso db show wildcast --url                        # -> TURSO_DATABASE_URL
+   turso db tokens create wildcast                      # -> TURSO_AUTH_TOKEN
+   ```
+   Set both as Render environment variables and you're done -- `app/db.py`
+   picks the Turso backend automatically the moment both are present, and
+   falls back to a local SQLite file (fine for local dev, not for
+   production) when either is unset. **This has not been tested against a
+   real Turso database** (this sandbox's network can't reach turso.io
+   either -- see `app/turso_client.py`'s docstring for the same
+   verify-against-real-docs-but-not-live standard already applied to the
+   eBird/IUCN/Protected Planet clients); re-verify end to end once you have
+   real credentials, and open an issue if anything in the wire format
+   doesn't match. If you'd rather not add another external account, a paid
+   Render persistent disk (pointing `WILDCAST_DB_PATH` at a file inside its
+   mount) works too, or Render's Cron Jobs -- neither is required if Turso
+   is configured. Render's Cron Jobs feature can't help with scheduling the
+   alert check either way -- it explicitly can't access a persistent disk,
+   which is exactly why the alert check is triggered over HTTP against the
+   already-running web service instead of run as its own scheduled job (see
+   `backend/scripts/check_saved_searches.py`'s docstring for the full
    reasoning).
 
 **Not done yet:** real email/push delivery for alerts -- notifications are
@@ -663,14 +689,15 @@ optional. Also not done: session revocation ("log out everywhere") and
 password reset, both needing server-side session state or outbound email,
 respectively -- both deliberate deferrals, not oversights.
 
-Migrating to a managed Postgres database instead of SQLite (so persistence
-doesn't depend on a paid Render disk at all) is a natural next step, but
-wasn't done here: it needs a driver such as `psycopg2`, which -- like every
-other new dependency this session considered -- this sandbox's blocked
-egress couldn't actually install or test, so it's left as a documented
-follow-up rather than shipped unverified. `app/db.py` is the only file that
-migration would touch; every service function above already goes through it
-alone.
+**Update:** this used to say a Postgres migration was a natural but
+undone next step, needing a driver like `psycopg2` this sandbox couldn't
+install or test. That's resolved now -- Turso (above) solves the same
+"persistence without a paid disk" problem over plain HTTPS with a
+stdlib-only client, so no new dependency was actually needed. A real
+managed Postgres (Neon, Supabase, etc.) remains an option if you outgrow
+Turso's free tier, and would still only touch `app/db.py` -- every service
+function already goes through it alone -- but isn't necessary to get real,
+free persistence today.
 
 ## Browse Parks
 
@@ -850,8 +877,15 @@ Species occurrence data from [GBIF.org](https://www.gbif.org) and
 [iNaturalist](https://www.inaturalist.org); bird observation data from
 [eBird](https://ebird.org) (Cornell Lab of Ornithology), when configured;
 conservation status from the [IUCN Red List](https://www.iucnredlist.org),
-when configured; weather data from [Open-Meteo.com](https://open-meteo.com);
-map tiles from [OpenStreetMap](https://www.openstreetmap.org/copyright)
-contributors. Please keep this attribution if you fork or redeploy this
-project -- it's both a courtesy to the data providers this project depends
-on and a condition of their free/non-commercial terms of use.
+when configured; protected-area data from the [World Database on Protected
+Areas via Protected Planet](https://www.protectedplanet.net) (UNEP-WCMC &
+IUCN), when configured; weather data from
+[Open-Meteo.com](https://open-meteo.com); map tiles from
+[OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
+Please keep this attribution if you fork or redeploy this project -- it's
+both a courtesy to the data providers this project depends on and a
+condition of their free/non-commercial terms of use. WildCast itself is
+free for everyone, with no paid tier, ads, or revenue of any kind -- a
+deliberate choice, not just a default (see the design doc's "Mobile app &
+monetization" section for the reasoning), which is also what keeps every
+one of these sources' non-commercial terms satisfied.
