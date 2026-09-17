@@ -47,19 +47,42 @@ _MAX_RETRIES = 8
 _BASE_BACKOFF_SECONDS = 4.0
 _MAX_BACKOFF_SECONDS = 60.0
 
+# The patient retry schedule above (~8 attempts, up to ~4 minutes of total
+# backoff) is right for scripts/ingest_weather.py: an unattended batch job
+# where riding out a contention window matters more than speed. It is
+# wrong for a live request a person is actually waiting on in a browser
+# (predict(), predict_at_location(), and everything under "Explore
+# Anywhere") -- a live outage there should fail fast with a clear error,
+# not hang the page for minutes. Interactive call sites pass these
+# individually (not as a dict: historical_daily/climate_normals are
+# lru_cache'd, which requires hashable arguments) via the *_retry kwargs
+# threaded through below.
+INTERACTIVE_MAX_RETRIES = 2
+INTERACTIVE_BASE_BACKOFF = 1.5
+INTERACTIVE_MAX_BACKOFF = 4.0
+INTERACTIVE_REQUEST_TIMEOUT = 6.0
 
-def _get_with_retry(url: str, params: dict) -> requests.Response:
-    delay = _BASE_BACKOFF_SECONDS
-    for attempt in range(1, _MAX_RETRIES + 1):
-        resp = _SESSION.get(url, params=params, timeout=30.0)
+
+def _get_with_retry(
+    url: str,
+    params: dict,
+    *,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
+    request_timeout: float = 30.0,
+) -> requests.Response:
+    delay = base_backoff
+    for attempt in range(1, max_retries + 1):
+        resp = _SESSION.get(url, params=params, timeout=request_timeout)
         if resp.status_code == 429 or resp.status_code >= 500:
-            if attempt == _MAX_RETRIES:
+            if attempt == max_retries:
                 resp.raise_for_status()  # out of retries -- surface the real error
             retry_after = resp.headers.get("Retry-After")
-            wait = float(retry_after) if retry_after else min(delay, _MAX_BACKOFF_SECONDS)
+            wait = float(retry_after) if retry_after else min(delay, max_backoff)
             log.warning(
                 "Open-Meteo returned %s; retrying in %.1fs (attempt %d/%d).",
-                resp.status_code, wait, attempt, _MAX_RETRIES,
+                resp.status_code, wait, attempt, max_retries,
             )
             time.sleep(wait)
             delay *= 2
@@ -75,8 +98,23 @@ def _round_coord(x: float) -> float:
     return round(x, 2)
 
 
-def historical_daily(lat: float, lon: float, start_date: str, end_date: str) -> pd.DataFrame:
-    """Daily weather observations for one location and date range. Dates are 'YYYY-MM-DD'."""
+def historical_daily(
+    lat: float,
+    lon: float,
+    start_date: str,
+    end_date: str,
+    *,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
+    request_timeout: float = 30.0,
+) -> pd.DataFrame:
+    """Daily weather observations for one location and date range. Dates are 'YYYY-MM-DD'.
+
+    Pass the `INTERACTIVE_*` module constants for a live, user-facing call
+    (fails fast); the defaults are the patient, batch-ingestion schedule --
+    see that constant's docstring for why they differ.
+    """
     params = {
         "latitude": _round_coord(lat),
         "longitude": _round_coord(lon),
@@ -85,7 +123,14 @@ def historical_daily(lat: float, lon: float, start_date: str, end_date: str) -> 
         "daily": ",".join(WEATHER_DAILY_VARS),
         "timezone": "auto",
     }
-    resp = _get_with_retry(OPEN_METEO_ARCHIVE_BASE, params)
+    resp = _get_with_retry(
+        OPEN_METEO_ARCHIVE_BASE,
+        params,
+        max_retries=max_retries,
+        base_backoff=base_backoff,
+        max_backoff=max_backoff,
+        request_timeout=request_timeout,
+    )
     payload = resp.json()
     daily = payload.get("daily", {})
     if not daily or "time" not in daily:
@@ -96,8 +141,17 @@ def historical_daily(lat: float, lon: float, start_date: str, end_date: str) -> 
     return df
 
 
-def forecast_daily(lat: float, lon: float, days: int = 16) -> pd.DataFrame:
-    """Upcoming forecast, used when a user asks about a near-future date."""
+def forecast_daily(
+    lat: float,
+    lon: float,
+    days: int = 16,
+    *,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
+    request_timeout: float = 30.0,
+) -> pd.DataFrame:
+    """Upcoming forecast, used when a user asks about a near-future date. See `historical_daily` for the retry kwargs."""
     params = {
         "latitude": _round_coord(lat),
         "longitude": _round_coord(lon),
@@ -105,7 +159,14 @@ def forecast_daily(lat: float, lon: float, days: int = 16) -> pd.DataFrame:
         "forecast_days": min(days, 16),
         "timezone": "auto",
     }
-    resp = _get_with_retry(OPEN_METEO_FORECAST_BASE, params)
+    resp = _get_with_retry(
+        OPEN_METEO_FORECAST_BASE,
+        params,
+        max_retries=max_retries,
+        base_backoff=base_backoff,
+        max_backoff=max_backoff,
+        request_timeout=request_timeout,
+    )
     daily = resp.json().get("daily", {})
     if not daily or "time" not in daily:
         return pd.DataFrame(columns=["date", *WEATHER_DAILY_VARS])
@@ -116,17 +177,40 @@ def forecast_daily(lat: float, lon: float, days: int = 16) -> pd.DataFrame:
 
 
 @lru_cache(maxsize=64)
-def climate_normals(lat: float, lon: float, years: int = CLIMATE_NORMAL_YEARS) -> pd.DataFrame:
+def climate_normals(
+    lat: float,
+    lon: float,
+    years: int = CLIMATE_NORMAL_YEARS,
+    *,
+    max_retries: int = _MAX_RETRIES,
+    base_backoff: float = _BASE_BACKOFF_SECONDS,
+    max_backoff: float = _MAX_BACKOFF_SECONDS,
+    request_timeout: float = 30.0,
+) -> pd.DataFrame:
     """
     Mean and std of each weather variable per day-of-year, computed from the
     last `years` of the historical archive. Cached in-process (and callers
     are expected to also persist this to disk -- see scripts/ingest_weather.py)
-    since it is one of the more expensive calls in the pipeline.
+    since it is one of the more expensive calls in the pipeline. Pass the
+    `INTERACTIVE_*` module constants for a live, user-facing call (see
+    `historical_daily`'s docstring); all keyword args are part of the
+    `lru_cache` key, so an interactive and a batch caller for the same
+    coordinates get separate cache entries -- correct, since they're really
+    different requests (different patience for the same data).
     """
     today = dt.date.today()
     start = dt.date(today.year - years, 1, 1)
     end = today - dt.timedelta(days=6)  # archive lags a few days behind real time
-    df = historical_daily(lat, lon, start.isoformat(), end.isoformat())
+    df = historical_daily(
+        lat,
+        lon,
+        start.isoformat(),
+        end.isoformat(),
+        max_retries=max_retries,
+        base_backoff=base_backoff,
+        max_backoff=max_backoff,
+        request_timeout=request_timeout,
+    )
     if df.empty:
         return df
     df["date"] = pd.to_datetime(df["date"])
