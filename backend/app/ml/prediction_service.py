@@ -440,13 +440,18 @@ def _nearest_area(lat: float, lon: float) -> dict:
     return min(areas.values(), key=lambda a: _haversine_km(lat, lon, a["lat"], a["lon"]))
 
 
-def _has_presence_cached(scientific_name: str, lat: float, lon: float, radius_km: float) -> bool:
+def _has_presence_cached(
+    scientific_name: str, lat: float, lon: float, radius_km: float, plausible_countries: list[str] | None = None
+) -> bool:
     """In-process, time-boxed cache in front of a live GBIF presence check.
 
     GBIF occurrence data does not change meaningfully within a day, so a
     24h TTL avoids re-querying the same species/spot on every repeat visit
     without ever risking a stale-forever answer. Keyed on coordinates
-    rounded to ~1km so nearby clicks share a cache entry.
+    rounded to ~1km so nearby clicks share a cache entry. `plausible_countries`
+    is not part of the key: it's fixed, curated metadata per species (from
+    seed_species.json), not a per-call variable, so it can't produce a stale
+    or inconsistent cache entry the way a changing input could.
     """
     key = (scientific_name, round(lat, 2), round(lon, 2), int(radius_km))
     now = time.monotonic()
@@ -455,7 +460,12 @@ def _has_presence_cached(scientific_name: str, lat: float, lon: float, radius_km
         return cached[1]
     try:
         present = gbif_client.has_any_presence(
-            scientific_name, lat, lon, radius_km, timeout=_ANYWHERE_PRESENCE_TIMEOUT_S
+            scientific_name,
+            lat,
+            lon,
+            radius_km,
+            timeout=_ANYWHERE_PRESENCE_TIMEOUT_S,
+            plausible_countries=plausible_countries,
         )
     except Exception as exc:
         # Best-effort: a live API hiccup should never crash "Explore
@@ -483,7 +493,10 @@ def species_for_location(lat: float, lon: float, radius_km: float = _ANYWHERE_DE
     matches: list[dict] = []
     with ThreadPoolExecutor(max_workers=_ANYWHERE_MAX_WORKERS) as pool:
         future_to_species = {
-            pool.submit(_has_presence_cached, s["scientific_name"], lat, lon, radius_km): s for s in SEED_SPECIES
+            pool.submit(
+                _has_presence_cached, s["scientific_name"], lat, lon, radius_km, s.get("plausible_countries")
+            ): s
+            for s in SEED_SPECIES
         }
         for future in as_completed(future_to_species):
             s = future_to_species[future]
