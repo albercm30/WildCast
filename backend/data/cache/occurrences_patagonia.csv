@@ -17,6 +17,7 @@ Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.929119,-72.666592,2026-04-08
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.997438,-72.604584,2026-04-04
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.864713,-72.702157,2026-07-02
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.885975,-72.453249,2026-07-28
+Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.995767,-72.723435,2026-08-18
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.188613,-73.060848,2025-01-15
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.078946,-72.974647,2025-01-19
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.983824,-72.70832,2025-01-10
@@ -165,6 +166,8 @@ Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.098207,-72.727478,2023-11-11
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.13199,-72.859396,2023-12-01
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.026943,-72.639691,2022-01-03
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-49.860783,-72.05931,2022-01-15
+Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.670978,-72.51091,2022-02-25
+Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.759472,-72.443905,2022-02-25
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.174728,-72.834519,2022-03-06
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.055682,-72.677033,2022-03-07
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.049901,-72.687788,2022-03-03
@@ -173,6 +176,7 @@ Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.076454,-72.725031,2022-03-05
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.976224,-72.755553,2022-04-12
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.018111,-72.687452,2022-04-12
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.032246,-72.817778,2022-04-02
+Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.436722,-72.78536,2022-04-07
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.573819,-72.608086,2022-09-22
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.573819,-72.608086,2022-09-10
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.573642,-72.599436,2022-09-22
@@ -495,10 +499,6 @@ Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-13
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-20
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-13
 Puma concolor,Puma / Cougar,Mammalia,patagonia,-51.102158,-72.863519,2021-09-22
-Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-13
-Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-20
-Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-13
-Puma concolor,Puma / Cougar,Mammalia,patagonia,-50.966045,-72.798557,2021-09-13
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.178595,-72.485763,2026-01-14
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.337958,-72.264798,2026-01-07
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.027628,-72.774628,2026-01-19
@@ -528,6 +528,8 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-50.942326,-73.406788,2026-01-29
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.047164,-72.92688,2026-01-04
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.057567,-72.553025,2026-01-04
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.034341,-73.105187,2026-01-06
+Lama guanicoe,Guanaco,Mammalia,patagonia,-51.055955,-72.540322,2026-01-09
+Lama guanicoe,Guanaco,Mammalia,patagonia,-51.042694,-72.898022,2026-01-08
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.18095,-72.985358,2026-02-03
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.0,-73.0,2026-02-08
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.119318,-72.53929,2026-02-06
@@ -575,6 +577,7 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-51.22907,-72.43905,2026-04-08
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.117114,-72.542075,2026-04-03
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.947465,-72.777381,2026-04-01
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.041686,-72.910347,2026-04-26
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.979355,-72.800125,2026-04-11
 Lama guanicoe,Guanaco,Mammalia,patagonia,-49.968627,-72.08539,2026-05-17
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.041081,-72.910081,2026-05-07
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.017827,-72.983621,2026-05-21
@@ -586,6 +589,8 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-51.000483,-72.72306,2026-06-24
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.08013,-72.55671,2026-07-13
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.941088,-73.406788,2026-07-14
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.040558,-72.891251,2026-08-01
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.284883,-72.077237,2026-09-14
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.495133,-72.726629,2026-09-16
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.96647,-72.698258,2025-01-13
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.27458,-72.867619,2025-01-16
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.047128,-72.927422,2025-01-15
@@ -847,6 +852,7 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-51.049525,-73.010567,2023-04-05
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.947395,-72.713874,2023-04-01
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.06661,-73.047034,2023-04-25
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.966219,-72.694802,2023-04-03
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.355801,-72.295471,2023-05-02
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.939419,-73.406788,2023-07-27
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.524075,-73.552466,2023-07-14
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.289273,-72.892922,2023-09-05
@@ -882,6 +888,27 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-50.340427,-72.684463,2022-02-08
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.340427,-72.684463,2022-02-08
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.031137,-72.695255,2022-02-16
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.942326,-73.406788,2022-02-21
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.719143,-72.436738,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.848429,-72.40188,2022-02-26
+Lama guanicoe,Guanaco,Mammalia,patagonia,-51.076898,-72.789377,2022-02-08
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.719143,-72.436738,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.719143,-72.436738,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.738872,-72.411064,2022-02-24
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.719143,-72.436738,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.848429,-72.40188,2022-02-26
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.719143,-72.436738,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.719143,-72.436738,2022-02-25
+Lama guanicoe,Guanaco,Mammalia,patagonia,-51.122984,-72.821045,2022-02-08
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.735466,-72.412828,2022-02-25
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.043045,-72.14106,2022-03-04
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.942372,-72.714163,2022-03-05
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.987786,-72.800901,2022-03-02
@@ -972,33 +999,6 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-29
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.332872,-72.60991,2026-01-01
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.945999,-73.597736,2026-01-14
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.572011,-72.74598,2026-01-18
@@ -1045,6 +1045,11 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-51.598642,-72.661443,2026-09-04
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.411513,-72.759103,2026-09-06
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.588121,-72.778652,2026-09-04
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.548387,-72.7409,2026-09-06
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.956167,-72.71831,2026-09-19
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.8886,-72.712073,2026-09-19
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.828671,-72.701927,2026-09-19
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.606488,-72.550232,2026-09-13
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.851419,-72.715539,2026-09-19
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.201955,-72.374092,2025-01-14
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.500283,-73.026439,2025-01-18
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.310297,-72.646373,2025-01-23
@@ -1494,11 +1499,6 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-50.45235,-72.776825,2024-02-18
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.072575,-73.09453,2024-02-05
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.10423,-73.04738,2024-02-25
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.979458,-72.800385,2024-02-07
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.404964,-72.34155,2024-02-05
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.889366,-72.35347,2024-02-18
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.605656,-72.65858,2024-02-17
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.375362,-72.9384,2024-02-21
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.869644,-72.3971,2024-02-18
 Spheniscus magellanicus,Magellanic Penguin,Aves,patagonia,-51.272612,-72.890212,2025-02-04
 Spheniscus magellanicus,Magellanic Penguin,Aves,patagonia,-50.999999,-73.0,2025-03-12
 Spheniscus magellanicus,Magellanic Penguin,Aves,patagonia,-51.840458,-72.58293,2025-10-24
