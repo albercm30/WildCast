@@ -385,6 +385,7 @@ Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.63188,14.478655,2026-09-05
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.210071,13.815364,2026-09-08
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.247169,15.540044,2026-09-18
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.429113,17.020408,2026-09-09
+Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.236947,15.543805,2026-09-22
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.065098,14.205182,2025-03-22
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.208254,16.365179,2025-03-05
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.063593,14.217362,2025-03-22
@@ -730,7 +731,6 @@ Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.249176,15.498605,2019-06-0
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.216492,15.629006,2019-06-15
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.237892,15.336931,2019-06-14
 Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.236008,15.332017,2019-06-14
-Vulpes lagopus,Arctic Fox,Mammalia,svalbard_arctic,78.250276,15.449081,2019-06-03
 Bubo scandiacus,Snowy Owl,Aves,svalbard_arctic,77.518386,14.846385,2024-02-24
 Bubo scandiacus,Snowy Owl,Aves,svalbard_arctic,78.387034,16.958351,2024-02-25
 Bubo scandiacus,Snowy Owl,Aves,svalbard_arctic,79.120254,16.185162,2019-01-27
@@ -1036,6 +1036,7 @@ Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.333442,16.382343
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.234388,15.328928,2026-09-05
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.394457,16.809421,2026-09-09
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.167108,16.151928,2026-09-16
+Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.637878,14.507543,2026-09-19
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.219628,15.67102,2025-01-30
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.146121,15.95498,2025-01-26
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.218775,15.633966,2025-01-11
@@ -1240,4 +1241,3 @@ Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.212416,15.6545,2
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.525378,16.052693,2025-07-09
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,77.557533,14.995858,2025-07-18
 Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.211472,15.623978,2025-07-18
-Rangifer tarandus,Svalbard Reindeer,Mammalia,svalbard_arctic,78.216682,15.62929,2025-07-01

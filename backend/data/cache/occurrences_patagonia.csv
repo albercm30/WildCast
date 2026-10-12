@@ -591,6 +591,7 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-50.941088,-73.406788,2026-07-14
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.040558,-72.891251,2026-08-01
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.284883,-72.077237,2026-09-14
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.495133,-72.726629,2026-09-16
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.286888,-72.056474,2026-09-14
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.96647,-72.698258,2025-01-13
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.27458,-72.867619,2025-01-16
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.047128,-72.927422,2025-01-15
@@ -756,6 +757,7 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-50.934096,-72.751047,2024-04-11
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.135272,-72.524645,2024-04-21
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.974433,-72.77928,2024-04-27
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.8789,-72.732252,2024-06-27
+Lama guanicoe,Guanaco,Mammalia,patagonia,-50.275118,-72.154148,2024-06-16
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.052224,-72.825869,2024-07-22
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.048548,-72.65131,2024-07-24
 Lama guanicoe,Guanaco,Mammalia,patagonia,-50.980055,-72.764878,2024-08-30
@@ -997,8 +999,6 @@ Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
 Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-15
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-29
-Lama guanicoe,Guanaco,Mammalia,patagonia,-51.020494,-72.824497,2022-10-16
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.332872,-72.60991,2026-01-01
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.945999,-73.597736,2026-01-14
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.572011,-72.74598,2026-01-18
@@ -1013,6 +1013,7 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-51.295708,-72.962263,2026-01-05
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.302423,-72.977338,2026-01-30
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.459852,-73.09971,2026-01-18
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.864091,-73.014897,2026-01-26
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.16794,-72.895197,2026-01-09
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.829279,-73.086295,2026-02-05
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.195429,-73.259284,2026-02-12
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.582446,-73.109918,2026-02-12
@@ -1025,6 +1026,7 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-51.186168,-73.087758,2026-02-22
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.059396,-73.014865,2026-02-22
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.339473,-72.960507,2026-02-19
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.958154,-72.946136,2026-02-19
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.547554,-72.578984,2026-02-05
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.562976,-73.152313,2026-03-02
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.021736,-73.167174,2026-03-27
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.140832,-73.233646,2026-03-29
@@ -1034,12 +1036,18 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-51.546267,-72.390088,2026-03-04
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.142758,-72.537647,2026-03-27
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.987997,-73.030691,2026-03-14
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.524956,-72.76824,2026-03-17
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.724981,-72.503835,2026-03-17
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.072584,-73.093858,2026-03-04
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.259224,-72.34537,2026-03-09
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.970475,-73.193825,2026-03-03
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.586931,-72.418006,2026-04-01
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.445638,-73.193695,2026-04-03
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.129269,-72.569315,2026-04-03
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.107851,-73.177824,2026-04-04
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.34942,-72.029174,2026-04-16
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.468763,-73.033355,2026-04-29
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.029422,-72.477356,2026-07-13
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.667932,-72.528672,2026-07-17
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.904891,-72.495164,2026-08-01
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.598642,-72.661443,2026-09-04
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.411513,-72.759103,2026-09-06
@@ -1050,6 +1058,10 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-50.8886,-72.712073,2026-09-19
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.828671,-72.701927,2026-09-19
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.606488,-72.550232,2026-09-13
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.851419,-72.715539,2026-09-19
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.59047,-72.707606,2026-09-16
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.524256,-72.624281,2026-09-27
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.729132,-72.513122,2026-09-22
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.508394,-73.080282,2026-10-03
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.201955,-72.374092,2025-01-14
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.500283,-73.026439,2025-01-18
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.310297,-72.646373,2025-01-23
@@ -1111,6 +1123,8 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-51.799087,-72.578475,2025-09-28
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.45805,-73.014694,2025-09-26
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.222761,-72.373552,2025-10-26
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.371655,-72.478026,2025-10-25
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.469388,-73.031185,2025-10-20
+Vultur gryphus,Andean Condor,Aves,patagonia,-50.100836,-72.100219,2025-10-23
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.41173,-72.787457,2025-11-02
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.916255,-73.301871,2025-11-05
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.930853,-73.705904,2025-11-04
@@ -1126,6 +1140,7 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-50.314402,-73.319629,2025-11-28
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.469532,-73.031853,2025-11-21
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.217717,-72.438873,2025-11-09
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.291874,-72.520193,2025-11-12
+Vultur gryphus,Andean Condor,Aves,patagonia,-51.259224,-72.34537,2025-11-15
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.194717,-73.108615,2025-12-01
 Vultur gryphus,Andean Condor,Aves,patagonia,-51.098107,-72.661311,2025-12-02
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.985774,-72.733957,2025-12-15
@@ -1484,21 +1499,6 @@ Vultur gryphus,Andean Condor,Aves,patagonia,-51.03056,-72.868774,2024-02-09
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.931778,-72.40576,2024-02-16
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.845676,-72.39257,2024-02-16
 Vultur gryphus,Andean Condor,Aves,patagonia,-50.468906,-73.032135,2024-02-12
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.8769,-72.73411,2024-02-17
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.789444,-72.41432,2024-02-04
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.47256,-72.99334,2024-02-18
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.34242,-72.47326,2024-02-18
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.324207,-72.79013,2024-02-20
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.984478,-71.70328,2024-02-12
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.789444,-72.41432,2024-02-04
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.004303,-72.80841,2024-02-04
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.13197,-73.1109,2024-02-04
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.0272,-73.02526,2024-02-08
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.289997,-72.40055,2024-02-16
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.45235,-72.776825,2024-02-18
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.072575,-73.09453,2024-02-05
-Vultur gryphus,Andean Condor,Aves,patagonia,-51.10423,-73.04738,2024-02-25
-Vultur gryphus,Andean Condor,Aves,patagonia,-50.979458,-72.800385,2024-02-07
 Spheniscus magellanicus,Magellanic Penguin,Aves,patagonia,-51.272612,-72.890212,2025-02-04
 Spheniscus magellanicus,Magellanic Penguin,Aves,patagonia,-50.999999,-73.0,2025-03-12
 Spheniscus magellanicus,Magellanic Penguin,Aves,patagonia,-51.840458,-72.58293,2025-10-24
