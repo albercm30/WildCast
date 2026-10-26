@@ -212,6 +212,9 @@ Loxodonta africana,African Elephant,Mammalia,kruger,-24.120818,30.893928,2026-09
 Loxodonta africana,African Elephant,Mammalia,kruger,-24.308883,30.937939,2026-09-21
 Loxodonta africana,African Elephant,Mammalia,kruger,-24.385533,31.718602,2026-09-07
 Loxodonta africana,African Elephant,Mammalia,kruger,-24.267727,30.887228,2026-09-24
+Loxodonta africana,African Elephant,Mammalia,kruger,-24.151571,30.903792,2026-10-04
+Loxodonta africana,African Elephant,Mammalia,kruger,-24.131115,30.957437,2026-10-03
+Loxodonta africana,African Elephant,Mammalia,kruger,-24.001887,30.98961,2026-10-04
 Loxodonta africana,African Elephant,Mammalia,kruger,-24.104733,30.852312,2025-01-01
 Loxodonta africana,African Elephant,Mammalia,kruger,-24.439366,31.878459,2025-01-03
 Loxodonta africana,African Elephant,Mammalia,kruger,-24.165196,30.943458,2025-01-06
@@ -496,9 +499,6 @@ Loxodonta africana,African Elephant,Mammalia,kruger,-23.929746,31.545039,2025-07
 Loxodonta africana,African Elephant,Mammalia,kruger,-23.886931,31.569515,2025-07-11
 Loxodonta africana,African Elephant,Mammalia,kruger,-23.82815,31.545209,2025-07-12
 Loxodonta africana,African Elephant,Mammalia,kruger,-23.92913,31.538064,2025-07-11
-Loxodonta africana,African Elephant,Mammalia,kruger,-23.743094,31.234833,2025-08-05
-Loxodonta africana,African Elephant,Mammalia,kruger,-23.300334,31.269948,2025-08-08
-Loxodonta africana,African Elephant,Mammalia,kruger,-24.074088,31.711811,2025-08-01
 Panthera leo,Lion,Mammalia,kruger,-24.615243,31.960007,2026-01-05
 Panthera leo,Lion,Mammalia,kruger,-24.693746,31.548705,2026-01-01
 Panthera leo,Lion,Mammalia,kruger,-24.344372,31.700056,2026-01-07
@@ -848,6 +848,7 @@ Panthera leo,Lion,Mammalia,kruger,-24.110738,31.671105,2025-10-21
 Panthera leo,Lion,Mammalia,kruger,-24.614963,31.925288,2025-10-21
 Panthera leo,Lion,Mammalia,kruger,-24.506998,31.118334,2025-10-07
 Panthera leo,Lion,Mammalia,kruger,-24.411192,31.845428,2025-10-16
+Panthera leo,Lion,Mammalia,kruger,-23.999496,31.482345,2025-10-01
 Panthera leo,Lion,Mammalia,kruger,-24.46919,31.11901,2025-11-13
 Panthera leo,Lion,Mammalia,kruger,-24.227907,31.127561,2025-11-14
 Panthera leo,Lion,Mammalia,kruger,-24.135804,31.727497,2025-11-03
@@ -998,7 +999,6 @@ Panthera leo,Lion,Mammalia,kruger,-24.352969,31.392578,2024-08-30
 Panthera leo,Lion,Mammalia,kruger,-24.558617,31.823478,2024-08-10
 Panthera leo,Lion,Mammalia,kruger,-23.668709,31.483052,2024-08-04
 Panthera leo,Lion,Mammalia,kruger,-24.201663,31.758497,2024-08-12
-Panthera leo,Lion,Mammalia,kruger,-24.296284,31.868441,2024-08-10
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.046465,31.420898,2022-09-18
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-23.529978,31.409687,2022-10-30
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-23.316586,31.321346,2022-10-30
@@ -1009,7 +1009,6 @@ Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.378084,31.935093,2022-11-01
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.177895,31.277237,2019-08-06
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.347637,30.970183,2017-05-06
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.395803,31.77804,2017-11-23
-Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.39,31.54,2006-03-28
 Giraffa camelopardalis,Giraffe,Mammalia,kruger,-24.36363,31.26482,2006-04-11
 Panthera pardus,Leopard,Mammalia,kruger,-24.014678,30.819701,2026-01-20
 Panthera pardus,Leopard,Mammalia,kruger,-24.05462,31.706107,2026-01-12
@@ -1165,6 +1164,7 @@ Panthera pardus,Leopard,Mammalia,kruger,-23.922117,31.627735,2025-10-25
 Panthera pardus,Leopard,Mammalia,kruger,-24.439831,31.09971,2025-10-13
 Panthera pardus,Leopard,Mammalia,kruger,-24.036317,31.785659,2025-10-06
 Panthera pardus,Leopard,Mammalia,kruger,-24.123847,30.749733,2025-10-16
+Panthera pardus,Leopard,Mammalia,kruger,-23.981881,31.523076,2025-10-01
 Panthera pardus,Leopard,Mammalia,kruger,-24.385134,31.803452,2025-11-10
 Panthera pardus,Leopard,Mammalia,kruger,-24.549264,31.108729,2025-11-13
 Panthera pardus,Leopard,Mammalia,kruger,-24.611575,31.884917,2025-11-27
@@ -1199,6 +1199,7 @@ Panthera pardus,Leopard,Mammalia,kruger,-23.816711,31.564957,2024-03-31
 Panthera pardus,Leopard,Mammalia,kruger,-24.602845,31.949015,2024-03-31
 Panthera pardus,Leopard,Mammalia,kruger,-23.9884,31.5547,2024-03-24
 Panthera pardus,Leopard,Mammalia,kruger,-24.282769,30.981646,2024-03-26
+Panthera pardus,Leopard,Mammalia,kruger,-24.293518,31.393722,2024-03-31
 Panthera pardus,Leopard,Mammalia,kruger,-24.354956,31.494887,2024-04-22
 Panthera pardus,Leopard,Mammalia,kruger,-24.63686,31.422976,2024-04-04
 Panthera pardus,Leopard,Mammalia,kruger,-24.705689,31.463127,2024-04-06
@@ -1509,8 +1510,6 @@ Panthera pardus,Leopard,Mammalia,kruger,-23.953554,31.545732,2018-05-10
 Panthera pardus,Leopard,Mammalia,kruger,-24.574799,31.903183,2018-06-16
 Panthera pardus,Leopard,Mammalia,kruger,-24.052237,31.483128,2018-06-15
 Panthera pardus,Leopard,Mammalia,kruger,-24.052809,31.594023,2018-06-15
-Panthera pardus,Leopard,Mammalia,kruger,-24.107073,31.430775,2018-06-15
-Panthera pardus,Leopard,Mammalia,kruger,-23.992277,31.598976,2018-06-30
 Tragelaphus strepsiceros,Greater Kudu,Mammalia,kruger,-24.162002,30.848526,2026-01-20
 Tragelaphus strepsiceros,Greater Kudu,Mammalia,kruger,-24.287972,31.742956,2026-01-14
 Tragelaphus strepsiceros,Greater Kudu,Mammalia,kruger,-24.517973,30.80259,2026-01-01

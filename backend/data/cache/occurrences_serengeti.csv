@@ -296,6 +296,9 @@ Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.991037,34.885229,202
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.981259,34.68137,2026-09-10
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.166278,35.545703,2026-09-17
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.596128,35.279442,2026-09-20
+Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.154058,35.676178,2026-09-07
+Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.160673,35.522429,2026-09-28
+Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.568353,34.796837,2026-10-02
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-2.850772,35.029675,2025-01-02
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-2.981195,35.375514,2025-01-17
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.015022,35.007522,2025-01-25
@@ -496,9 +499,6 @@ Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.159571,35.528356,202
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.161752,35.58767,2025-08-19
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.527135,35.273894,2025-08-14
 Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.574076,35.236571,2025-08-15
-Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.528016,35.276584,2025-08-14
-Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-1.562488,35.231651,2025-08-15
-Connochaetes taurinus,Blue Wildebeest,Mammalia,serengeti,-3.084852,35.386524,2025-08-08
 Equus quagga,Plains Zebra,Mammalia,serengeti,-3.134111,35.442006,2026-01-05
 Equus quagga,Plains Zebra,Mammalia,serengeti,-3.083915,35.48157,2026-01-03
 Equus quagga,Plains Zebra,Mammalia,serengeti,-3.057196,35.572605,2026-01-13
@@ -738,6 +738,10 @@ Equus quagga,Plains Zebra,Mammalia,serengeti,-3.010117,35.575471,2026-09-05
 Equus quagga,Plains Zebra,Mammalia,serengeti,-1.802329,34.927088,2026-09-09
 Equus quagga,Plains Zebra,Mammalia,serengeti,-1.641144,34.706327,2026-09-10
 Equus quagga,Plains Zebra,Mammalia,serengeti,-2.58572,34.981036,2026-09-15
+Equus quagga,Plains Zebra,Mammalia,serengeti,-3.139376,35.540873,2026-09-28
+Equus quagga,Plains Zebra,Mammalia,serengeti,-3.171406,35.641816,2026-09-07
+Equus quagga,Plains Zebra,Mammalia,serengeti,-3.076784,35.590959,2026-09-13
+Equus quagga,Plains Zebra,Mammalia,serengeti,-3.010618,35.595589,2026-09-28
 Equus quagga,Plains Zebra,Mammalia,serengeti,-2.777598,34.845917,2025-01-02
 Equus quagga,Plains Zebra,Mammalia,serengeti,-1.459433,35.024327,2025-01-13
 Equus quagga,Plains Zebra,Mammalia,serengeti,-3.056281,35.347688,2025-01-17
@@ -995,10 +999,6 @@ Equus quagga,Plains Zebra,Mammalia,serengeti,-1.927802,35.364044,2025-09-30
 Equus quagga,Plains Zebra,Mammalia,serengeti,-1.54421,35.311506,2025-10-02
 Equus quagga,Plains Zebra,Mammalia,serengeti,-1.620956,35.252133,2025-10-05
 Equus quagga,Plains Zebra,Mammalia,serengeti,-1.5773,35.201114,2025-10-05
-Equus quagga,Plains Zebra,Mammalia,serengeti,-1.72407,35.213108,2025-10-06
-Equus quagga,Plains Zebra,Mammalia,serengeti,-2.544449,34.632033,2025-10-10
-Equus quagga,Plains Zebra,Mammalia,serengeti,-1.569045,35.097217,2025-10-01
-Equus quagga,Plains Zebra,Mammalia,serengeti,-1.442984,35.221198,2025-10-01
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.168363,35.543103,2026-01-05
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.469643,35.014633,2026-01-01
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.786595,34.976429,2026-01-02
@@ -1176,6 +1176,17 @@ Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.185611,35.566599,2026-09-05
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.647647,34.90587,2026-09-23
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.316966,34.75109,2026-09-23
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.316957,34.751106,2026-09-23
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.618364,34.881196,2026-09-10
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.502725,35.115,2026-09-28
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.413105,34.762213,2026-09-30
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.143869,35.586422,2026-09-30
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.52688,34.593557,2026-09-06
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.154058,35.676178,2026-09-07
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.482132,35.12999,2026-09-30
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.426478,34.783005,2026-09-30
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.73947,34.997563,2026-09-04
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.547617,35.039543,2026-10-02
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.4755,35.486478,2026-10-01
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.16635,35.537455,2025-01-03
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.959363,35.383308,2025-01-17
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.396308,34.81699,2025-01-23
@@ -1322,6 +1333,7 @@ Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.549085,35.281715,2025-08-15
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.152361,35.597033,2025-08-31
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.545489,35.142493,2025-08-31
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.505297,35.084899,2025-08-17
+Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.46027,35.200188,2025-08-03
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.642,34.907007,2025-09-05
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.333306,34.833333,2025-09-02
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.402347,34.73402,2025-09-01
@@ -1487,18 +1499,6 @@ Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.17915,35.567051,2024-06-24
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.470533,35.22915,2024-06-27
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.477996,35.238202,2024-06-18
 Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.202353,35.590583,2024-06-15
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.58738,34.879192,2024-06-15
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.383951,34.817144,2024-06-03
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.181088,35.574685,2024-06-21
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.685816,35.056511,2024-06-19
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.523828,35.323112,2024-07-12
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.482116,35.129989,2024-07-04
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.33136,34.833333,2024-07-03
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.9747,35.073578,2024-07-28
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-1.445817,35.194495,2024-07-29
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.394426,34.884153,2024-07-31
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-3.194102,35.52257,2024-07-03
-Crocuta crocuta,Spotted Hyena,Mammalia,serengeti,-2.640217,34.896666,2024-07-11
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.458121,35.05989,2026-01-18
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.596493,35.384591,2026-01-06
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.451155,35.115893,2026-01-18
@@ -1647,11 +1647,18 @@ Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.472418,34.976221,2026-08-31
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.483183,35.368172,2026-08-19
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-3.160133,34.817686,2026-08-11
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.535337,35.140204,2026-08-03
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.490845,35.148266,2026-08-04
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.576222,35.149665,2026-09-14
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.084432,34.715718,2026-09-10
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.197357,34.681193,2026-09-10
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.385043,34.875774,2026-09-05
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.563082,34.893102,2026-09-11
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.595543,34.662416,2026-09-30
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.597555,34.987774,2026-09-11
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.440683,34.854769,2026-09-22
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.551276,34.711967,2026-09-05
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.466304,35.124001,2026-09-30
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.450288,35.453077,2026-09-30
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.449508,35.159191,2025-01-14
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.699094,35.186785,2025-01-27
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.844113,34.986019,2025-01-24
@@ -1963,6 +1970,9 @@ Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.532316,34.891616,2024-09-18
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.748406,34.900695,2024-09-02
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.454481,34.8488,2024-09-09
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.002091,34.757296,2024-09-07
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.826042,34.639651,2024-09-16
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.532139,34.61274,2024-09-16
+Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.562924,34.773597,2024-09-16
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.466049,35.267406,2024-10-13
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.557126,35.124413,2024-10-21
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.476529,35.123803,2024-10-19
@@ -1989,16 +1999,6 @@ Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.240866,34.9402,2024-12-28
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.699881,34.636795,2024-12-25
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.872019,35.025164,2024-12-24
 Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.668738,34.780204,2024-12-25
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.843133,35.082014,2024-12-24
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.773756,34.614839,2024-12-25
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.94986,35.192524,2024-12-24
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.690688,34.707795,2024-12-25
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-3.181651,34.835616,2024-12-31
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.413177,34.823735,2023-01-16
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.422891,34.889712,2023-01-07
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.5411,34.91498,2023-01-07
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-1.587711,35.079782,2023-01-21
-Acinonyx jubatus,Cheetah,Mammalia,serengeti,-2.360753,34.436491,2023-01-08
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.908106,35.032262,2026-01-06
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-3.150887,34.885066,2026-01-13
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.580382,34.85062,2026-01-12
@@ -2142,7 +2142,10 @@ Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.771036,34.977531,2026-0
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.433888,34.954748,2026-09-24
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.44735,35.038911,2026-09-15
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.471795,35.100885,2026-09-04
+Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.230256,34.602907,2026-09-11
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.382612,34.703084,2026-10-07
+Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.498594,35.06473,2026-10-04
+Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.531807,35.135598,2026-10-03
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.973504,34.778595,2025-01-10
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.540883,35.080727,2025-01-14
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.140792,35.084988,2025-01-21
@@ -2496,6 +2499,3 @@ Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.536346,34.851208,2024-0
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.547339,35.181656,2024-02-07
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-1.536,35.215,2024-02-12
 Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.445835,34.817947,2024-02-15
-Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.106068,34.506256,2024-02-07
-Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.684884,34.92757,2024-02-02
-Sagittarius serpentarius,Secretarybird,Aves,serengeti,-2.999848,34.96346,2024-02-02
