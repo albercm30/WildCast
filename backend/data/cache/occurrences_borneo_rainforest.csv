@@ -209,6 +209,7 @@ Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.347963,117.435186,
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.433096,117.465204,2026-10-07
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.496489,118.169653,2026-10-17
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.830618,117.897445,2026-10-23
+Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.826849,117.992932,2026-10-14
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.861285,117.802529,2025-01-27
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.477889,117.926557,2025-01-11
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.564585,117.919876,2025-01-11
@@ -498,7 +499,6 @@ Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.85,117.95,2024-08-
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.85,117.9,2024-08-31
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.45,118.25,2024-08-22
 Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.85,117.9,2024-08-02
-Pongo pygmaeus,Bornean Orangutan,Mammalia,borneo_rainforest,5.85,117.95,2024-08-30
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.467397,118.182294,2026-01-31
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.477337,118.375898,2026-02-05
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.594555,118.249045,2026-02-04
@@ -696,6 +696,8 @@ Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.416888,118.267173
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.590237,118.230452,2026-09-05
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.402373,117.886718,2026-09-03
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.427892,118.287463,2026-09-05
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.561393,118.270338,2026-09-20
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.436166,118.266368,2026-09-21
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.572038,118.223679,2026-10-05
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.571448,118.391893,2026-10-04
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.580487,118.145037,2026-10-03
@@ -709,6 +711,12 @@ Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.574086,118.144497
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.67961,118.386708,2026-10-18
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.530622,118.375049,2026-10-11
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.438324,118.3002,2026-10-14
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.451674,118.243535,2026-10-25
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.557271,118.385124,2026-10-24
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.506168,118.263266,2026-10-25
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.548443,118.26471,2026-10-14
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.552279,118.266673,2026-10-25
+Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.484048,118.211217,2026-10-24
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.483569,118.347559,2025-01-02
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.503892,118.260101,2025-01-03
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.486978,118.200634,2025-01-03
@@ -875,7 +883,6 @@ Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.485974,118.215042
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.485974,118.215042,2025-08-22
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.596591,117.78012,2025-08-26
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.860276,117.882972,2025-08-14
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.453226,118.22439,2025-08-02
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.469016,118.305234,2025-08-03
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.584571,118.359379,2025-08-03
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.595052,118.394133,2025-08-03
@@ -992,13 +999,6 @@ Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.561728,118.025325
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.425212,118.315707,2024-02-03
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.407389,118.20339,2024-02-05
 Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.487581,118.237757,2024-03-11
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.546846,118.343895,2024-03-12
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.403675,118.374582,2024-03-12
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.569359,118.360962,2024-03-11
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.561447,118.330754,2024-03-11
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.522813,118.334529,2024-03-13
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.481678,118.389485,2024-03-12
-Nasalis larvatus,Proboscis Monkey,Mammalia,borneo_rainforest,5.448641,118.387364,2024-03-14
 Neofelis diardi,Sunda Clouded Leopard,Mammalia,borneo_rainforest,5.570328,117.259864,2025-07-17
 Neofelis diardi,Sunda Clouded Leopard,Mammalia,borneo_rainforest,5.363396,117.506041,2025-08-16
 Neofelis diardi,Sunda Clouded Leopard,Mammalia,borneo_rainforest,5.532343,118.285361,2024-08-09
@@ -1127,6 +1127,7 @@ Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.586117,118.291382,20
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.132561,117.726749,2026-06-21
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.571962,118.213092,2026-06-30
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.567445,118.316921,2026-06-30
+Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,4.904399,117.992847,2026-06-21
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.524258,118.264193,2026-07-02
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.424982,118.022183,2026-07-01
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.403502,118.223271,2026-07-10
@@ -1180,6 +1181,7 @@ Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.640982,118.377705,20
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.587485,118.349023,2026-10-05
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,4.606515,117.680364,2026-10-15
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.485049,118.361036,2026-10-11
+Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.523983,118.24448,2026-10-15
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.427394,117.990733,2025-01-12
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.096516,117.011687,2025-02-07
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.552096,118.202524,2025-02-20
@@ -1523,8 +1525,6 @@ Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.522332,118.356705,20
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.58581,118.211628,2018-06-11
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.422318,118.259892,2018-06-08
 Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.405261,118.284439,2018-06-19
-Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.408893,118.349929,2018-06-13
-Elephas maximus,Asian Elephant,Mammalia,borneo_rainforest,5.418847,118.195462,2018-06-28
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.477857,118.266868,2026-01-22
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.485063,118.287359,2026-01-22
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.865875,117.951906,2026-01-06
@@ -1685,6 +1685,7 @@ Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.465705,118.25481
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.534441,118.336418,2026-10-07
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.051823,118.598245,2026-10-25
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.445338,118.306406,2026-10-05
+Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.41046,118.31744,2026-10-02
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.432215,118.023271,2025-01-02
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.429603,118.216877,2025-01-03
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.423219,118.044663,2025-01-20
@@ -2024,4 +2025,3 @@ Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.53757,118.297106
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,4.962296,117.803576,2025-04-06
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.50429,118.270741,2025-04-17
 Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.86684,117.948128,2025-04-21
-Buceros rhinoceros,Rhinoceros Hornbill,Aves,borneo_rainforest,5.187795,118.502485,2025-04-06
