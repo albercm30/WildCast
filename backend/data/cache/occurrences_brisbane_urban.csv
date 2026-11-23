@@ -24,6 +24,7 @@ Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.678947,152.
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.688432,153.026887,2026-01-28
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.678947,152.927231,2026-01-30
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.297972,153.036833,2026-01-19
+Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.34293,153.03514,2026-01-08
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.299781,153.036347,2026-02-14
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.29953,153.035295,2026-02-14
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.300872,153.038867,2026-02-19
@@ -79,6 +80,7 @@ Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.675891,152.
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.675891,152.850396,2026-06-22
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.67595,152.850031,2026-06-22
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.676459,152.850567,2026-06-22
+Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.297118,153.038246,2026-06-20
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.671453,153.009903,2026-07-06
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.670147,153.013397,2026-07-01
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.298311,153.042822,2026-07-07
@@ -213,6 +215,7 @@ Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.679772,152.
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.642357,152.880276,2025-10-17
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.679053,152.926667,2025-10-29
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.602065,152.920238,2025-10-14
+Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.298487,153.040702,2025-10-26
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.319603,153.053819,2025-11-02
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.298993,153.036338,2025-11-08
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.657622,152.900725,2025-11-06
@@ -496,9 +499,6 @@ Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.298279,153.
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.3004,153.032982,2020-12-29
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.316996,153.052983,2020-12-18
 Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.30075,153.044803,2020-12-21
-Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.450812,152.880811,2019-01-02
-Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.425334,152.861184,2019-01-08
-Macropus giganteus,Eastern Grey Kangaroo,Mammalia,brisbane_urban,-27.564992,152.929658,2019-01-08
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.447373,152.948143,2026-01-10
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.387121,153.00556,2026-01-09
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.445216,152.945842,2026-01-26
@@ -537,6 +537,8 @@ Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.497805
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.46842,152.98262,2026-10-27
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.473038,153.048142,2026-11-02
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.553174,152.941397,2026-11-01
+Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.582609,152.9522,2026-11-07
+Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.521494,152.835567,2026-11-03
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.551322,152.954585,2025-02-20
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.529491,153.083633,2025-02-21
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.383125,153.057704,2025-03-19
@@ -997,8 +999,6 @@ Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.347189
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.442402,153.022578,2019-11-01
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.630429,152.9206,2019-11-01
 Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.272413,152.975115,2019-11-01
-Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.333381,153.053564,2019-11-01
-Pteropus poliocephalus,Grey-headed Flying Fox,Mammalia,brisbane_urban,-27.388688,153.007091,2019-11-01
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.542618,153.07251,2026-01-02
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.384512,153.096053,2026-01-04
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.442905,153.02565,2026-01-03
@@ -1226,6 +1226,7 @@ Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.440971,152.925164,2
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.530622,152.897781,2026-01-11
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.558533,153.149633,2026-01-24
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.463286,153.065689,2026-01-25
+Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.34293,153.02149,2026-01-08
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.57479,153.104287,2026-02-01
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.472381,153.030769,2026-02-07
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.26467,152.96965,2026-02-05
@@ -1390,6 +1391,9 @@ Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.442683,153.052366,2
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.429954,153.171487,2026-02-21
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.590706,153.088274,2026-02-02
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.662302,152.86485,2026-02-08
+Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.497203,153.006469,2026-02-25
+Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.56314,153.10786,2026-02-03
+Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.6666,152.9125,2026-02-10
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.472574,153.028183,2026-03-03
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.471063,152.986118,2026-03-03
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.479698,152.971963,2026-03-03
@@ -1495,10 +1499,6 @@ Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.586022,152.991035,2
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.64343,152.83705,2026-03-23
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.572494,152.990092,2026-03-30
 Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.361275,153.061744,2026-03-01
-Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.666641,152.918826,2026-03-27
-Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.351584,153.048713,2026-03-03
-Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.361275,153.061744,2026-03-03
-Gymnorhina tibicen,Australian Magpie,Aves,brisbane_urban,-27.52357,153.1233,2026-03-16
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.631982,153.204415,2026-01-04
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.315948,153.065613,2026-01-02
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.566613,153.091095,2026-01-03
@@ -1865,6 +1865,11 @@ Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.402782,152.980
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.459462,153.034683,2026-02-08
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.26025,152.958983,2026-02-08
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.627513,153.12684,2026-02-18
+Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.46887,153.053925,2026-02-21
+Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.468945,153.053742,2026-02-21
+Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.46887,153.053925,2026-02-21
+Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.64786,152.9125,2026-02-10
+Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.6666,152.9219,2026-02-18
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.465499,153.022365,2026-03-04
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.47636,152.979007,2026-03-03
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.466574,153.022605,2026-03-02
@@ -1994,11 +1999,6 @@ Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.363147,153.063
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.361275,153.061744,2026-03-05
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.539066,153.086097,2026-03-29
 Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.363147,153.063009,2026-03-29
-Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.363147,153.063009,2026-03-10
-Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.534083,152.814833,2026-03-21
-Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.426358,153.169404,2026-03-22
-Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.666641,152.918826,2026-03-27
-Trichoglossus moluccanus,Rainbow Lorikeet,Aves,brisbane_urban,-27.363147,153.063009,2026-03-16
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.53424,153.124955,2026-01-03
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.379813,153.064956,2026-01-05
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.376724,153.041173,2026-01-01
@@ -2385,6 +2385,7 @@ Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.447322,153.00303
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.454209,152.956915,2026-02-11
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.691421,153.043742,2026-02-13
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.272908,152.974779,2026-02-20
+Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.6666,152.9125,2026-02-10
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.476734,153.029968,2026-03-02
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.369183,153.036093,2026-03-02
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.504474,152.930852,2026-03-03
@@ -2498,4 +2499,3 @@ Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.499303,153.01310
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.477545,153.020906,2026-03-18
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.498168,153.015933,2026-03-31
 Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.498399,153.01546,2026-03-31
-Dacelo novaeguineae,Laughing Kookaburra,Aves,brisbane_urban,-27.498319,153.015499,2026-03-31

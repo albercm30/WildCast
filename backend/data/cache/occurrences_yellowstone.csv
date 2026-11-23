@@ -147,6 +147,7 @@ Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.803421,-110.092261,202
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.710175,-110.490322,2026-06-20
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.148107,-110.78515,2026-06-09
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.450955,-110.210297,2026-06-11
+Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.477208,-110.332974,2026-06-06
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.648518,-110.576903,2026-07-01
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.193561,-110.794182,2026-07-03
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.73502,-110.554528,2026-07-01
@@ -208,12 +209,15 @@ Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.482328,-110.745385,202
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.446656,-110.437707,2026-09-30
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.936692,-110.407685,2026-09-14
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.979568,-110.533783,2026-09-24
+Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.46189,-110.620124,2026-09-14
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.461695,-110.361025,2026-10-01
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.675758,-110.814145,2026-10-11
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.549936,-110.112942,2026-10-09
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.472067,-110.231521,2026-10-11
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.689914,-110.504049,2026-10-13
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.605075,-110.876775,2026-10-24
+Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.745336,-110.426843,2026-10-23
+Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.687525,-110.444398,2026-10-12
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.771678,-110.667542,2025-03-15
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.560299,-110.880061,2025-04-18
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.806557,-110.327568,2025-05-11
@@ -495,10 +499,6 @@ Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.92754,-110.737583,2024
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.939991,-110.739367,2024-05-27
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.790594,-110.887074,2024-05-24
 Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.791055,-110.518214,2024-05-03
-Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.731636,-110.707991,2024-05-22
-Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.616108,-110.834761,2024-05-27
-Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.610945,-110.720664,2024-05-17
-Ursus arctos,Brown / Grizzly Bear,Mammalia,yellowstone,44.622004,-110.546873,2024-05-25
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.761152,-110.896989,2026-01-03
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.659264,-110.614751,2026-01-20
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.804908,-111.215697,2026-02-11
@@ -573,6 +573,7 @@ Canis lupus,Gray Wolf,Mammalia,yellowstone,44.83246,-110.192523,2026-09-30
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.674028,-110.939561,2026-09-27
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.729462,-110.978633,2026-09-27
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.685429,-110.952071,2026-09-26
+Canis lupus,Gray Wolf,Mammalia,yellowstone,44.656139,-110.011022,2026-09-28
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.998801,-110.300354,2026-10-10
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.544563,-110.531894,2026-10-17
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.413707,-110.846682,2026-10-18
@@ -998,7 +999,6 @@ Canis lupus,Gray Wolf,Mammalia,yellowstone,44.827716,-110.300385,2022-05-21
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.952808,-110.36688,2022-05-21
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.841337,-110.343915,2022-05-21
 Canis lupus,Gray Wolf,Mammalia,yellowstone,44.849457,-110.263837,2022-05-21
-Canis lupus,Gray Wolf,Mammalia,yellowstone,44.787115,-110.5454,2022-06-30
 Bison bison,American Bison,Mammalia,yellowstone,44.606367,-110.846914,2026-01-03
 Bison bison,American Bison,Mammalia,yellowstone,44.51132,-110.833992,2026-01-10
 Bison bison,American Bison,Mammalia,yellowstone,44.57047,-110.816963,2026-01-20
@@ -1465,6 +1465,8 @@ Bison bison,American Bison,Mammalia,yellowstone,44.61982,-110.425422,2026-06-19
 Bison bison,American Bison,Mammalia,yellowstone,44.913467,-110.39238,2026-06-19
 Bison bison,American Bison,Mammalia,yellowstone,44.569442,-110.833847,2026-06-11
 Bison bison,American Bison,Mammalia,yellowstone,44.46263,-110.835809,2026-06-04
+Bison bison,American Bison,Mammalia,yellowstone,44.708924,-110.491029,2026-06-08
+Bison bison,American Bison,Mammalia,yellowstone,44.596148,-110.561249,2026-06-05
 Bison bison,American Bison,Mammalia,yellowstone,44.679322,-110.488525,2026-07-03
 Bison bison,American Bison,Mammalia,yellowstone,44.789988,-110.737838,2026-07-02
 Bison bison,American Bison,Mammalia,yellowstone,44.638273,-110.859626,2026-07-01
@@ -1497,8 +1499,6 @@ Bison bison,American Bison,Mammalia,yellowstone,44.623095,-110.434511,2026-07-04
 Bison bison,American Bison,Mammalia,yellowstone,44.869479,-110.176037,2026-07-10
 Bison bison,American Bison,Mammalia,yellowstone,44.73602,-110.495828,2026-07-07
 Bison bison,American Bison,Mammalia,yellowstone,44.880462,-110.216214,2026-07-02
-Bison bison,American Bison,Mammalia,yellowstone,44.629453,-110.856195,2026-07-06
-Bison bison,American Bison,Mammalia,yellowstone,44.694042,-110.746011,2026-07-06
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,45.078456,-110.772537,2026-01-01
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.579462,-110.830497,2026-01-10
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.499695,-111.255562,2026-01-17
@@ -1558,6 +1558,7 @@ Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.734955,-110.504282,2026-
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.620813,-110.427541,2026-06-11
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.510791,-110.278675,2026-06-11
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.542972,-110.289071,2026-06-11
+Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.544212,-110.292221,2026-06-08
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.877462,-110.213088,2026-07-02
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.662942,-110.46443,2026-07-02
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.508134,-110.838962,2026-07-07
@@ -1998,7 +1999,6 @@ Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.407589,-110.394177,2025-
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.677464,-110.485852,2025-06-15
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.918382,-110.303764,2025-06-09
 Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,44.454422,-110.561615,2025-06-13
-Haliaeetus leucocephalus,Bald Eagle,Aves,yellowstone,45.031682,-110.707334,2025-06-23
 Cervus canadensis,Elk (Wapiti),Mammalia,yellowstone,45.000161,-110.705513,2026-01-18
 Cervus canadensis,Elk (Wapiti),Mammalia,yellowstone,45.029083,-110.707908,2026-01-11
 Cervus canadensis,Elk (Wapiti),Mammalia,yellowstone,44.985851,-110.698735,2026-01-31

@@ -57,6 +57,8 @@ Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.229143,
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.301945,-84.790978,2026-02-22
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.274497,-84.718403,2026-02-23
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.31708,-84.687883,2026-02-01
+Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.338202,-84.684471,2026-02-26
+Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.288005,-84.602717,2026-02-26
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.341855,-84.609505,2026-03-09
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.305326,-84.730802,2026-03-15
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.348264,-84.754839,2026-03-09
@@ -159,6 +161,7 @@ Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.308987,
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.262697,-84.775183,2026-10-12
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.314674,-84.634914,2026-10-12
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.226892,-84.936294,2026-10-12
+Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.225943,-84.648918,2026-11-06
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.330017,-84.921075,2025-01-02
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.307171,-84.830872,2025-01-05
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.373474,-84.647284,2025-01-05
@@ -496,9 +499,6 @@ Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.226748,
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.243734,-84.955016,2025-02-06
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.211513,-84.628065,2025-02-17
 Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.374662,-84.744436,2025-02-19
-Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.262859,-84.878621,2025-02-24
-Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.320093,-84.82636,2025-02-24
-Pharomachrus mocinno,Resplendent Quetzal,Aves,costa_rica_cloud_forest,10.264925,-84.920956,2025-02-05
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.331367,-84.602317,2026-01-01
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.469904,-84.65051,2026-01-13
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.47712,-84.724808,2026-01-07
@@ -742,6 +742,11 @@ Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_fo
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.542975,-84.634946,2026-10-10
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.478172,-84.68604,2026-10-09
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.469305,-84.654288,2026-10-11
+Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.479112,-84.635667,2026-11-03
+Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.479113,-84.635672,2026-11-03
+Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.480907,-84.67715,2026-11-04
+Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.479117,-84.635688,2026-11-03
+Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.464144,-84.679444,2026-11-03
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.488105,-84.62458,2025-01-05
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.470997,-84.65165,2025-01-10
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.480511,-84.676772,2025-01-15
@@ -994,11 +999,6 @@ Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_fo
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.472109,-84.653882,2024-02-28
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.46994,-84.734686,2024-02-03
 Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.470305,-84.650772,2024-02-22
-Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.471253,-84.650742,2024-02-28
-Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.477782,-84.642628,2024-03-08
-Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.47038,-84.650803,2024-03-10
-Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.4703,-84.652211,2024-03-12
-Bradypus variegatus,Brown-throated Three-toed Sloth,Mammalia,costa_rica_cloud_forest,10.478681,-84.641531,2024-03-08
 Tapirus bairdii,Baird's Tapir,Mammalia,costa_rica_cloud_forest,10.413675,-84.841397,2026-01-04
 Tapirus bairdii,Baird's Tapir,Mammalia,costa_rica_cloud_forest,10.611517,-85.102265,2026-01-10
 Tapirus bairdii,Baird's Tapir,Mammalia,costa_rica_cloud_forest,10.619618,-85.081145,2026-01-06
@@ -1246,6 +1246,7 @@ Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.1806
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.180717,-84.841087,2026-07-29
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.438403,-84.710097,2026-07-23
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.180592,-84.841155,2026-07-29
+Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.26957,-85.017698,2026-07-08
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.392878,-85.174737,2026-08-02
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.392908,-85.17475,2026-08-02
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.414414,-84.749402,2026-08-06
@@ -1276,6 +1277,8 @@ Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.3383
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.559292,-84.932996,2026-10-10
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.196653,-84.907096,2026-10-26
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.336345,-84.796897,2026-10-26
+Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.336192,-84.79888,2026-11-06
+Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.460922,-84.66027,2026-11-03
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.188417,-84.839263,2025-01-02
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.474013,-84.5933,2025-01-04
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.302544,-84.795294,2025-01-04
@@ -1609,9 +1612,6 @@ Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.1809
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.442156,-84.66704,2024-11-19
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.44119,-84.667828,2024-11-01
 Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.441772,-84.667377,2024-11-14
-Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.461155,-84.661337,2024-11-28
-Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.461145,-84.661476,2024-11-28
-Alouatta palliata,Mantled Howler Monkey,Mammalia,costa_rica_cloud_forest,10.46115,-84.66149,2024-11-28
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.307338,-84.804367,2026-01-03
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.306948,-84.801526,2026-01-11
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.30666,-84.80558,2026-01-23
@@ -1692,6 +1692,8 @@ Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.329851,
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.308426,-84.808304,2026-02-02
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.470165,-84.468696,2026-02-21
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.482226,-84.681895,2026-02-09
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.316375,-84.837563,2026-02-27
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.306606,-84.812164,2026-02-26
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.420933,-84.754264,2026-03-11
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.309661,-84.819982,2026-03-05
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.106495,-84.566669,2026-03-04
@@ -1883,6 +1885,7 @@ Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.310803,
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.421174,-84.604798,2026-07-26
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.4379,-84.7102,2026-07-23
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.435685,-84.708083,2026-07-22
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.279326,-84.828577,2026-07-07
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.441737,-84.667847,2026-08-02
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.321958,-84.829737,2026-08-09
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.329183,-84.827931,2026-08-08
@@ -1949,6 +1952,11 @@ Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.305762,
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.328839,-84.827306,2026-10-14
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.329847,-84.82772,2026-10-28
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.436276,-84.708315,2026-10-26
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.330795,-84.826417,2026-11-05
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.323282,-84.816577,2026-11-08
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.324758,-84.824695,2026-11-07
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.471196,-84.645415,2026-11-03
+Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.136367,-84.475533,2026-11-02
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.363032,-84.889273,2025-01-04
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.281061,-84.791492,2025-01-06
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.226764,-84.854246,2025-01-04
@@ -2104,11 +2112,3 @@ Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.470305,
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.38844,-84.611142,2025-01-11
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.509164,-84.935903,2025-01-12
 Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.498696,-84.938101,2025-01-26
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.583504,-85.119387,2025-01-17
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.608912,-85.083092,2025-01-07
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.436984,-84.709677,2025-01-15
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.328852,-84.604158,2025-01-06
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.122488,-84.486269,2025-01-23
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.202896,-84.484627,2025-01-26
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.330939,-84.602422,2025-01-25
-Ramphastos sulfuratus,Keel-billed Toucan,Aves,costa_rica_cloud_forest,10.427305,-84.746381,2025-01-02
